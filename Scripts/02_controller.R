@@ -1,10 +1,12 @@
 # Load in required packages
 library(rmarkdown)
 library(tidyverse)
+library(ggridges)
+source("Scripts/project_functions.R")
 
 #Determine which scripts should be run
-process_data = F #Runs data analysis 
-make_report = F #Runs project summary
+process_data = T #Runs data analysis 
+make_report = T #Runs project summary
 knit_manuscript = F #Compiles manuscript draft
 
 ############################
@@ -14,6 +16,16 @@ knit_manuscript = F #Compiles manuscript draft
 if(process_data == T){
   source(file = "Scripts/01_data_processing.R")
 }
+
+site_data = readxl::read_excel("Raw_data/site_list.xlsx") %>% 
+  drop_na(lat) %>% 
+  mutate(site = fct_reorder(site, lat))
+
+ctmax_data = read.csv(file = "Output/Output_data/ctmax_data.csv") %>% 
+  inner_join(select(site_data, site, lat, collection_temp), 
+             by = "site") %>% 
+  mutate(site = as.factor(site), 
+         site = fct_reorder(site, lat))
 
 ##################################
 ### Read in the PROCESSED data ###
