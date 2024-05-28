@@ -88,7 +88,7 @@ theme_matt_facets = function(base_size = 18,
 ```{r site-chars, fig.width=10, fig.height=6}
 coords = site_data %>%
   dplyr::select(site, long, lat) %>%
-  distinct()
+  distinct() 
 
 map_data("world") %>% 
   filter(region %in% c("USA", "Canada")) %>% 
@@ -135,6 +135,12 @@ map_data("world") %>%
 ```{r}
 ctmax_data %>% 
 ggplot(aes(x = collection_temp, y = ctmax)) + 
+  geom_point(aes(colour = species)) + 
+  theme_matt() + 
+  theme(legend.position = "right")
+
+ctmax_data %>% 
+ggplot(aes(x = lat, y = ctmax)) + 
   geom_point(aes(colour = species)) + 
   theme_matt() + 
   theme(legend.position = "right")

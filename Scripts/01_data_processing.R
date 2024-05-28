@@ -9,7 +9,7 @@ for(file in ctmax_times){
   
   meta_info = str_split_fixed(file, pattern = "obs", n = 2)
   
-  time_data = read.csv(file = paste("Raw_data/ctmax_data/", file, sep = "")) %>% 
+  time_data = read.csv(file = paste("Raw_data/ctmax_data/", file, sep = ""), na.strings = "NA") %>% 
     mutate(fecundity = as.numeric(fecundity))
   temp_data = read.csv(file = paste("Raw_data/ctmax_data/", meta_info[1], "temp.csv", sep = ""))
   
