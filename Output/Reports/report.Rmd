@@ -163,7 +163,9 @@ ggplot(ctmax_data, aes(x = fecundity, y = site, fill = site)) +
 ```
 
 ```{r ctmax-ridges}
-ggplot(ctmax_data, aes(x = ctmax, y = site, fill = site, group = species)) + 
+ctmax_data %>% 
+  mutate(group_id = paste(site, species)) %>% 
+ggplot(aes(x = ctmax, y = site, fill = site, group = group_id)) + 
   geom_density_ridges(bandwidth = 0.3,
                       jittered_points = TRUE, 
                       point_shape = 21,

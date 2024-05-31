@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2024-05-29
+2024-05-31
 
 - [Site Map](#site-map)
 
@@ -97,7 +97,9 @@ ggplot(ctmax_data, aes(x = fecundity, y = site, fill = site)) +
 <img src="../Figures/markdown/fecundity-ridges-1.png" style="display: block; margin: auto;" />
 
 ``` r
-ggplot(ctmax_data, aes(x = ctmax, y = site, fill = site, group = species)) + 
+ctmax_data %>% 
+  mutate(group_id = paste(site, species)) %>% 
+ggplot(aes(x = ctmax, y = site, fill = site, group = group_id)) + 
   geom_density_ridges(bandwidth = 0.3,
                       jittered_points = TRUE, 
                       point_shape = 21,
