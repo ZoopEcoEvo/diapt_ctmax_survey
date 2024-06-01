@@ -184,6 +184,7 @@ ctmax_data %>%
 
 ```{r fig.width=14, fig.height=6}
 ctmax_data %>% 
+  drop_na(species) %>% 
   mutate("ctmax_resid" = residuals(lm(data = ctmax_data, ctmax~collection_temp + species + site))) %>% 
   drop_na(fecundity) %>% 
   ggplot(aes(x = ctmax_resid, y = fecundity)) + 

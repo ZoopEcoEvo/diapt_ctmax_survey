@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2024-05-31
+2024-06-01
 
 - [Site Map](#site-map)
 
@@ -120,6 +120,7 @@ ctmax_data %>%
 
 ``` r
 ctmax_data %>% 
+  drop_na(species) %>% 
   mutate("ctmax_resid" = residuals(lm(data = ctmax_data, ctmax~collection_temp + species + site))) %>% 
   drop_na(fecundity) %>% 
   ggplot(aes(x = ctmax_resid, y = fecundity)) + 
