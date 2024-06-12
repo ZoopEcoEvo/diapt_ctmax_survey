@@ -6,6 +6,7 @@ source("Scripts/project_functions.R")
 
 #Determine which scripts should be run
 process_data = T #Runs data analysis 
+process_sequences = F #Analyzes the COI sequence data
 make_report = T #Runs project summary
 knit_manuscript = F #Compiles manuscript draft
 
@@ -16,6 +17,9 @@ knit_manuscript = F #Compiles manuscript draft
 if(process_data == T){
   source(file = "Scripts/01_data_processing.R")
 }
+
+source(file = "Scripts/02_ab1_to_fasta.R")
+
 
 site_data = readxl::read_excel("Raw_data/site_list.xlsx") %>% 
   drop_na(lat) %>% 

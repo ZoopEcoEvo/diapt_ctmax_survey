@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2024-06-01
+2024-06-12
 
 - [Site Map](#site-map)
 
@@ -81,6 +81,29 @@ ctmax_data %>%
 <img src="../Figures/markdown/unnamed-chunk-1-2.png" style="display: block; margin: auto;" />
 
 ``` r
+ctmax_data %>% 
+  ggplot(aes(x = collection_temp, y = size)) + 
+  geom_smooth(method = "lm", colour = "black") + 
+  geom_point(aes(colour = species)) + 
+  theme_matt() + 
+  theme(legend.position = "right")
+```
+
+<img src="../Figures/markdown/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+
+``` r
+
+ctmax_data %>% 
+  ggplot(aes(x = lat, y = size)) + 
+  geom_smooth(method = "lm", colour = "black") + 
+  geom_point(aes(colour = species)) + 
+  theme_matt() + 
+  theme(legend.position = "right")
+```
+
+<img src="../Figures/markdown/unnamed-chunk-2-2.png" style="display: block; margin: auto;" />
+
+``` r
 ggplot(ctmax_data, aes(x = fecundity, y = site, fill = site)) + 
   geom_density_ridges(bandwidth = 2,
                       jittered_points = TRUE, 
@@ -97,6 +120,24 @@ ggplot(ctmax_data, aes(x = fecundity, y = site, fill = site)) +
 ```
 
 <img src="../Figures/markdown/fecundity-ridges-1.png" style="display: block; margin: auto;" />
+
+``` r
+ggplot(ctmax_data, aes(x = size, y = site, fill = site)) + 
+  geom_density_ridges(bandwidth = 0.02,
+                      jittered_points = TRUE, 
+                      point_shape = 21,
+                      point_size = 1,
+                      point_colour = "grey30",
+                      point_alpha = 0.6,
+                      alpha = 0.9,
+                      position = position_points_jitter(
+                        height = 0.1, width = 0)) + 
+  scale_fill_viridis_d(option = "E", direction = -1) + 
+  theme_matt() + 
+  theme(legend.position = "none")
+```
+
+<img src="../Figures/markdown/size-ridges-1.png" style="display: block; margin: auto;" />
 
 ``` r
 ctmax_data %>% 
@@ -133,4 +174,4 @@ ctmax_data %>%
   theme(legend.position = "none")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
