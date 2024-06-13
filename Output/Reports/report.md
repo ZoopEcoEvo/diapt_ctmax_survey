@@ -104,6 +104,15 @@ ctmax_data %>%
 <img src="../Figures/markdown/unnamed-chunk-2-2.png" style="display: block; margin: auto;" />
 
 ``` r
+ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) + 
+  geom_point() + 
+  theme_matt() + 
+  theme(legend.position = "right")
+```
+
+<img src="../Figures/markdown/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+
+``` r
 ggplot(ctmax_data, aes(x = fecundity, y = site, fill = site)) + 
   geom_density_ridges(bandwidth = 2,
                       jittered_points = TRUE, 
@@ -122,7 +131,9 @@ ggplot(ctmax_data, aes(x = fecundity, y = site, fill = site)) +
 <img src="../Figures/markdown/fecundity-ridges-1.png" style="display: block; margin: auto;" />
 
 ``` r
-ggplot(ctmax_data, aes(x = size, y = site, fill = site)) + 
+ctmax_data %>% 
+  mutate(group_id = paste(site, species)) %>% 
+  ggplot(aes(x = size, y = site, fill = site, group = group_id)) + 
   geom_density_ridges(bandwidth = 0.02,
                       jittered_points = TRUE, 
                       point_shape = 21,
@@ -162,7 +173,7 @@ ctmax_data %>%
 ``` r
 ctmax_data %>% 
   drop_na(species) %>% 
-  mutate("ctmax_resid" = residuals(lm(data = ctmax_data, ctmax~collection_temp + species + site))) %>% 
+  mutate("ctmax_resid" = residuals(lm(data = ctmax_data, ctmax~collection_temp + species + site + size))) %>% 
   drop_na(fecundity) %>% 
   ggplot(aes(x = ctmax_resid, y = fecundity)) + 
   facet_wrap(species~.) + 
@@ -174,4 +185,4 @@ ctmax_data %>%
   theme(legend.position = "none")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />

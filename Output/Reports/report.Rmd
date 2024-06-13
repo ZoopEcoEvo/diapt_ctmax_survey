@@ -164,6 +164,14 @@ ctmax_data %>%
   theme(legend.position = "right")
 ```
 
+```{r}
+ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) + 
+  geom_point() + 
+  theme_matt() + 
+  theme(legend.position = "right")
+```
+
+
 ```{r fecundity-ridges}
 ggplot(ctmax_data, aes(x = fecundity, y = site, fill = site)) + 
   geom_density_ridges(bandwidth = 2,
@@ -181,7 +189,9 @@ ggplot(ctmax_data, aes(x = fecundity, y = site, fill = site)) +
 ```
 
 ```{r size-ridges}
-ggplot(ctmax_data, aes(x = size, y = site, fill = site)) + 
+ctmax_data %>% 
+  mutate(group_id = paste(site, species)) %>% 
+  ggplot(aes(x = size, y = site, fill = site, group = group_id)) + 
   geom_density_ridges(bandwidth = 0.02,
                       jittered_points = TRUE, 
                       point_shape = 21,
@@ -217,7 +227,7 @@ ctmax_data %>%
 ```{r fig.width=14, fig.height=6}
 ctmax_data %>% 
   drop_na(species) %>% 
-  mutate("ctmax_resid" = residuals(lm(data = ctmax_data, ctmax~collection_temp + species + site))) %>% 
+  mutate("ctmax_resid" = residuals(lm(data = ctmax_data, ctmax~collection_temp + species + site + size))) %>% 
   drop_na(fecundity) %>% 
   ggplot(aes(x = ctmax_resid, y = fecundity)) + 
   facet_wrap(species~.) + 
