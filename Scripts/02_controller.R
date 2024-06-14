@@ -23,12 +23,14 @@ source(file = "Scripts/02_ab1_to_fasta.R")
 
 site_data = readxl::read_excel("Raw_data/site_list.xlsx") %>% 
   drop_na(lat) %>% 
-  mutate(site = fct_reorder(site, lat))
+  mutate(lat = as.numeric(lat), 
+    site = fct_reorder(site, lat))
 
 ctmax_data = read.csv(file = "Output/Output_data/ctmax_data.csv") %>% 
   inner_join(select(site_data, site, lat, collection_temp), 
              by = "site") %>% 
   mutate(site = as.factor(site), 
+         lat = as.numeric(lat),
          site = fct_reorder(site, lat))
 
 ##################################

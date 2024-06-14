@@ -87,7 +87,7 @@ theme_matt_facets = function(base_size = 18,
 
 ```{r site-chars, fig.width=10, fig.height=6}
 coords = site_data %>%
-  dplyr::select(site, long, lat) %>%
+  dplyr::select(site, long, lat,trip) %>%
   distinct() 
 
 map_data("world") %>% 
@@ -98,13 +98,13 @@ map_data("world") %>%
   coord_map(xlim = c(-85,-60),
             ylim = c(25, 48)) + 
   geom_point(data = coords,
-             mapping = aes(x = long, y = lat, colour = site),
+             mapping = aes(x = long, y = lat, colour = trip),
              size = 3) +
   labs(x = "Longitude", 
        y = "Latitude",
        title = "Proposed Sites") + 
   theme_matt() + 
-  theme(legend.position = "none")
+  theme(legend.position = "right")
 ```
 
 ```{r sampled-sites, fig.width=10, fig.height=6}
@@ -173,7 +173,9 @@ ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) +
 
 
 ```{r fecundity-ridges}
-ggplot(ctmax_data, aes(x = fecundity, y = site, fill = site)) + 
+ctmax_data %>% 
+  drop_na(fecundity) %>% 
+ggplot(aes(x = fecundity, y = site, fill = site)) + 
   geom_density_ridges(bandwidth = 2,
                       jittered_points = TRUE, 
                       point_shape = 21,
