@@ -18,7 +18,7 @@ if(process_data == T){
   source(file = "Scripts/01_data_processing.R")
 }
 
-source(file = "Scripts/02_ab1_to_fasta.R")
+source(file = "Scripts/02_ab1_to_fasta.R") 
 
 
 site_data = readxl::read_excel("Raw_data/site_list.xlsx") %>% 

@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2024-06-12
+2024-06-18
 
 - [Site Map](#site-map)
 
@@ -8,7 +8,7 @@ Diaptomid Thermal Limits
 
 ``` r
 coords = site_data %>%
-  dplyr::select(site, long, lat) %>%
+  dplyr::select(site, long, lat,trip) %>%
   distinct() 
 
 map_data("world") %>% 
@@ -19,13 +19,13 @@ map_data("world") %>%
   coord_map(xlim = c(-85,-60),
             ylim = c(25, 48)) + 
   geom_point(data = coords,
-             mapping = aes(x = long, y = lat, colour = site),
+             mapping = aes(x = long, y = lat, colour = trip),
              size = 3) +
   labs(x = "Longitude", 
        y = "Latitude",
        title = "Proposed Sites") + 
   theme_matt() + 
-  theme(legend.position = "none")
+  theme(legend.position = "right")
 ```
 
 <img src="../Figures/markdown/site-chars-1.png" style="display: block; margin: auto;" />
@@ -113,7 +113,9 @@ ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) +
 <img src="../Figures/markdown/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
 
 ``` r
-ggplot(ctmax_data, aes(x = fecundity, y = site, fill = site)) + 
+ctmax_data %>% 
+  drop_na(fecundity) %>% 
+ggplot(aes(x = fecundity, y = site, fill = site)) + 
   geom_density_ridges(bandwidth = 2,
                       jittered_points = TRUE, 
                       point_shape = 21,
@@ -172,7 +174,7 @@ ctmax_data %>%
 
 ``` r
 ctmax_data %>% 
-  drop_na(species) %>% 
+  drop_na(species, size) %>% 
   mutate("ctmax_resid" = residuals(lm(data = ctmax_data, ctmax~collection_temp + species + site + size))) %>% 
   drop_na(fecundity) %>% 
   ggplot(aes(x = ctmax_resid, y = fecundity)) + 
