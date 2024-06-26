@@ -1,11 +1,11 @@
 ﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
-6/20/24,Ochsner Pond,2,1,skistodiaptomus_pallidus,morphological,OP2_1,25,44,NA,
-6/20/24,Ochsner Pond,2,2,skistodiaptomus_pallidus,morphological,OP2_2,23,23,NA,
-6/20/24,Ochsner Pond,2,3,skistodiaptomus_pallidus,morphological,OP2_3,23,40,NA,
-6/20/24,Ochsner Pond,2,4,skistodiaptomus_pallidus,morphological,OP2_4,20,34,NA,
-6/20/24,Ochsner Pond,2,5,skistodiaptomus_pallidus,morphological,OP2_5,26,5,NA,
-6/20/24,Ochsner Pond,2,6,skistodiaptomus_pallidus,morphological,OP2_6,26,19,NA,
-6/20/24,Ochsner Pond,2,7,skistodiaptomus_pallidus,morphological,OP2_7,22,47,NA,
-6/20/24,Ochsner Pond,2,8,skistodiaptomus_pallidus,morphological,OP2_8,21,50,NA,
-6/20/24,Ochsner Pond,2,9,skistodiaptomus_pallidus,morphological,OP2_9,24,38,NA,
-6/20/24,Ochsner Pond,2,10,skistodiaptomus_pallidus,morphological,OP2_10,20,59,NA,
+6/20/24,Ochsner Pond,2,1,skistodiaptomus_pallidus,morphological,OP2_1,25,44,NA,0.872
+6/20/24,Ochsner Pond,2,2,skistodiaptomus_pallidus,morphological,OP2_2,23,23,NA,0.863
+6/20/24,Ochsner Pond,2,3,skistodiaptomus_pallidus,morphological,OP2_3,23,40,NA,0.887
+6/20/24,Ochsner Pond,2,4,skistodiaptomus_pallidus,morphological,OP2_4,20,34,NA,0.886
+6/20/24,Ochsner Pond,2,5,skistodiaptomus_pallidus,morphological,OP2_5,26,5,NA,0.84
+6/20/24,Ochsner Pond,2,6,skistodiaptomus_pallidus,morphological,OP2_6,26,19,NA,0.869
+6/20/24,Ochsner Pond,2,7,skistodiaptomus_pallidus,morphological,OP2_7,22,47,NA,0.898
+6/20/24,Ochsner Pond,2,8,skistodiaptomus_pallidus,morphological,OP2_8,21,50,NA,0.838
+6/20/24,Ochsner Pond,2,9,skistodiaptomus_pallidus,morphological,OP2_9,24,38,NA,0.9
+6/20/24,Ochsner Pond,2,10,skistodiaptomus_pallidus,morphological,OP2_10,20,59,NA,0.837

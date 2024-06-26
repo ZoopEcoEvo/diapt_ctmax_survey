@@ -1,11 +1,11 @@
 ﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
-6/18/24,Pymatuning Reservoir,1,1,skistodiaptomus_pallidus,morphological,PyR1_1,45,28,10,
-6/18/24,Pymatuning Reservoir,1,2,skistodiaptomus_mississippiensis,morphological,PyR1_2,33,0,NA,
-6/18/24,Pymatuning Reservoir,1,3,skistodiaptomus_mississippiensis,morphological,PyR1_3,38,24,18,
-6/18/24,Pymatuning Reservoir,1,4,skistodiaptomus_mississippiensis,morphological,PyR1_4,31,51,NA,
-6/18/24,Pymatuning Reservoir,1,5,skistodiaptomus_mississippiensis,morphological,PyR1_5,35,48,NA,
-6/18/24,Pymatuning Reservoir,1,6,skistodiaptomus_mississippiensis,morphological,PyR1_6,34,37,NA,
-6/18/24,Pymatuning Reservoir,1,7,skistodiaptomus_pallidus,morphological,PyR1_7,41,1,NA,
-6/18/24,Pymatuning Reservoir,1,8,skistodiaptomus_mississippiensis,morphological,PyR1_8,35,7,16,
-6/18/24,Pymatuning Reservoir,1,9,skistodiaptomus_pallidus,morphological,PyR1_9,47,0,NA,
-6/18/24,Pymatuning Reservoir,1,10,skistodiaptomus_mississippiensis,morphological,PyR1_10,39,39,NA,
+6/18/24,Pymatuning Reservoir,1,1,skistodiaptomus_pallidus,morphological,PyR1_1,45,28,10,0.977
+6/18/24,Pymatuning Reservoir,1,2,skistodiaptomus_mississippiensis,morphological,PyR1_2,33,0,NA,0.8
+6/18/24,Pymatuning Reservoir,1,3,skistodiaptomus_mississippiensis,morphological,PyR1_3,38,24,18,0.913
+6/18/24,Pymatuning Reservoir,1,4,skistodiaptomus_mississippiensis,morphological,PyR1_4,31,51,NA,0.896
+6/18/24,Pymatuning Reservoir,1,5,skistodiaptomus_mississippiensis,morphological,PyR1_5,35,48,NA,0.9
+6/18/24,Pymatuning Reservoir,1,6,skistodiaptomus_mississippiensis,morphological,PyR1_6,34,37,NA,0.815
+6/18/24,Pymatuning Reservoir,1,7,skistodiaptomus_pallidus,morphological,PyR1_7,41,1,NA,1.017
+6/18/24,Pymatuning Reservoir,1,8,skistodiaptomus_mississippiensis,morphological,PyR1_8,35,7,16,0.875
+6/18/24,Pymatuning Reservoir,1,9,skistodiaptomus_pallidus,morphological,PyR1_9,47,0,NA,0.946
+6/18/24,Pymatuning Reservoir,1,10,skistodiaptomus_mississippiensis,morphological,PyR1_10,39,39,NA,0.907

@@ -1,11 +1,11 @@
 ﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
-6/17/24,Birch Run Pond,1,1,skistodiaptomus_pallidus,morphological,BR1_1,23,15,9,
-6/17/24,Birch Run Pond,1,2,skistodiaptomus_pallidus,morphological,BR1_2,21,37,9,
-6/17/24,Birch Run Pond,1,3,skistodiaptomus_pallidus,morphological,BR1_3,23,1,NA,
-6/17/24,Birch Run Pond,1,4,skistodiaptomus_pallidus,morphological,BR1_4,22,7,NA,
-6/17/24,Birch Run Pond,1,5,skistodiaptomus_pallidus,morphological,BR1_5,20,23,10,
-6/17/24,Birch Run Pond,1,6,skistodiaptomus_pallidus,morphological,BR1_6,24,54,11,
-6/17/24,Birch Run Pond,1,7,skistodiaptomus_pallidus,morphological,BR1_7,22,22,NA,
-6/17/24,Birch Run Pond,1,8,skistodiaptomus_pallidus,morphological,BR1_8,22,34,NA,
-6/17/24,Birch Run Pond,1,9,skistodiaptomus_pallidus,morphological,BR1_9,22,39,15,
-6/17/24,Birch Run Pond,1,10,skistodiaptomus_pallidus,morphological,BR1_10,22,45,NA,
+6/17/24,Birch Run Pond,1,1,skistodiaptomus_pallidus,morphological,BR1_1,23,15,9,0.826
+6/17/24,Birch Run Pond,1,2,skistodiaptomus_pallidus,morphological,BR1_2,21,37,9,0.855
+6/17/24,Birch Run Pond,1,3,skistodiaptomus_pallidus,morphological,BR1_3,23,1,NA,0.81
+6/17/24,Birch Run Pond,1,4,skistodiaptomus_pallidus,morphological,BR1_4,22,7,NA,0.839
+6/17/24,Birch Run Pond,1,5,skistodiaptomus_pallidus,morphological,BR1_5,20,23,10,0.837
+6/17/24,Birch Run Pond,1,6,skistodiaptomus_pallidus,morphological,BR1_6,24,54,11,0.849
+6/17/24,Birch Run Pond,1,7,skistodiaptomus_pallidus,morphological,BR1_7,22,22,NA,0.834
+6/17/24,Birch Run Pond,1,8,skistodiaptomus_pallidus,morphological,BR1_8,22,34,NA,0.93
+6/17/24,Birch Run Pond,1,9,skistodiaptomus_pallidus,morphological,BR1_9,22,39,15,0.883
+6/17/24,Birch Run Pond,1,10,skistodiaptomus_pallidus,morphological,BR1_10,22,45,NA,0.859
