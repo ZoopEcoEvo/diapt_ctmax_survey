@@ -198,12 +198,62 @@
 "6/21/24","Edinboro Lake",1,9,"skistodiaptomus_oregonensis","morphological","EL1_9",39,54,NA,NA,37.9,3,38.765625
 "6/21/24","Edinboro Lake",1,10,"skistodiaptomus_oregonensis","morphological","EL1_10",42,58,NA,NA,40.9666666666667,1,39.375
 "6/26/24","Cranberry Bog",1,1,"cb_1","morphological","CB1_1",22,47,NA,NA,20.7833333333333,8,36.712962962963
-"6/26/24","Cranberry Bog",1,2,"cb_1","morphological","CB1_2",25,41,NA,NA,23.6833333333333,2,37.3333333333333
-"6/26/24","Cranberry Bog",1,3,"cb_1","morphological","CB1_3",24,31,NA,NA,22.5166666666667,5,37.0868055555556
+"6/26/24","Cranberry Bog",1,2,"cb_1","morphological","CB1_2",25,41,7,NA,23.6833333333333,2,37.3333333333333
+"6/26/24","Cranberry Bog",1,3,"cb_1","morphological","CB1_3",24,31,20,NA,22.5166666666667,5,37.0868055555556
 "6/26/24","Cranberry Bog",1,4,"cb_1","morphological","CB1_4",24,54,NA,NA,22.9,4,37.1625
 "6/26/24","Cranberry Bog",1,5,"cb_1","morphological","CB1_5",23,33,NA,NA,21.55,7,36.8645833333333
 "6/26/24","Cranberry Bog",1,6,"cb_1","morphological","CB1_6",26,37,NA,NA,24.6166666666667,1,37.5625
-"6/26/24","Cranberry Bog",1,7,"cb_1","morphological","CB1_7",23,45,NA,NA,21.75,6,36.9255952380952
+"6/26/24","Cranberry Bog",1,7,"cb_1","morphological","CB1_7",23,45,23,NA,21.75,6,36.9255952380952
 "6/26/24","Cranberry Bog",1,8,"cb_1","morphological","CB1_8",25,2,NA,NA,23.0333333333333,3,37.2013888888889
 "6/26/24","Cranberry Bog",1,9,"cb_2","morphological","CB1_9",20,8,NA,NA,18.1333333333333,10,36.1098484848485
 "6/26/24","Cranberry Bog",1,10,"cb_2","morphological","CB1_10",20,22,NA,NA,18.3666666666667,9,36.18125
+"6/27/24","Lake Whalom",1,1,"lw_1","morphological","LW1_1",27,48,NA,NA,25.8,8,35.5972222222222
+"6/27/24","Lake Whalom",1,2,"lw_1","morphological","LW1_2",25,26,NA,NA,23.4333333333333,10,35.0034722222222
+"6/27/24","Lake Whalom",1,3,"lw_1","morphological","LW1_3",32,51,NA,NA,30.85,3,36.8125
+"6/27/24","Lake Whalom",1,4,"lw_1","morphological","LW1_4",33,56,12,NA,31.9333333333333,2,37.0625
+"6/27/24","Lake Whalom",1,5,"lw_1","morphological","LW1_5",29,34,NA,NA,27.5666666666667,4,36.0708333333333
+"6/27/24","Lake Whalom",1,6,"lw_1","morphological","LW1_6",28,22,NA,NA,26.3666666666667,7,35.7473958333333
+"6/27/24","Lake Whalom",1,7,"lw_1","morphological","LW1_7",34,14,NA,NA,32.2333333333333,1,37.1666666666667
+"6/27/24","Lake Whalom",1,8,"lw_1","morphological","LW1_8",28,49,NA,NA,26.8166666666667,6,35.8690476190476
+"6/27/24","Lake Whalom",1,9,"lw_1","morphological","LW1_9",29,8,NA,NA,27.1333333333333,5,35.95
+"6/27/24","Lake Whalom",1,10,"lw_1","morphological","LW1_10",27,13,NA,NA,25.2166666666667,9,35.4645833333333
+"6/28/24","Monponsett Pond",1,1,"mp_1","morphological","MP1_1",31,39,NA,NA,29.65,4,36.6208333333333
+"6/28/24","Monponsett Pond",1,2,"mp_1","morphological","MP1_2",28,51,NA,NA,26.85,8,35.9490740740741
+"6/28/24","Monponsett Pond",1,3,"mp_1","morphological","MP1_3",33,59,NA,NA,31.9833333333333,2,37.1527777777778
+"6/28/24","Monponsett Pond",1,4,"mp_1","morphological","MP1_4",29,12,NA,NA,27.2,7,36.0364583333333
+"6/28/24","Monponsett Pond",1,5,"mp_1","morphological","MP1_5",30,36,7,NA,28.6,6,36.3601190476191
+"6/28/24","Monponsett Pond",1,6,"mp_1","morphological","MP1_6",36,33,NA,NA,34.55,1,37.75
+"6/28/24","Monponsett Pond",1,7,"mp_1","morphological","MP1_7",28,20,6,NA,26.3333333333333,9,35.8295454545455
+"6/28/24","Monponsett Pond",1,8,"mp_1","morphological","MP1_8",31,58,NA,NA,29.9666666666667,3,36.7013888888889
+"6/28/24","Monponsett Pond",1,9,"mp_1","morphological","MP1_9",23,32,NA,NA,21.5333333333333,10,34.6961805555556
+"6/28/24","Monponsett Pond",1,10,"mp_1","morphological","MP1_10",30,58,8,NA,28.9666666666667,5,36.4458333333333
+"7/16/24","Fraser",1,1,"Fr_1","morphological","FR1_1",22,31,NA,NA,20.5166666666667,10,30.5659722222222
+"7/16/24","Fraser",1,2,"Fr_1","morphological","FR1_2",45,11,10,NA,43.1833333333333,2,36.625
+"7/16/24","Fraser",1,3,"Fr_1","morphological","FR1_3",30,49,NA,NA,28.8166666666667,9,32.9791666666667
+"7/16/24","Fraser",1,4,"Fr_1","morphological","FR1_4",37,30,12,NA,35.5,8,34.6958333333333
+"7/16/24","Fraser",1,5,"Fr_1","morphological","FR1_5",45,41,NA,NA,43.6833333333333,1,36.7291666666667
+"7/16/24","Fraser",1,6,"Fr_1","morphological","FR1_6",39,59,NA,NA,37.9833333333333,6,35.3422619047619
+"7/16/24","Fraser",1,7,"Fr_1","morphological","FR1_7",40,15,12,NA,38.25,5,35.4097222222222
+"7/16/24","Fraser",1,8,"Fr_1","morphological","FR1_8",40,31,NA,NA,38.5166666666667,4,35.4875
+"7/16/24","Fraser",1,9,"Fr_1","morphological","FR1_9",43,56,NA,NA,41.9333333333333,3,36.3472222222222
+"7/16/24","Fraser",1,10,"Fr_1","morphological","FR1_10",39,32,NA,NA,37.5333333333333,7,35.203125
+"7/17/24","Grand Lake",1,1,"GL_1","morphological","GL1_1",52,49,NA,NA,50.8166666666667,8,35.38125
+"7/17/24","Grand Lake",1,2,"GL_1","morphological","GL1_2",57,18,NA,NA,55.3,7,36.484375
+"7/17/24","Grand Lake",1,3,"GL_1","morphological","GL1_3",57,25,NA,NA,55.4166666666667,6,36.5297619047619
+"7/17/24","Grand Lake",1,4,"GL_1","morphological","GL1_4",59,44,NA,NA,57.7333333333333,2,37.1111111111111
+"7/17/24","Grand Lake",1,5,"GL_1","morphological","GL1_5",58,36,26,NA,56.6,3,36.8333333333333
+"7/17/24","Grand Lake",1,6,"GL_1","morphological","GL1_6",51,41,NA,NA,49.6833333333333,9,35.0719696969697
+"7/17/24","Grand Lake",1,7,"GL_1","morphological","GL1_7",57,40,34,NA,55.6666666666667,5,36.6111111111111
+"7/17/24","Grand Lake",1,8,"GL_1","morphological","GL1_8",57,50,29,NA,55.8333333333333,4,36.6583333333333
+"7/17/24","Grand Lake",1,9,"GL_1","morphological","GL1_9",45,52,24,NA,43.8666666666667,10,33.6215277777778
+"7/17/24","Grand Lake",1,10,"GL_1","morphological","GL1_10",59,57,20,NA,57.95,1,37.1458333333333
+"7/17/24","Grand Lake",2,1,"GL_1","morphological","GL2_1",43,37,NA,NA,41.6166666666667,3,36.5069444444444
+"7/17/24","Grand Lake",2,2,"GL_1","morphological","GL2_2",43,0,NA,NA,41,5,36.3229166666667
+"7/17/24","Grand Lake",2,3,"GL_1","morphological","GL2_3",44,27,NA,NA,42.45,2,36.71875
+"7/17/24","Grand Lake",2,4,"GL_1","morphological","GL2_4",43,19,NA,NA,41.3166666666667,4,36.4083333333333
+"7/17/24","Grand Lake",2,5,"GL_1","morphological","GL2_5",41,40,NA,NA,39.6666666666667,7,35.9583333333333
+"7/17/24","Grand Lake",2,6,"GL_1","morphological","GL2_6",36,45,NA,NA,34.75,10,34.6336805555556
+"7/17/24","Grand Lake",2,7,"GL_1","morphological","GL2_7",44,46,NA,NA,42.7666666666667,1,36.7916666666667
+"7/17/24","Grand Lake",2,8,"GL_1","morphological","GL2_8",41,53,NA,NA,39.8833333333333,6,36.0297619047619
+"7/17/24","Grand Lake",2,9,"GL_1","morphological","GL2_9",40,55,NA,NA,38.9166666666667,9,35.7253787878788
+"7/17/24","Grand Lake",2,10,"GL_1","morphological","GL2_10",41,10,NA,NA,39.1666666666667,8,35.8041666666667

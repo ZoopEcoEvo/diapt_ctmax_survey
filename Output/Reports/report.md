@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2024-06-26
+2024-07-17
 
 - [Site Map](#site-map)
 
@@ -16,8 +16,8 @@ map_data("world") %>%
   ggplot() + 
   geom_polygon(aes(x = long, y = lat, group = group),
                fill = "lightgrey") + 
-  coord_map(xlim = c(-85,-60),
-            ylim = c(25, 48)) + 
+  coord_map(xlim = c(-110,-60),
+            ylim = c(25, 55)) + 
   geom_point(data = coords,
              mapping = aes(x = long, y = lat, colour = trip),
              size = 3) +
@@ -41,8 +41,8 @@ map_data("world") %>%
   ggplot() + 
   geom_polygon(aes(x = long, y = lat, group = group),
                fill = "lightgrey") + 
-  coord_map(xlim = c(-85,-60),
-            ylim = c(25, 48)) + 
+  coord_map(xlim = c(-110,-60),
+            ylim = c(25, 55)) + 
   geom_point(data = coords,
              mapping = aes(x = long, y = lat, colour = collection_temp),
              size = 3) +
