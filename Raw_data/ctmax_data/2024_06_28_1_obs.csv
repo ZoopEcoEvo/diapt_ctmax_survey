@@ -1,11 +1,11 @@
 ﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
-6/28/24,Monponsett Pond,1,1,mp_1,morphological,MP1_1,31,39,,
-6/28/24,Monponsett Pond,1,2,mp_1,morphological,MP1_2,28,51,,
-6/28/24,Monponsett Pond,1,3,mp_1,morphological,MP1_3,33,59,,
-6/28/24,Monponsett Pond,1,4,mp_1,morphological,MP1_4,29,12,,
-6/28/24,Monponsett Pond,1,5,mp_1,morphological,MP1_5,30,36,7,
-6/28/24,Monponsett Pond,1,6,mp_1,morphological,MP1_6,36,33,NA,
-6/28/24,Monponsett Pond,1,7,mp_1,morphological,MP1_7,28,20,6,
-6/28/24,Monponsett Pond,1,8,mp_1,morphological,MP1_8,31,58,NA,
-6/28/24,Monponsett Pond,1,9,mp_1,morphological,MP1_9,23,32,NA,
-6/28/24,Monponsett Pond,1,10,mp_1,morphological,MP1_10,30,58,8,
+6/28/24,Monponsett Pond,1,1,mp_1,morphological,MP1_1,31,39,NA,0.918
+6/28/24,Monponsett Pond,1,2,mp_1,morphological,MP1_2,28,51,NA,0.922
+6/28/24,Monponsett Pond,1,3,mp_1,morphological,MP1_3,33,59,8,0.832
+6/28/24,Monponsett Pond,1,4,mp_1,morphological,MP1_4,29,12,NA,0.873
+6/28/24,Monponsett Pond,1,5,mp_1,morphological,MP1_5,30,36,7,0.868
+6/28/24,Monponsett Pond,1,6,mp_1,morphological,MP1_6,36,33,NA,0.868
+6/28/24,Monponsett Pond,1,7,mp_1,morphological,MP1_7,28,20,6,0.84
+6/28/24,Monponsett Pond,1,8,mp_1,morphological,MP1_8,31,58,NA,0.863
+6/28/24,Monponsett Pond,1,9,mp_1,morphological,MP1_9,23,32,NA,0.593
+6/28/24,Monponsett Pond,1,10,mp_1,morphological,MP1_10,30,58,8,0.882
