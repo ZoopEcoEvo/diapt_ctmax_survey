@@ -141,6 +141,17 @@ ctmax_data %>%
   theme(legend.position = "right")
 
 ctmax_data %>% 
+  filter(str_detect(species, pattern = "skisto")) %>% 
+  ggplot(aes(x = collection_temp, y = ctmax)) + 
+  facet_wrap(species~.) + 
+  geom_smooth(method = "lm", colour = "black") + 
+  geom_point() + 
+  labs(x = "Collection Temp. (°C)",
+       y = "CTmax (°C)") + 
+  theme_matt() + 
+  theme(legend.position = "none")
+
+ctmax_data %>% 
   ggplot(aes(x = lat, y = ctmax)) + 
   geom_smooth(method = "lm", colour = "black") + 
   geom_point(aes(colour = species)) + 
@@ -210,6 +221,7 @@ ctmax_data %>%
 
 ```{r ctmax-ridges}
 ctmax_data %>% 
+  filter(str_detect(species, pattern = "skisto")) %>% 
   mutate(group_id = paste(site, species)) %>% 
   ggplot(aes(x = ctmax, y = site, fill = site, group = group_id)) + 
   geom_density_ridges(bandwidth = 0.3,
@@ -222,6 +234,7 @@ ctmax_data %>%
                       position = position_points_jitter(
                         height = 0.1, width = 0)) + 
   scale_fill_viridis_d(option = "E", direction = -1) + 
+  labs(x = "CTmax (°C)") + 
   theme_matt() + 
   theme(legend.position = "none")
 ```
