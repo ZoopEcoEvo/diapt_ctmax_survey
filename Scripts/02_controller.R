@@ -2,10 +2,11 @@
 library(rmarkdown)
 library(tidyverse)
 library(ggridges)
+library(elevatr)
 source("Scripts/project_functions.R")
 
 #Determine which scripts should be run
-process_data = T #Runs data analysis 
+process_data = F #Runs data analysis 
 process_sequences = F #Analyzes the COI sequence data
 make_report = T #Runs project summary
 knit_manuscript = F #Compiles manuscript draft
@@ -14,6 +15,11 @@ knit_manuscript = F #Compiles manuscript draft
 ### Read in the RAW data ###
 ############################
 
+site_data = readxl::read_excel("Raw_data/site_list.xlsx") %>% 
+  drop_na(lat) %>% 
+  mutate(lat = as.numeric(lat), 
+         site = fct_reorder(site, lat))
+
 if(process_data == T){
   source(file = "Scripts/01_data_processing.R")
 }
@@ -21,21 +27,19 @@ if(process_data == T){
 source(file = "Scripts/02_ab1_to_fasta.R") 
 
 
-site_data = readxl::read_excel("Raw_data/site_list.xlsx") %>% 
-  drop_na(lat) %>% 
-  mutate(lat = as.numeric(lat), 
-    site = fct_reorder(site, lat))
+##################################
+### Read in the PROCESSED data ###
+##################################
+
+elev_data = read.csv(file = "Output/Output_data/elev_data.csv")
 
 ctmax_data = read.csv(file = "Output/Output_data/ctmax_data.csv") %>% 
   inner_join(select(site_data, site, lat, collection_temp), 
              by = "site") %>% 
+  inner_join(elev_data, by = "site") %>% 
   mutate(site = as.factor(site), 
          lat = as.numeric(lat),
          site = fct_reorder(site, lat))
-
-##################################
-### Read in the PROCESSED data ###
-##################################
 
 if(make_report == T){
   render(input = "Output/Reports/report.Rmd", #Input the path to your .Rmd file here

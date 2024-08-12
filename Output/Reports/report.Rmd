@@ -85,7 +85,7 @@ theme_matt_facets = function(base_size = 18,
 
 ## Site Map
 
-```{r site-chars, fig.width=10, fig.height=6}
+```{r site-chars, fig.width=10, fig.height=6, include = F}
 coords = site_data %>%
   dplyr::select(site, long, lat,trip) %>%
   distinct() 
@@ -123,23 +123,47 @@ map_data("world") %>%
   geom_point(data = coords,
              mapping = aes(x = long, y = lat, colour = collection_temp),
              size = 3) +
-  scale_colour_viridis_c() + 
+  scale_colour_viridis_c(option = "F") + 
   labs(x = "Longitude", 
        y = "Latitude",
-       colour = "Temp.",
-       title = "Sampled Sites") + 
+       colour = "Temp.") + 
   theme_matt() + 
   theme(legend.position = "right")
 ```
 
-```{r}
-ctmax_data %>% 
+```{r fig.width=20, fig.height=6}
+ctmax_temp_plot = ctmax_data %>% 
   ggplot(aes(x = collection_temp, y = ctmax)) + 
   geom_smooth(method = "lm", colour = "black") + 
   geom_point(aes(colour = species)) + 
+  labs(x = "Collection Temp. (°C)", 
+       y = "CTmax (°C)") + 
   theme_matt() + 
   theme(legend.position = "right")
 
+ctmax_lat_plot = ctmax_data %>% 
+  ggplot(aes(x = lat, y = ctmax)) + 
+  geom_smooth(method = "lm", colour = "black") + 
+  geom_point(aes(colour = species)) + 
+   labs(x = "Latitude", 
+       y = "CTmax (°C)") + 
+  theme_matt() + 
+  theme(legend.position = "right")
+
+ctmax_elev_plot = ctmax_data %>% 
+  ggplot(aes(x = elevation, y = ctmax)) + 
+  geom_smooth(method = "lm", colour = "black") + 
+  geom_point(aes(colour = species)) +
+  labs(x = "Elevation (m)", 
+       y = "CTmax (°C)") +
+  theme_matt() + 
+  theme(legend.position = "right")
+
+ggpubr::ggarrange(ctmax_temp_plot, ctmax_lat_plot, ctmax_elev_plot, common.legend = T, legend = "right", nrow = 1)
+```
+
+
+```{r fig.width=10, fig.height=7}
 ctmax_data %>% 
   filter(str_detect(species, pattern = "skisto")) %>% 
   ggplot(aes(x = collection_temp, y = ctmax)) + 
@@ -150,13 +174,6 @@ ctmax_data %>%
        y = "CTmax (°C)") + 
   theme_matt() + 
   theme(legend.position = "none")
-
-ctmax_data %>% 
-  ggplot(aes(x = lat, y = ctmax)) + 
-  geom_smooth(method = "lm", colour = "black") + 
-  geom_point(aes(colour = species)) + 
-  theme_matt() + 
-  theme(legend.position = "right")
 ```
 
 ```{r}
@@ -164,15 +181,31 @@ ctmax_data %>%
   ggplot(aes(x = collection_temp, y = size)) + 
   geom_smooth(method = "lm", colour = "black") + 
   geom_point(aes(colour = species)) + 
+  labs(x = "Collection Temp. (°C)", 
+       y = "Prosome Length (mm)") + 
   theme_matt() + 
   theme(legend.position = "right")
+```
 
+```{r fig.width=10, fig.height=7}
 ctmax_data %>% 
-  ggplot(aes(x = lat, y = size)) + 
+  filter(str_detect(species, pattern = "skisto")) %>% 
+  ggplot(aes(x = collection_temp, y = size)) + 
+  facet_wrap(species~.) + 
   geom_smooth(method = "lm", colour = "black") + 
-  geom_point(aes(colour = species)) + 
+  geom_point() + 
+  labs(x = "Collection Temp. (°C)",
+       y = "Prosome Length (mm)") + 
   theme_matt() + 
-  theme(legend.position = "right")
+  theme(legend.position = "none")
+```
+
+```{r}
+ggplot(ctmax_data, aes(x = elevation, y = collection_temp)) + 
+  geom_point(size = 3) +
+  labs(x = "Elevation (m)", 
+       y = "Collection Temp. (°C)") + 
+  theme_matt()
 ```
 
 ```{r}
@@ -180,6 +213,23 @@ ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) +
   geom_point() + 
   theme_matt() + 
   theme(legend.position = "right")
+```
+
+```{r}
+ctmax_temp.model = lm(data = ctmax_data, 
+                      ctmax ~ collection_temp)
+
+ctmax_resids = residuals(ctmax_temp.model)
+
+ctmax_data %>% 
+  mutate("genus" = if_else(species %in% c("Fr_1", "leptodiaptomus_minutus"), "Leptodiaptomus", "Skistodiaptomus"), 
+         ctmax_resids = ctmax_resids) %>% 
+  ggplot(aes(x = genus, y = ctmax_resids)) + 
+  geom_boxplot() + 
+  geom_point(position = position_jitter(height = 0, width = 0.05)) + 
+  labs(x = "", 
+       y = "CTmax Residuals") + 
+  theme_matt()
 ```
 
 
@@ -253,4 +303,5 @@ ctmax_data %>%
   theme_matt_facets() + 
   theme(legend.position = "none")
 ```
+
 

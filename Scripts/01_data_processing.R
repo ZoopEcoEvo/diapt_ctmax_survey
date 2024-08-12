@@ -21,3 +21,16 @@ for(file in ctmax_times){
 # Write the data to files in the Output directory
 write.csv(ctmax_data, file = "Output/Output_data/ctmax_data.csv", row.names = F)
 
+
+### Getting elevations for the different sampling sites
+diapt_coords = site_data %>%
+  select(x = long, y = lat, site) %>%
+  distinct() %>% 
+  as.data.frame()
+
+crs_dd <- 4326 # EPSG:4326
+
+diapt_elev = data.frame(get_elev_point(diapt_coords, prj = crs_dd, src = "epqs")) %>%
+  select(site, elevation)
+
+write.csv(diapt_elev, file = "Output/Output_data/elev_data.csv", row.names = F)
