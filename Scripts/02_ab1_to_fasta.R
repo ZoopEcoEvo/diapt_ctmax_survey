@@ -10,8 +10,8 @@ if(process_sequences == T){
   
   alignments = SangerAlignment(ABIF_Directory      = paste0("Raw_data/seq_data/"),
                                processMethod       = "REGEX",
-                               REGEX_SuffixForward = paste0("_F_.*ab1$"),
-                               REGEX_SuffixReverse = paste0("_R_.*ab1$"))
+                               REGEX_SuffixForward = paste0("_f_.*ab1$"),
+                               REGEX_SuffixReverse = paste0("_r_.*ab1$"))
   
   writeFasta(alignments, outputDir = "Output/Sequences/")
   
