@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2024-08-12
+2024-08-16
 
 - [Site Map](#site-map)
 
@@ -34,29 +34,38 @@ map_data("world") %>%
 
 ``` r
 ctmax_temp_plot = ctmax_data %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
   ggplot(aes(x = collection_temp, y = ctmax)) + 
   geom_smooth(method = "lm", colour = "black") + 
   geom_point(aes(colour = species)) + 
   labs(x = "Collection Temp. (°C)", 
        y = "CTmax (°C)") + 
+  scale_colour_manual(values = skisto_cols) + 
   theme_matt() + 
   theme(legend.position = "right")
 
 ctmax_lat_plot = ctmax_data %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
   ggplot(aes(x = lat, y = ctmax)) + 
   geom_smooth(method = "lm", colour = "black") + 
   geom_point(aes(colour = species)) + 
    labs(x = "Latitude", 
        y = "CTmax (°C)") + 
+  scale_colour_manual(values = skisto_cols) + 
   theme_matt() + 
   theme(legend.position = "right")
 
 ctmax_elev_plot = ctmax_data %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
   ggplot(aes(x = elevation, y = ctmax)) + 
   geom_smooth(method = "lm", colour = "black") + 
   geom_point(aes(colour = species)) +
   labs(x = "Elevation (m)", 
        y = "CTmax (°C)") +
+  scale_colour_manual(values = skisto_cols) + 
   theme_matt() + 
   theme(legend.position = "right")
 

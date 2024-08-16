@@ -1,11 +1,11 @@
 ﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
-8/5/24,Pelham Lake,2,1,skistodiaptomus_reighardi,morphological,PL2_1,25,14,8,0.774
-8/5/24,Pelham Lake,2,2,skistodiaptomus_reighardi,morphological,PL2_2,29,47,8,0.828
-8/5/24,Pelham Lake,2,3,skistodiaptomus_reighardi,morphological,PL2_3,24,39,9,0.791
-8/5/24,Pelham Lake,2,4,skistodiaptomus_reighardi,morphological,PL2_4,31,58,10,0.774
-8/5/24,Pelham Lake,2,5,skistodiaptomus_reighardi,morphological,PL2_5,32,18,10,0.846
-8/5/24,Pelham Lake,2,6,skistodiaptomus_reighardi,morphological,PL2_6,29,13,9,0.813
-8/5/24,Pelham Lake,2,7,skistodiaptomus_reighardi,morphological,PL2_7,28,23,8,0.772
-8/5/24,Pelham Lake,2,8,skistodiaptomus_reighardi,morphological,PL2_8,30,40,7,0.848
-8/5/24,Pelham Lake,2,9,skistodiaptomus_reighardi,morphological,PL2_9,20,56,8,0.794
-8/5/24,Pelham Lake,2,10,skistodiaptomus_reighardi,morphological,PL2_10,27,50,NA,0.834
+8/5/24,Pelham Lake,2,1,skistodiaptomus_pygmaeus,morphological,PL2_1,25,14,8,0.774
+8/5/24,Pelham Lake,2,2,skistodiaptomus_pygmaeus,morphological,PL2_2,29,47,8,0.828
+8/5/24,Pelham Lake,2,3,skistodiaptomus_pygmaeus,morphological,PL2_3,24,39,9,0.791
+8/5/24,Pelham Lake,2,4,skistodiaptomus_pygmaeus,morphological,PL2_4,31,58,10,0.774
+8/5/24,Pelham Lake,2,5,skistodiaptomus_pygmaeus,morphological,PL2_5,32,18,10,0.846
+8/5/24,Pelham Lake,2,6,skistodiaptomus_pygmaeus,morphological,PL2_6,29,13,9,0.813
+8/5/24,Pelham Lake,2,7,skistodiaptomus_pygmaeus,morphological,PL2_7,28,23,8,0.772
+8/5/24,Pelham Lake,2,8,skistodiaptomus_pygmaeus,morphological,PL2_8,30,40,7,0.848
+8/5/24,Pelham Lake,2,9,skistodiaptomus_pygmaeus,morphological,PL2_9,20,56,8,0.794
+8/5/24,Pelham Lake,2,10,skistodiaptomus_pygmaeus,morphological,PL2_10,27,50,NA,0.834

@@ -24,7 +24,7 @@ pout = ggtree(tree) %<+% x +
                                 "Skistodiaptomus carolinensis" = "#F78A50"),
                      na.value = "black") + 
   labs(colour = "Species") + 
-  theme_tree() + theme(legend.position=c(0.8, 0.2))
+  theme_tree() + theme(legend.position=c(0.2, 0.9))
 
 
 
