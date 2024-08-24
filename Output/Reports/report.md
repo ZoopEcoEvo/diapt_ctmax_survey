@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2024-08-16
+2024-08-24
 
 - [Site Map](#site-map)
 
@@ -118,7 +118,10 @@ ctmax_data %>%
 <img src="../Figures/markdown/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
 ``` r
-ggplot(ctmax_data, aes(x = elevation, y = collection_temp)) + 
+ctmax_data %>% 
+  select(elevation, collection_temp) %>% 
+  distinct() %>% 
+ggplot(aes(x = elevation, y = collection_temp)) + 
   geom_point(size = 3) +
   labs(x = "Elevation (m)", 
        y = "Collection Temp. (°C)") + 

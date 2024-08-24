@@ -6,9 +6,9 @@ library(elevatr)
 source("Scripts/project_functions.R")
 
 #Determine which scripts should be run
-process_data = F #Runs data analysis 
+process_data = T #Runs data analysis 
 process_sequences = F #Alignts the COI sequence data
-make_tree = T #Makes a ML tree from the COI sequences
+make_tree = F #Makes a ML tree from the COI sequences
 make_sp_prop = F #Plots the species frequency at each site
 make_report = T #Runs project summary
 knit_manuscript = F #Compiles manuscript draft

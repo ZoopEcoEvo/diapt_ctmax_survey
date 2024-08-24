@@ -45,9 +45,8 @@ checks = clade_counts %>%
   bind_rows(data.frame("sample" = unique_samples[!unique_samples %in% identified$sample]))
 
 manual_ids = data.frame(
-  "sample" = c("LW8", "Py2", "Py3", "Py4", "Py5", "Py6", "OwP", "OwP1", "OwP2"),
-  "group" = "Skistodiaptomus mississippiensis"
-)
+  "sample" = c("LW8", "Py2", "Py3", "Py4", "Py5", "Py6", "OwP", "OwP1", "OwP2")) %>% 
+  mutate("group" = if_else(sample == "LW8", "Skistodiaptomus reighardi", "Skistodiaptomus mississippiensis"))
 
 new_samples = identified %>% 
   bind_rows(manual_ids) %>% 

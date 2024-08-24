@@ -210,7 +210,10 @@ ctmax_data %>%
 ```
 
 ```{r}
-ggplot(ctmax_data, aes(x = elevation, y = collection_temp)) + 
+ctmax_data %>% 
+  select(elevation, collection_temp) %>% 
+  distinct() %>% 
+ggplot(aes(x = elevation, y = collection_temp)) + 
   geom_point(size = 3) +
   labs(x = "Elevation (m)", 
        y = "Collection Temp. (°C)") + 

@@ -1,0 +1,11 @@
+﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
+8/23/24,Moosehead Lake,1,1,skistodiaptomus_pygmaeus,morphological,MH1_1,42,5,NA,
+8/23/24,Moosehead Lake,1,2,leptodiaptomus_minutus,morphological,MH1_2,42,41,2,
+8/23/24,Moosehead Lake,1,3,leptodiaptomus_minutus,morphological,MH1_3,44,31,3,
+8/23/24,Moosehead Lake,1,4,skistodiaptomus_pygmaeus,morphological,MH1_4,51,36,NA,
+8/23/24,Moosehead Lake,1,5,MH_sp1,morphological,MH1_5,55,51,5,
+8/23/24,Moosehead Lake,1,6,leptodiaptomus_minutus,morphological,MH1_6,45,36,3,
+8/23/24,Moosehead Lake,1,7,leptodiaptomus_minutus,morphological,MH1_7,45,52,2,
+8/23/24,Moosehead Lake,1,8,skistodiaptomus_pygmaeus,morphological,MH1_8,47,33,NA,
+8/23/24,Moosehead Lake,1,9,leptodiaptomus_minutus,morphological,MH1_9,48,2,2,
+8/23/24,Moosehead Lake,1,10,skistodiaptomus_pygmaeus,morphological,MH1_10,50,3,NA,
