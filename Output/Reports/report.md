@@ -1,8 +1,9 @@
 Diaptomid Thermal Limits
 ================
-2024-08-24
+2024-08-25
 
 - [Site Map](#site-map)
+- [CTmax Data](#ctmax-data)
 
 ## Site Map
 
@@ -31,6 +32,8 @@ map_data("world") %>%
 ```
 
 <img src="../Figures/markdown/sampled-sites-1.png" style="display: block; margin: auto;" />
+
+## CTmax Data
 
 ``` r
 ctmax_temp_plot = ctmax_data %>% 
@@ -76,7 +79,10 @@ ggpubr::ggarrange(ctmax_temp_plot, ctmax_lat_plot, ctmax_elev_plot, common.legen
 
 ``` r
 ctmax_data %>% 
-  filter(str_detect(species, pattern = "skisto")) %>% 
+  filter(str_detect(species, pattern = "skisto") | 
+           str_detect(species, pattern = "lepto")) %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
   ggplot(aes(x = collection_temp, y = ctmax)) + 
   facet_wrap(species~.) + 
   geom_smooth(method = "lm", colour = "black") + 
@@ -91,11 +97,24 @@ ctmax_data %>%
 
 ``` r
 ctmax_data %>% 
-  ggplot(aes(x = collection_temp, y = size)) + 
-  geom_smooth(method = "lm", colour = "black") + 
-  geom_point(aes(colour = species)) + 
-  labs(x = "Collection Temp. (°C)", 
-       y = "Prosome Length (mm)") + 
+  filter(str_detect(species, pattern = "skisto") | 
+           str_detect(species, pattern = "lepto")) %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
+  group_by(collection_date, species, collection_temp) %>% 
+  summarise(mean_ctmax = mean(ctmax),
+            ctmax_sd = sd(ctmax),
+            ctmax_n = n(), 
+            ctmax_se = ctmax_sd / sqrt(ctmax_n)) %>% 
+  ggplot(aes(x = collection_temp, y = mean_ctmax, colour = species)) + 
+  geom_smooth(method = "lm", se=F, linewidth = 2) + 
+  geom_point(size = 2) + 
+  geom_errorbar(aes(ymin = mean_ctmax - ctmax_se, 
+                    ymax = mean_ctmax + ctmax_se),
+                width = 0.3, linewidth = 1) + 
+  labs(x = "Collection Temp. (°C)",
+       y = "CTmax (°C)") + 
+    scale_colour_manual(values = skisto_cols) + 
   theme_matt() + 
   theme(legend.position = "right")
 ```
@@ -104,7 +123,26 @@ ctmax_data %>%
 
 ``` r
 ctmax_data %>% 
-  filter(str_detect(species, pattern = "skisto")) %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
+  ggplot(aes(x = collection_temp, y = size)) + 
+  geom_smooth(method = "lm", colour = "black") + 
+  geom_point(aes(colour = species)) + 
+  labs(x = "Collection Temp. (°C)", 
+       y = "Prosome Length (mm)") + 
+  scale_colour_manual(values = skisto_cols) + 
+  theme_matt() + 
+  theme(legend.position = "right")
+```
+
+<img src="../Figures/markdown/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+
+``` r
+ctmax_data %>% 
+  filter(str_detect(species, pattern = "skisto") | 
+           str_detect(species, pattern = "lepto")) %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
   ggplot(aes(x = collection_temp, y = size)) + 
   facet_wrap(species~.) + 
   geom_smooth(method = "lm", colour = "black") + 
@@ -115,7 +153,7 @@ ctmax_data %>%
   theme(legend.position = "none")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
 
 ``` r
 ctmax_data %>% 
@@ -128,7 +166,7 @@ ggplot(aes(x = elevation, y = collection_temp)) +
   theme_matt()
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 ``` r
 ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) + 
@@ -137,7 +175,7 @@ ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) +
   theme(legend.position = "right")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
 ``` r
 ctmax_temp.model = lm(data = ctmax_data, 
@@ -156,7 +194,7 @@ ctmax_data %>%
   theme_matt()
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
 
 ``` r
 ctmax_data %>% 
@@ -235,4 +273,4 @@ ctmax_data %>%
   theme(legend.position = "none")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />

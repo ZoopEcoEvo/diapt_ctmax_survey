@@ -18,7 +18,8 @@ skisto_cols = c("Skistodiaptomus reighardi" = "#8DAB7F",
                "Skistodiaptomus oregonensis" = "#F8C425",
                "Skistodiaptomus mississippiensis" = "#AF4308",
                "Skistodiaptomus pygmaeus" = "#14A3A1",
-               "Skistodiaptomus carolinensis" = "#F78A50")
+               "Skistodiaptomus carolinensis" = "#F78A50",
+               "Leptodiaptomus minutus" = "salmon")
 
 ############################
 ### Read in the RAW data ###

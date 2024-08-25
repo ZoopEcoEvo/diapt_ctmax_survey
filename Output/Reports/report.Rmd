@@ -85,28 +85,6 @@ theme_matt_facets = function(base_size = 18,
 
 ## Site Map
 
-```{r site-chars, fig.width=10, fig.height=6, include = F}
-coords = site_data %>%
-  dplyr::select(site, long, lat,trip) %>%
-  distinct() 
-
-map_data("world") %>% 
-  filter(region %in% c("USA", "Canada")) %>% 
-  ggplot() + 
-  geom_polygon(aes(x = long, y = lat, group = group),
-               fill = "lightgrey") + 
-  coord_map(xlim = c(-110,-60),
-            ylim = c(25, 55)) + 
-  geom_point(data = coords,
-             mapping = aes(x = long, y = lat, colour = trip),
-             size = 3) +
-  labs(x = "Longitude", 
-       y = "Latitude",
-       title = "Proposed Sites") + 
-  theme_matt() + 
-  theme(legend.position = "right")
-```
-
 ```{r sampled-sites, fig.width=10, fig.height=6}
 coords = site_data %>%
   dplyr::select(site, long, lat, collection_temp) %>%
@@ -130,6 +108,8 @@ map_data("world") %>%
   theme_matt() + 
   theme(legend.position = "right")
 ```
+
+## CTmax Data 
 
 ```{r fig.width=20, fig.height=6}
 ctmax_temp_plot = ctmax_data %>% 
@@ -174,7 +154,10 @@ ggpubr::ggarrange(ctmax_temp_plot, ctmax_lat_plot, ctmax_elev_plot, common.legen
 
 ```{r fig.width=10, fig.height=7}
 ctmax_data %>% 
-  filter(str_detect(species, pattern = "skisto")) %>% 
+  filter(str_detect(species, pattern = "skisto") | 
+           str_detect(species, pattern = "lepto")) %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
   ggplot(aes(x = collection_temp, y = ctmax)) + 
   facet_wrap(species~.) + 
   geom_smooth(method = "lm", colour = "black") + 
@@ -185,20 +168,51 @@ ctmax_data %>%
   theme(legend.position = "none")
 ```
 
+```{r fig.width=10, fig.height=6}
+ctmax_data %>% 
+  filter(str_detect(species, pattern = "skisto") | 
+           str_detect(species, pattern = "lepto")) %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
+  group_by(collection_date, species, collection_temp) %>% 
+  summarise(mean_ctmax = mean(ctmax),
+            ctmax_sd = sd(ctmax),
+            ctmax_n = n(), 
+            ctmax_se = ctmax_sd / sqrt(ctmax_n)) %>% 
+  ggplot(aes(x = collection_temp, y = mean_ctmax, colour = species)) + 
+  geom_smooth(method = "lm", se=F, linewidth = 2) + 
+  geom_point(size = 2) + 
+  geom_errorbar(aes(ymin = mean_ctmax - ctmax_se, 
+                    ymax = mean_ctmax + ctmax_se),
+                width = 0.3, linewidth = 1) + 
+  labs(x = "Collection Temp. (°C)",
+       y = "CTmax (°C)") + 
+    scale_colour_manual(values = skisto_cols) + 
+  theme_matt() + 
+  theme(legend.position = "right")
+```
+
+
 ```{r}
 ctmax_data %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
   ggplot(aes(x = collection_temp, y = size)) + 
   geom_smooth(method = "lm", colour = "black") + 
   geom_point(aes(colour = species)) + 
   labs(x = "Collection Temp. (°C)", 
        y = "Prosome Length (mm)") + 
+  scale_colour_manual(values = skisto_cols) + 
   theme_matt() + 
   theme(legend.position = "right")
 ```
 
 ```{r fig.width=10, fig.height=7}
 ctmax_data %>% 
-  filter(str_detect(species, pattern = "skisto")) %>% 
+  filter(str_detect(species, pattern = "skisto") | 
+           str_detect(species, pattern = "lepto")) %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
   ggplot(aes(x = collection_temp, y = size)) + 
   facet_wrap(species~.) + 
   geom_smooth(method = "lm", colour = "black") + 
