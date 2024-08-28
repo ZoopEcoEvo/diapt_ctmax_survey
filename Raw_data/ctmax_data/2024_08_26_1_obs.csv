@@ -1,11 +1,11 @@
 ﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
-8/26/24,Chute River,1,1,skistodiaptomus_oregonensis,morphological,CR1_1,16,40,NA,
-8/26/24,Chute River,1,2,skistodiaptomus_pygmaeus,morphological,CR1_2,14,27,10,
-8/26/24,Chute River,1,3,leptodiaptomus_minutus,morphological,CR1_3,9,2,NA,
-8/26/24,Chute River,1,4,skistodiaptomus_pygmaeus,morphological,CR1_4,14,15,10,
-8/26/24,Chute River,1,5,skistodiaptomus_pygmaeus,morphological,CR1_5,16,49,NA,
-8/26/24,Chute River,1,6,skistodiaptomus_oregonensis,morphological,CR1_6,15,25,NA,
-8/26/24,Chute River,1,7,skistodiaptomus_pygmaeus,morphological,CR1_7,15,50,6,
-8/26/24,Chute River,1,8,skistodiaptomus_pygmaeus,morphological,CR1_8,16,20,1,
-8/26/24,Chute River,1,9,MH_1,morphological,CR1_9,20,58,NA,
-8/26/24,Chute River,1,10,leptodiaptomus_minutus,morphological,CR1_10,7,0,2,
+8/26/24,Chute River,1,1,skistodiaptomus_oregonensis,morphological,CR1_1,16,40,NA,0.985
+8/26/24,Chute River,1,2,skistodiaptomus_pygmaeus,morphological,CR1_2,14,27,10,0.885
+8/26/24,Chute River,1,3,leptodiaptomus_minutus,morphological,CR1_3,9,2,NA,0.625
+8/26/24,Chute River,1,4,skistodiaptomus_pygmaeus,morphological,CR1_4,14,15,10,0.88
+8/26/24,Chute River,1,5,skistodiaptomus_pygmaeus,morphological,CR1_5,16,49,NA,0.833
+8/26/24,Chute River,1,6,skistodiaptomus_oregonensis,morphological,CR1_6,15,25,NA,0.801
+8/26/24,Chute River,1,7,skistodiaptomus_pygmaeus,morphological,CR1_7,15,50,6,0.811
+8/26/24,Chute River,1,8,skistodiaptomus_pygmaeus,morphological,CR1_8,16,20,1,0.824
+8/26/24,Chute River,1,9,MH_sp1,morphological,CR1_9,20,58,NA,0.924
+8/26/24,Chute River,1,10,leptodiaptomus_minutus,morphological,CR1_10,7,0,2,0.599

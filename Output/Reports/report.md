@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2024-08-27
+2024-08-28
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
@@ -123,22 +123,6 @@ ctmax_data %>%
 
 ``` r
 ctmax_data %>% 
-  mutate(species = str_replace(species, "_", " "),
-         species = str_to_sentence(species)) %>% 
-  ggplot(aes(x = collection_temp, y = size)) + 
-  geom_smooth(method = "lm", colour = "black") + 
-  geom_point(aes(colour = species)) + 
-  labs(x = "Collection Temp. (°C)", 
-       y = "Prosome Length (mm)") + 
-  scale_colour_manual(values = skisto_cols) + 
-  theme_matt() + 
-  theme(legend.position = "right")
-```
-
-<img src="../Figures/markdown/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
-
-``` r
-ctmax_data %>% 
   filter(str_detect(species, pattern = "skisto") | 
            str_detect(species, pattern = "lepto")) %>% 
   mutate(species = str_replace(species, "_", " "),
@@ -153,7 +137,7 @@ ctmax_data %>%
   theme(legend.position = "none")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
 ``` r
 ctmax_data %>% 
@@ -166,16 +150,17 @@ ggplot(aes(x = elevation, y = collection_temp)) +
   theme_matt()
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
 
 ``` r
 ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) + 
+  facet_wrap(.~species) + 
   geom_point() + 
   theme_matt() + 
-  theme(legend.position = "right")
+  theme(legend.position = "none")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 ``` r
 ctmax_temp.model = lm(data = ctmax_data, 
@@ -194,11 +179,11 @@ ctmax_data %>%
   theme_matt()
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
 ``` r
 ctmax_data %>% 
-  drop_na(fecundity) %>% 
+    mutate(group_id = paste(site, species)) %>% 
 ggplot(aes(x = fecundity, y = site, fill = site)) + 
   geom_density_ridges(bandwidth = 2,
                       jittered_points = TRUE, 
@@ -238,7 +223,6 @@ ctmax_data %>%
 
 ``` r
 ctmax_data %>% 
-  filter(str_detect(species, pattern = "skisto")) %>% 
   mutate(group_id = paste(site, species)) %>% 
   ggplot(aes(x = ctmax, y = site, fill = site, group = group_id)) + 
   geom_density_ridges(bandwidth = 0.3,
@@ -257,20 +241,3 @@ ctmax_data %>%
 ```
 
 <img src="../Figures/markdown/ctmax-ridges-1.png" style="display: block; margin: auto;" />
-
-``` r
-ctmax_data %>% 
-  drop_na(species, size) %>% 
-  mutate("ctmax_resid" = residuals(lm(data = ctmax_data, ctmax~collection_temp + species + site + size))) %>% 
-  drop_na(fecundity) %>% 
-  ggplot(aes(x = ctmax_resid, y = fecundity)) + 
-  facet_wrap(species~.) + 
-  geom_vline(xintercept = 0, colour = "grey") + 
-  geom_point(aes(colour = species)) + 
-  geom_smooth(aes(colour = species), method = "lm", se = F) + 
-  scale_x_continuous(breaks = c(-0.5,0.5)) + 
-  theme_matt_facets() + 
-  theme(legend.position = "none")
-```
-
-<img src="../Figures/markdown/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />

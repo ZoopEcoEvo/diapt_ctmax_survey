@@ -1,13 +1,13 @@
 ﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
-8/26/24,Chute River,2,1,skistodiaptomus_oregonensis,morphological,CR2_1,17,45,NA,
-8/26/24,Chute River,2,2,skistodiaptomus_pygmaeus,morphological,CR2_2,15,30,NA,
-8/26/24,Chute River,2,3,leptodiaptomus_minutus,morphological,CR2_3,12,58,NA,
-8/26/24,Chute River,2,4,skistodiaptomus_pygmaeus,morphological,CR2_4,16,45,7,
-8/26/24,Chute River,2,5,leptodiaptomus_minutus,morphological,CR2_5,10,16,3,
-8/26/24,Chute River,2,6,MH_1,morphological,CR2_6,19,39,NA,
-8/26/24,Chute River,2,7,skistodiaptomus_pygmaeus,morphological,CR2_7,18,0,NA,
-8/26/24,Chute River,2,8,skistodiaptomus_pygmaeus,morphological,CR2_8,17,11,6,
-8/26/24,Chute River,2,9,skistodiaptomus_pygmaeus,morphological,CR2_9,14,32,NA,
-8/26/24,Chute River,2,10,skistodiaptomus_pygmaeus,morphological,CR2_10,15,15,11,
-8/26/24,Chute River,2,11,skistodiaptomus_pygmaeus,morphological,CR2_11,17,19,9,
-8/26/24,Chute River,2,12,skistodiaptomus_pygmaeus,morphological,CR2_12,13,24,NA,
+8/26/24,Chute River,2,1,skistodiaptomus_oregonensis,morphological,CR2_1,17,45,NA,0.913
+8/26/24,Chute River,2,2,skistodiaptomus_pygmaeus,morphological,CR2_2,15,30,NA,0.857
+8/26/24,Chute River,2,3,leptodiaptomus_minutus,morphological,CR2_3,12,58,NA,0.632
+8/26/24,Chute River,2,4,skistodiaptomus_pygmaeus,morphological,CR2_4,16,45,7,0.865
+8/26/24,Chute River,2,5,leptodiaptomus_minutus,morphological,CR2_5,10,16,3,0.601
+8/26/24,Chute River,2,6,MH_sp1,morphological,CR2_6,19,39,NA,0.928
+8/26/24,Chute River,2,7,skistodiaptomus_pygmaeus,morphological,CR2_7,18,0,NA,1.011
+8/26/24,Chute River,2,8,skistodiaptomus_pygmaeus,morphological,CR2_8,17,11,6,0.777
+8/26/24,Chute River,2,9,skistodiaptomus_pygmaeus,morphological,CR2_9,14,32,NA,0.851
+8/26/24,Chute River,2,10,skistodiaptomus_pygmaeus,morphological,CR2_10,15,15,11,0.841
+8/26/24,Chute River,2,11,skistodiaptomus_pygmaeus,morphological,CR2_11,17,19,9,0.935
+8/26/24,Chute River,2,12,skistodiaptomus_pygmaeus,morphological,CR2_12,13,24,NA,0.824
