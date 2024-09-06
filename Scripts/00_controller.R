@@ -44,12 +44,14 @@ source(file = "Scripts/02_ab1_to_fasta.R")
 elev_data = read.csv(file = "Output/Output_data/elev_data.csv")
 
 ctmax_data = read.csv(file = "Output/Output_data/ctmax_data.csv") %>% 
-  inner_join(select(site_data, site, lat, collection_temp), 
+  select(-collection_date) %>% 
+  inner_join(select(site_data, site, lat, collection_date, collection_temp), 
              by = "site") %>% 
   inner_join(elev_data, by = "site") %>% 
   mutate(site = as.factor(site), 
          lat = as.numeric(lat),
-         site = fct_reorder(site, lat))
+         site = fct_reorder(site, lat),
+         collection_date = as_date(collection_date))
 
 if(make_tree == T){
   #### Analyzes COI sequence data ####

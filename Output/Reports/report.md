@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2024-09-05
+2024-09-06
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
@@ -163,23 +163,38 @@ ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) +
 <img src="../Figures/markdown/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 ``` r
-ctmax_temp.model = lm(data = ctmax_data, 
-                      ctmax ~ collection_temp)
+model_data = ctmax_data %>% 
+  mutate("genus" = str_split_fixed(species, pattern = "_", n = 2)[,1],
+         genus = tools::toTitleCase(genus),
+         "doy" = yday(collection_date)) %>% 
+  select(site, collection_date, doy, collection_temp, lat, elevation, species, genus, sample_id, fecundity, size, ctmax) %>% 
+  filter(genus != "MH")
+
+ctmax_temp.model = lm(data = model_data, 
+                      ctmax ~ genus + collection_temp + lat + elevation)
 
 ctmax_resids = residuals(ctmax_temp.model)
 
-ctmax_data %>% 
-  mutate("genus" = if_else(species %in% c("Fr_1", "leptodiaptomus_minutus"), "Leptodiaptomus", "Skistodiaptomus"), 
-         ctmax_resids = ctmax_resids) %>% 
-  ggplot(aes(x = genus, y = ctmax_resids)) + 
-  geom_boxplot() + 
-  geom_point(position = position_jitter(height = 0, width = 0.05)) + 
-  labs(x = "", 
-       y = "CTmax Residuals") + 
-  theme_matt()
+performance::check_model(ctmax_temp.model)
 ```
 
 <img src="../Figures/markdown/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
+
+``` r
+
+emmeans::emmeans(ctmax_temp.model, specs = "genus") %>% 
+  data.frame() %>% 
+  mutate(genus = fct_reorder(genus, .x = emmean, .desc = T)) %>% 
+  ggplot(aes(genus, y = emmean)) + 
+  geom_point(size = 4) + 
+  geom_errorbar(aes(ymin = emmean - SE, ymax = emmean + SE), 
+                width = 0.2, linewidth = 1) + 
+  labs(x = "") + 
+  theme_matt() + 
+  theme(axis.text.x = element_text(angle = 300, hjust = 0, vjust = 0.5))
+```
+
+<img src="../Figures/markdown/unnamed-chunk-7-2.png" style="display: block; margin: auto;" />
 
 ``` r
 ctmax_data %>% 
