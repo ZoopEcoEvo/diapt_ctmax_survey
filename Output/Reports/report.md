@@ -79,8 +79,6 @@ ggpubr::ggarrange(ctmax_temp_plot, ctmax_lat_plot, ctmax_elev_plot, common.legen
 
 ``` r
 ctmax_data %>% 
-  filter(str_detect(species, pattern = "skisto") | 
-           str_detect(species, pattern = "lepto")) %>% 
   mutate(species = str_replace(species, "_", " "),
          species = str_to_sentence(species)) %>% 
   ggplot(aes(x = collection_temp, y = ctmax)) + 
@@ -123,8 +121,6 @@ ctmax_data %>%
 
 ``` r
 ctmax_data %>% 
-  filter(str_detect(species, pattern = "skisto") | 
-           str_detect(species, pattern = "lepto")) %>% 
   mutate(species = str_replace(species, "_", " "),
          species = str_to_sentence(species)) %>% 
   ggplot(aes(x = collection_temp, y = size)) + 
