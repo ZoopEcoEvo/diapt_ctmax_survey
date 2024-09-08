@@ -1,11 +1,11 @@
-﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
-5/28/2024,Owen Park,1,1,skistodiaptomus_mississippiensis,morphological,OP1_1,32,41,NA,0.85
-5/28/2024,Owen Park,1,2,skistodiaptomus_mississippiensis,morphological,OP1_2,33,7,13,0.814
-5/28/2024,Owen Park,1,3,skistodiaptomus_mississippiensis,morphological,OP1_3,31,22,NA,0.883
-5/28/2024,Owen Park,1,4,skistodiaptomus_mississippiensis,morphological,OP1_4,31,40,NA,0.852
-5/28/2024,Owen Park,1,5,skistodiaptomus_mississippiensis,morphological,OP1_5,33,25,16,0.797
-5/28/2024,Owen Park,1,6,skistodiaptomus_mississippiensis,morphological,OP1_6,33,40,22,0.835
-5/28/2024,Owen Park,1,7,skistodiaptomus_mississippiensis,morphological,OP1_7,30,4,NA,0.872
-5/28/2024,Owen Park,1,8,skistodiaptomus_mississippiensis,morphological,OP1_8,30,32,16,0.844
-5/28/2024,Owen Park,1,9,skistodiaptomus_mississippiensis,morphological,OP1_9,32,7,6,0.821
-5/28/2024,Owen Park,1,10,skistodiaptomus_mississippiensis,morphological,OP1_10,34,54,NA,0.758
+﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size,egg_1,egg_2,egg_3
+5/28/24,Owen Park,1,1,skistodiaptomus_mississippiensis,morphological,OP1_1,32,41,NA,0.85,,,
+5/28/24,Owen Park,1,2,skistodiaptomus_mississippiensis,morphological,OP1_2,33,7,13,0.814,0.01,0.01,0.011
+5/28/24,Owen Park,1,3,skistodiaptomus_mississippiensis,morphological,OP1_3,31,22,NA,0.883,,,
+5/28/24,Owen Park,1,4,skistodiaptomus_mississippiensis,morphological,OP1_4,31,40,NA,0.852,,,
+5/28/24,Owen Park,1,5,skistodiaptomus_mississippiensis,morphological,OP1_5,33,25,16,0.797,0.008,0.009,0.008
+5/28/24,Owen Park,1,6,skistodiaptomus_mississippiensis,morphological,OP1_6,33,40,22,0.835,0.008,0.008,0.007
+5/28/24,Owen Park,1,7,skistodiaptomus_mississippiensis,morphological,OP1_7,30,4,NA,0.872,,,
+5/28/24,Owen Park,1,8,skistodiaptomus_mississippiensis,morphological,OP1_8,30,32,16,0.844,0.009,0.008,0.007
+5/28/24,Owen Park,1,9,skistodiaptomus_mississippiensis,morphological,OP1_9,32,7,6,0.821,0.007,0.009,0.009
+5/28/24,Owen Park,1,10,skistodiaptomus_mississippiensis,morphological,OP1_10,34,54,NA,0.758,NA,NA,NA

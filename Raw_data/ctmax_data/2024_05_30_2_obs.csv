@@ -1,11 +1,11 @@
-﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
-5/30/24,Pinchot Lake,2,1,skistodiaptomus_pallidus,morphological,PL2_1,27,53,15,0.922
-5/30/24,Pinchot Lake,2,2,skistodiaptomus_pallidus,morphological,PL2_2,26,37,NA,0.912
-5/30/24,Pinchot Lake,2,3,skistodiaptomus_pallidus,morphological,PL2_3,28,13,NA,0.931
-5/30/24,Pinchot Lake,2,4,skistodiaptomus_pallidus,morphological,PL2_4,27,1,24,0.905
-5/30/24,Pinchot Lake,2,5,skistodiaptomus_pallidus,morphological,PL2_5,24,47,NA,0.892
-5/30/24,Pinchot Lake,2,6,skistodiaptomus_pallidus,morphological,PL2_6,31,32,13,0.901
-5/30/24,Pinchot Lake,2,7,skistodiaptomus_pallidus,morphological,PL2_7,27,18,20,0.906
-5/30/24,Pinchot Lake,2,8,skistodiaptomus_pallidus,morphological,PL2_8,27,36,NA,0.836
-5/30/24,Pinchot Lake,2,9,skistodiaptomus_pallidus,morphological,PL2_9,25,15,NA,0.901
-5/30/24,Pinchot Lake,2,10,skistodiaptomus_pallidus,morphological,PL2_10,23,18,NA,0.901
+﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size,egg_1,egg_2,egg_3
+5/30/24,Pinchot Lake,2,1,skistodiaptomus_pallidus,morphological,PL2_1,27,53,15,0.922,0.01,0.01,0.011
+5/30/24,Pinchot Lake,2,2,skistodiaptomus_pallidus,morphological,PL2_2,26,37,NA,0.912,NA,NA,NA
+5/30/24,Pinchot Lake,2,3,skistodiaptomus_pallidus,morphological,PL2_3,28,13,NA,0.931,NA,NA,NA
+5/30/24,Pinchot Lake,2,4,skistodiaptomus_pallidus,morphological,PL2_4,27,1,24,0.905,0.009,0.009,0.011
+5/30/24,Pinchot Lake,2,5,skistodiaptomus_pallidus,morphological,PL2_5,24,47,NA,0.892,NA,NA,NA
+5/30/24,Pinchot Lake,2,6,skistodiaptomus_pallidus,morphological,PL2_6,31,32,13,0.901,0.008,0.011,0.009
+5/30/24,Pinchot Lake,2,7,skistodiaptomus_pallidus,morphological,PL2_7,27,18,20,0.906,0.009,0.01,0.009
+5/30/24,Pinchot Lake,2,8,skistodiaptomus_pallidus,morphological,PL2_8,27,36,NA,0.836,NA,NA,NA
+5/30/24,Pinchot Lake,2,9,skistodiaptomus_pallidus,morphological,PL2_9,25,15,NA,0.901,NA,NA,NA
+5/30/24,Pinchot Lake,2,10,skistodiaptomus_pallidus,morphological,PL2_10,23,18,NA,0.901,NA,NA,NA

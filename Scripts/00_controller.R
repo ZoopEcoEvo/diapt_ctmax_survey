@@ -6,7 +6,7 @@ library(elevatr)
 source("Scripts/project_functions.R")
 
 #Determine which scripts should be run
-process_data = T #Runs data analysis 
+process_data = F #Runs data analysis 
 process_sequences = F #Alignts the COI sequence data
 make_tree = F #Makes a ML tree from the COI sequences
 make_sp_prop = F #Plots the species frequency at each site
@@ -51,7 +51,14 @@ ctmax_data = read.csv(file = "Output/Output_data/ctmax_data.csv") %>%
   mutate(site = as.factor(site), 
          lat = as.numeric(lat),
          site = fct_reorder(site, lat),
-         collection_date = as_date(collection_date))
+         collection_date = as_date(collection_date)) %>% 
+  group_by(sample_id) %>% 
+  drop_na(egg_1) %>% 
+  mutate(mean_egg = mean(c_across(starts_with("egg")), na.rm = TRUE),
+         radius = sqrt(mean_egg / pi),
+         egg_volume = (4/3)*pi*radius^3,
+         total_egg_volume = egg_volume * fecundity) %>% 
+  ungroup()
 
 if(make_tree == T){
   #### Analyzes COI sequence data ####

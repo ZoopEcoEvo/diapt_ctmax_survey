@@ -1,10 +1,10 @@
-﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
-5/31/24,Goodyear Lake,2,1,skistodiaptomus_reighardi,morphological,GL2_1,10,29,24,0.953
-5/31/24,Goodyear Lake,2,2,skistodiaptomus_reighardi,morphological,GL2_2,14,22,NA,0.967
-5/31/24,Goodyear Lake,2,3,skistodiaptomus_reighardi,morphological,GL2_3,14,41,NA,0.957
-5/31/24,Goodyear Lake,2,4,skistodiaptomus_reighardi,morphological,GL2_4,17,33,NA,0.944
-5/31/24,Goodyear Lake,2,5,skistodiaptomus_reighardi,morphological,GL2_5,11,4,NA,0.955
-5/31/24,Goodyear Lake,2,6,skistodiaptomus_reighardi,morphological,GL2_6,15,3,22,0.895
-5/31/24,Goodyear Lake,2,7,skistodiaptomus_reighardi,morphological,GL2_7,15,20,NA,0.943
-5/31/24,Goodyear Lake,2,8,skistodiaptomus_reighardi,morphological,GL2_8,12,22,NA,0.955
-5/31/24,Goodyear Lake,2,10,skistodiaptomus_reighardi,morphological,GL2_10,12,39,20,0.912
+﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size,egg_1,egg_2,egg_3
+5/31/24,Goodyear Lake,2,1,skistodiaptomus_reighardi,morphological,GL2_1,10,29,24,0.953,0.009,0.007,0.008
+5/31/24,Goodyear Lake,2,2,skistodiaptomus_reighardi,morphological,GL2_2,14,22,NA,0.967,NA,NA,NA
+5/31/24,Goodyear Lake,2,3,skistodiaptomus_reighardi,morphological,GL2_3,14,41,NA,0.957,NA,NA,NA
+5/31/24,Goodyear Lake,2,4,skistodiaptomus_reighardi,morphological,GL2_4,17,33,NA,0.944,NA,NA,NA
+5/31/24,Goodyear Lake,2,5,skistodiaptomus_reighardi,morphological,GL2_5,11,4,NA,0.955,NA,NA,NA
+5/31/24,Goodyear Lake,2,6,skistodiaptomus_reighardi,morphological,GL2_6,15,3,22,0.895,0.011,0.009,0.012
+5/31/24,Goodyear Lake,2,7,skistodiaptomus_reighardi,morphological,GL2_7,15,20,NA,0.943,NA,NA,NA
+5/31/24,Goodyear Lake,2,8,skistodiaptomus_reighardi,morphological,GL2_8,12,22,NA,0.955,NA,NA,NA
+5/31/24,Goodyear Lake,2,10,skistodiaptomus_reighardi,morphological,GL2_10,12,39,20,0.912,0.008,0.007,0.007

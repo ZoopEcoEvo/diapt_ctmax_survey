@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2024-09-06
+2024-09-07
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
@@ -54,7 +54,7 @@ ctmax_lat_plot = ctmax_data %>%
   ggplot(aes(x = lat, y = ctmax)) + 
   geom_smooth(method = "lm", colour = "black") + 
   geom_point(aes(colour = species)) + 
-   labs(x = "Latitude", 
+  labs(x = "Latitude", 
        y = "CTmax (°C)") + 
   scale_colour_manual(values = skisto_cols) + 
   theme_matt() + 
@@ -112,7 +112,7 @@ ctmax_data %>%
                 width = 0.3, linewidth = 1) + 
   labs(x = "Collection Temp. (°C)",
        y = "CTmax (°C)") + 
-    scale_colour_manual(values = skisto_cols) + 
+  scale_colour_manual(values = skisto_cols) + 
   theme_matt() + 
   theme(legend.position = "right")
 ```
@@ -137,16 +137,32 @@ ctmax_data %>%
 
 ``` r
 ctmax_data %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
+  ggplot(aes(x = collection_temp, y = mean_egg)) + 
+  facet_wrap(species~.) + 
+  geom_smooth(method = "lm", colour = "black") + 
+  geom_point() + 
+  labs(x = "Collection Temp. (°C)",
+       y = "Prosome Length (mm)") + 
+  theme_matt() + 
+  theme(legend.position = "none")
+```
+
+<img src="../Figures/markdown/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+
+``` r
+ctmax_data %>% 
   select(elevation, collection_temp) %>% 
   distinct() %>% 
-ggplot(aes(x = elevation, y = collection_temp)) + 
+  ggplot(aes(x = elevation, y = collection_temp)) + 
   geom_point(size = 3) +
   labs(x = "Elevation (m)", 
        y = "Collection Temp. (°C)") + 
   theme_matt()
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 ``` r
 ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) + 
@@ -156,7 +172,31 @@ ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) +
   theme(legend.position = "none")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
+
+``` r
+ggplot(ctmax_data, aes(x = size, y = total_egg_volume)) + 
+  geom_smooth(method = "lm", formula = y ~ exp(x)) + 
+  geom_point()+
+  labs(x = "Prosome Length (mm)",
+       y = "Total Egg Volume (mm^3)") + 
+  theme_matt()
+```
+
+<img src="../Figures/markdown/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+
+``` r
+
+ggplot(ctmax_data, aes(x = size, y = total_egg_volume)) + 
+  facet_wrap(.~species) + 
+  geom_point()+
+  #geom_smooth() + 
+  labs(x = "Prosome Length (mm)",
+       y = "Total Egg Volume (mm^3)") + 
+  theme_matt()
+```
+
+<img src="../Figures/markdown/unnamed-chunk-8-2.png" style="display: block; margin: auto;" />
 
 ``` r
 model_data = ctmax_data %>% 
@@ -174,7 +214,7 @@ ctmax_resids = residuals(ctmax_temp.model)
 performance::check_model(ctmax_temp.model)
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
 ``` r
 
@@ -190,12 +230,12 @@ emmeans::emmeans(ctmax_temp.model, specs = "genus") %>%
   theme(axis.text.x = element_text(angle = 300, hjust = 0, vjust = 0.5))
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-7-2.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-9-2.png" style="display: block; margin: auto;" />
 
 ``` r
 ctmax_data %>% 
-    mutate(group_id = paste(site, species)) %>% 
-ggplot(aes(x = fecundity, y = site, fill = site)) + 
+  mutate(group_id = paste(site, species)) %>% 
+  ggplot(aes(x = fecundity, y = site, fill = site)) + 
   geom_density_ridges(bandwidth = 2,
                       jittered_points = TRUE, 
                       point_shape = 21,

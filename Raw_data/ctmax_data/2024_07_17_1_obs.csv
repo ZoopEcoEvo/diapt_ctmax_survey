@@ -1,11 +1,11 @@
-﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
-7/17/24,Grand Lake,1,1,skistodiaptomus_pallidus,morphological,GL1_1,52,49,NA,1.079
-7/17/24,Grand Lake,1,2,skistodiaptomus_pallidus,morphological,GL1_2,57,18,NA,1.092
-7/17/24,Grand Lake,1,3,skistodiaptomus_pallidus,morphological,GL1_3,57,25,NA,1.084
-7/17/24,Grand Lake,1,4,skistodiaptomus_pallidus,morphological,GL1_4,59,44,NA,1.018
-7/17/24,Grand Lake,1,5,skistodiaptomus_pallidus,morphological,GL1_5,58,36,26,1.103
-7/17/24,Grand Lake,1,6,skistodiaptomus_pallidus,morphological,GL1_6,51,41,18,1.081
-7/17/24,Grand Lake,1,7,skistodiaptomus_pallidus,morphological,GL1_7,57,40,34,1.115
-7/17/24,Grand Lake,1,8,skistodiaptomus_pallidus,morphological,GL1_8,57,50,29,1.127
-7/17/24,Grand Lake,1,9,skistodiaptomus_pallidus,morphological,GL1_9,45,52,24,1.089
-7/17/24,Grand Lake,1,10,skistodiaptomus_pallidus,morphological,GL1_10,59,57,20,1.144
+﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size,egg_1,egg_2,egg_3
+7/17/24,Grand Lake,1,1,skistodiaptomus_pallidus,morphological,GL1_1,52,49,NA,1.079,NA,NA,NA
+7/17/24,Grand Lake,1,2,skistodiaptomus_pallidus,morphological,GL1_2,57,18,16,1.092,0.008,0.011,0.012
+7/17/24,Grand Lake,1,3,skistodiaptomus_pallidus,morphological,GL1_3,57,25,NA,1.084,NA,NA,NA
+7/17/24,Grand Lake,1,4,skistodiaptomus_pallidus,morphological,GL1_4,59,44,NA,1.018,NA,NA,NA
+7/17/24,Grand Lake,1,5,skistodiaptomus_pallidus,morphological,GL1_5,58,36,26,1.103,0.011,0.012,0.011
+7/17/24,Grand Lake,1,6,skistodiaptomus_pallidus,morphological,GL1_6,51,41,18,1.081,0.011,0.01,0.009
+7/17/24,Grand Lake,1,7,skistodiaptomus_pallidus,morphological,GL1_7,57,40,34,1.115,0.01,0.01,0.009
+7/17/24,Grand Lake,1,8,skistodiaptomus_pallidus,morphological,GL1_8,57,50,29,1.127,0.012,0.012,0.009
+7/17/24,Grand Lake,1,9,skistodiaptomus_pallidus,morphological,GL1_9,45,52,24,1.089,0.012,0.012,0.013
+7/17/24,Grand Lake,1,10,skistodiaptomus_pallidus,morphological,GL1_10,59,57,20,1.144,0.014,0.012,0.015

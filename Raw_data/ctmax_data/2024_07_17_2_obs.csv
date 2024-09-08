@@ -1,11 +1,11 @@
-﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
-7/17/24,Grand Lake,2,1,skistodiaptomus_pallidus,morphological,GL2_1,43,37,32,1.091
-7/17/24,Grand Lake,2,2,skistodiaptomus_pallidus,morphological,GL2_2,43,0,NA,NA
-7/17/24,Grand Lake,2,3,skistodiaptomus_pallidus,morphological,GL2_3,44,27,23,1.024
-7/17/24,Grand Lake,2,4,skistodiaptomus_pallidus,morphological,GL2_4,43,19,29,1.149
-7/17/24,Grand Lake,2,5,skistodiaptomus_pallidus,morphological,GL2_5,41,40,NA,1.1
-7/17/24,Grand Lake,2,6,skistodiaptomus_pallidus,morphological,GL2_6,36,45,26,1.076
-7/17/24,Grand Lake,2,7,skistodiaptomus_pallidus,morphological,GL2_7,44,46,16,1.113
-7/17/24,Grand Lake,2,8,skistodiaptomus_pallidus,morphological,GL2_8,41,53,24,1.073
-7/17/24,Grand Lake,2,9,skistodiaptomus_pallidus,morphological,GL2_9,40,55,22,1.126
-7/17/24,Grand Lake,2,10,skistodiaptomus_pallidus,morphological,GL2_10,41,10,20,1.2
+﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size,egg_1,egg_2,egg_3
+7/17/24,Grand Lake,2,1,skistodiaptomus_pallidus,morphological,GL2_1,43,37,32,1.091,0.009,0.009,0.011
+7/17/24,Grand Lake,2,2,skistodiaptomus_pallidus,morphological,GL2_2,43,0,NA,NA,NA,NA,NA
+7/17/24,Grand Lake,2,3,skistodiaptomus_pallidus,morphological,GL2_3,44,27,23,1.024,0.011,0.012,0.01
+7/17/24,Grand Lake,2,4,skistodiaptomus_pallidus,morphological,GL2_4,43,19,29,1.149,0.01,0.01,0.011
+7/17/24,Grand Lake,2,5,skistodiaptomus_pallidus,morphological,GL2_5,41,40,NA,1.1,NA,NA,NA
+7/17/24,Grand Lake,2,6,skistodiaptomus_pallidus,morphological,GL2_6,36,45,26,1.076,0.012,0.012,NA
+7/17/24,Grand Lake,2,7,skistodiaptomus_pallidus,morphological,GL2_7,44,46,16,1.113,0.013,0.014,NA
+7/17/24,Grand Lake,2,8,skistodiaptomus_pallidus,morphological,GL2_8,41,53,24,1.073,0.014,0.01,0.011
+7/17/24,Grand Lake,2,9,skistodiaptomus_pallidus,morphological,GL2_9,40,55,22,1.126,0.012,NA,NA
+7/17/24,Grand Lake,2,10,skistodiaptomus_pallidus,morphological,GL2_10,41,10,20,1.2,0.01,0.011,0.012

@@ -1,11 +1,11 @@
-﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
-8/4/24,Benedict Pond,2,1,skistodiaptomus_pallidus,morphological,BP2_1,30,43,6,0.802
-8/4/24,Benedict Pond,2,2,skistodiaptomus_pallidus,morphological,BP2_2,24,3,NA,0.83
-8/4/24,Benedict Pond,2,3,skistodiaptomus_pallidus,morphological,BP2_3,29,22,NA,0.794
-8/4/24,Benedict Pond,2,4,skistodiaptomus_pallidus,morphological,BP2_4,28,33,6,0.792
-8/4/24,Benedict Pond,2,5,skistodiaptomus_pallidus,morphological,BP2_5,27,50,5,0.797
-8/4/24,Benedict Pond,2,6,skistodiaptomus_pallidus,morphological,BP2_6,28,4,6,0.815
-8/4/24,Benedict Pond,2,7,skistodiaptomus_pallidus,morphological,BP2_7,22,17,NA,0.843
-8/4/24,Benedict Pond,2,8,skistodiaptomus_pallidus,morphological,BP2_8,25,33,4,0.807
-8/4/24,Benedict Pond,2,9,skistodiaptomus_pallidus,morphological,BP2_9,28,59,7,0.812
-8/4/24,Benedict Pond,2,10,skistodiaptomus_pallidus,morphological,BP2_10,27,13,NA,0.821
+﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size,egg_1,egg_2,egg_3
+8/4/24,Benedict Pond,2,1,skistodiaptomus_pallidus,morphological,BP2_1,30,43,6,0.802,0.008,0.008,0.008
+8/4/24,Benedict Pond,2,2,skistodiaptomus_pallidus,morphological,BP2_2,24,3,NA,0.83,NA,NA,NA
+8/4/24,Benedict Pond,2,3,skistodiaptomus_pallidus,morphological,BP2_3,29,22,NA,0.794,NA,NA,NA
+8/4/24,Benedict Pond,2,4,skistodiaptomus_pallidus,morphological,BP2_4,28,33,6,0.792,0.008,0.01,0.009
+8/4/24,Benedict Pond,2,5,skistodiaptomus_pallidus,morphological,BP2_5,27,50,5,0.797,0.008,0.01,0.008
+8/4/24,Benedict Pond,2,6,skistodiaptomus_pallidus,morphological,BP2_6,28,4,6,0.815,0.008,0.006,0.009
+8/4/24,Benedict Pond,2,7,skistodiaptomus_pallidus,morphological,BP2_7,22,17,NA,0.843,NA,NA,NA
+8/4/24,Benedict Pond,2,8,skistodiaptomus_pallidus,morphological,BP2_8,25,33,4,0.807,NA,NA,NA
+8/4/24,Benedict Pond,2,9,skistodiaptomus_pallidus,morphological,BP2_9,28,59,7,0.812,0.01,0.012,0.008
+8/4/24,Benedict Pond,2,10,skistodiaptomus_pallidus,morphological,BP2_10,27,13,NA,0.821,NA,NA,NA

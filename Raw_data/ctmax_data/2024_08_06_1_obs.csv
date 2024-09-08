@@ -1,11 +1,11 @@
-﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size
-8/6/24,Canterbury Pond,1,1,skistodiaptomus_pallidus,morphological,CP1_1,30,45,NA,0.813
-8/6/24,Canterbury Pond,1,2,skistodiaptomus_pallidus,morphological,CP1_2,26,19,NA,0.854
-8/6/24,Canterbury Pond,1,3,skistodiaptomus_pallidus,morphological,CP1_3,29,39,6,0.782
-8/6/24,Canterbury Pond,1,4,skistodiaptomus_pallidus,morphological,CP1_4,31,54,NA,0.767
-8/6/24,Canterbury Pond,1,5,skistodiaptomus_pallidus,morphological,CP1_5,36,2,NA,0.793
-8/6/24,Canterbury Pond,1,6,skistodiaptomus_pallidus,morphological,CP1_6,27,18,NA,0.808
-8/6/24,Canterbury Pond,1,7,skistodiaptomus_pallidus,morphological,CP1_7,31,22,NA,0.817
-8/6/24,Canterbury Pond,1,8,skistodiaptomus_pallidus,morphological,CP1_8,32,20,NA,0.792
-8/6/24,Canterbury Pond,1,9,skistodiaptomus_pallidus,morphological,CP1_9,30,23,6,0.81
-8/6/24,Canterbury Pond,1,10,skistodiaptomus_pallidus,morphological,CP1_10,32,36,9,0.815
+﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size,egg_1,egg_2,egg_3
+8/6/24,Canterbury Pond,1,1,skistodiaptomus_pallidus,morphological,CP1_1,30,45,NA,0.813,NA,NA,NA
+8/6/24,Canterbury Pond,1,2,skistodiaptomus_pallidus,morphological,CP1_2,26,19,NA,0.854,NA,NA,NA
+8/6/24,Canterbury Pond,1,3,skistodiaptomus_pallidus,morphological,CP1_3,29,39,6,0.782,0.011,0.011,0.012
+8/6/24,Canterbury Pond,1,4,skistodiaptomus_pallidus,morphological,CP1_4,31,54,NA,0.767,NA,NA,NA
+8/6/24,Canterbury Pond,1,5,skistodiaptomus_pallidus,morphological,CP1_5,36,2,NA,0.793,NA,NA,NA
+8/6/24,Canterbury Pond,1,6,skistodiaptomus_pallidus,morphological,CP1_6,27,18,NA,0.808,NA,NA,NA
+8/6/24,Canterbury Pond,1,7,skistodiaptomus_pallidus,morphological,CP1_7,31,22,NA,0.817,NA,NA,NA
+8/6/24,Canterbury Pond,1,8,skistodiaptomus_pallidus,morphological,CP1_8,32,20,NA,0.792,NA,NA,NA
+8/6/24,Canterbury Pond,1,9,skistodiaptomus_pallidus,morphological,CP1_9,30,23,6,0.81,0.012,0.011,0.011
+8/6/24,Canterbury Pond,1,10,skistodiaptomus_pallidus,morphological,CP1_10,32,36,9,0.815,0.009,0.009,0.009
