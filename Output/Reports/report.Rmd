@@ -208,12 +208,12 @@ ctmax_data %>%
 ctmax_data %>% 
   mutate(species = str_replace(species, "_", " "),
          species = str_to_sentence(species)) %>% 
-  ggplot(aes(x = collection_temp, y = mean_egg)) + 
+  ggplot(aes(x = collection_temp, y = egg_volume)) + 
   facet_wrap(species~.) + 
   geom_smooth(method = "lm", colour = "black") + 
   geom_point() + 
   labs(x = "Collection Temp. (°C)",
-       y = "Prosome Length (mm)") + 
+       y = "Egg Volume (mm^3)") + 
   theme_matt() + 
   theme(legend.position = "none")
 ```

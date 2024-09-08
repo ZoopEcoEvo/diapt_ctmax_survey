@@ -53,7 +53,6 @@ ctmax_data = read.csv(file = "Output/Output_data/ctmax_data.csv") %>%
          site = fct_reorder(site, lat),
          collection_date = as_date(collection_date)) %>% 
   group_by(sample_id) %>% 
-  drop_na(egg_1) %>% 
   mutate(mean_egg = mean(c_across(starts_with("egg")), na.rm = TRUE),
          radius = sqrt(mean_egg / pi),
          egg_volume = (4/3)*pi*radius^3,
