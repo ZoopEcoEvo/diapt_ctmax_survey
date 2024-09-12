@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2024-09-07
+2024-09-12
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
@@ -96,7 +96,8 @@ ctmax_data %>%
 ``` r
 ctmax_data %>% 
   filter(str_detect(species, pattern = "skisto") | 
-           str_detect(species, pattern = "lepto")) %>% 
+           str_detect(species, pattern = "lepto") | 
+           str_detect(species, pattern = "aglao")) %>% 
   mutate(species = str_replace(species, "_", " "),
          species = str_to_sentence(species)) %>% 
   group_by(collection_date, species, collection_temp) %>% 
@@ -175,6 +176,17 @@ ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) +
 <img src="../Figures/markdown/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
 ``` r
+
+ggplot(ctmax_data, aes(x = size, y = fecundity, colour = species)) + 
+  facet_wrap(.~species) + 
+  geom_point() + 
+  theme_matt() + 
+  theme(legend.position = "none")
+```
+
+<img src="../Figures/markdown/unnamed-chunk-7-2.png" style="display: block; margin: auto;" />
+
+``` r
 ggplot(ctmax_data, aes(x = size, y = total_egg_volume)) + 
   geom_smooth(method = "lm", formula = y ~ exp(x)) + 
   geom_point()+
@@ -199,24 +211,73 @@ ggplot(ctmax_data, aes(x = size, y = total_egg_volume)) +
 <img src="../Figures/markdown/unnamed-chunk-8-2.png" style="display: block; margin: auto;" />
 
 ``` r
-model_data = ctmax_data %>% 
-  mutate("genus" = str_split_fixed(species, pattern = "_", n = 2)[,1],
-         genus = tools::toTitleCase(genus),
-         "doy" = yday(collection_date)) %>% 
-  select(site, collection_date, doy, collection_temp, lat, elevation, species, genus, sample_id, fecundity, size, ctmax) %>% 
-  filter(genus != "MH")
-
-ctmax_temp.model = lm(data = model_data, 
-                      ctmax ~ genus + collection_temp + lat + elevation)
-
-ctmax_resids = residuals(ctmax_temp.model)
-
-performance::check_model(ctmax_temp.model)
+ctmax_data %>% 
+  filter(species == "skistodiaptomus_pallidus") %>%
+  # group_by(site) %>% 
+  # summarise(size = mean(size, na.rm = T), 
+  #          total_egg_volume = mean(total_egg_volume, na.rm = T)) %>% 
+ggplot(aes(x = size, y = total_egg_volume)) + 
+  geom_smooth(method = "lm", formula = y ~ exp(x), 
+              colour = "black") + 
+  geom_point(aes(colour = site))+
+  labs(x = "Prosome Length (mm)",
+       y = "Total Egg Volume (mm^3)") + 
+  theme_matt() + 
+  theme(legend.position = "right")
 ```
 
 <img src="../Figures/markdown/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
 ``` r
+model_data = ctmax_data %>% 
+  mutate("genus" = str_split_fixed(species, pattern = "_", n = 2)[,1],
+         genus = tools::toTitleCase(genus),
+         "doy" = yday(collection_date)) %>% 
+  select(site, collection_date, doy, collection_temp, lat, elevation, species, genus, sample_id, fecundity, total_egg_volume, size, ctmax) %>% 
+  filter(genus != "MH") %>%  
+  mutate(total_egg_volume = if_else(is.na(total_egg_volume), 0, total_egg_volume),
+         collection_temp_sc = scale(collection_temp),
+         lat_sc = scale(lat), 
+         elevation_sc = scale(elevation),
+         tev_sc = scale(total_egg_volume)) 
+
+ctmax_temp.model = lm(data = model_data, 
+                      ctmax ~ genus + collection_temp + lat + elevation + total_egg_volume)
+
+#MuMIn::dredge(ctmax_temp.model)
+
+performance::check_model(ctmax_temp.model)
+```
+
+<img src="../Figures/markdown/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+
+``` r
+ 
+summary(ctmax_temp.model)
+## 
+## Call:
+## lm(formula = ctmax ~ genus + collection_temp + lat + elevation + 
+##     total_egg_volume, data = model_data)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.8997 -0.4819  0.0975  0.5955  2.5533 
+## 
+## Coefficients:
+##                        Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)          43.1084072  1.0485289  41.113  < 2e-16 ***
+## genusLeptodiaptomus  -3.1086251  0.3240655  -9.593  < 2e-16 ***
+## genusSkistodiaptomus -1.5305123  0.3046859  -5.023 7.47e-07 ***
+## collection_temp       0.1464862  0.0157380   9.308  < 2e-16 ***
+## lat                  -0.1994596  0.0189392 -10.532  < 2e-16 ***
+## elevation            -0.0002449  0.0000911  -2.688  0.00747 ** 
+## total_egg_volume     33.6408738  8.1880105   4.109 4.77e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.9213 on 428 degrees of freedom
+## Multiple R-squared:  0.5743, Adjusted R-squared:  0.5684 
+## F-statistic: 96.24 on 6 and 428 DF,  p-value: < 2.2e-16
 
 emmeans::emmeans(ctmax_temp.model, specs = "genus") %>% 
   data.frame() %>% 
@@ -230,7 +291,7 @@ emmeans::emmeans(ctmax_temp.model, specs = "genus") %>%
   theme(axis.text.x = element_text(angle = 300, hjust = 0, vjust = 0.5))
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-9-2.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-10-2.png" style="display: block; margin: auto;" />
 
 ``` r
 ctmax_data %>% 

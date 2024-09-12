@@ -169,7 +169,8 @@ ctmax_data %>%
 ```{r fig.width=10, fig.height=6}
 ctmax_data %>% 
   filter(str_detect(species, pattern = "skisto") | 
-           str_detect(species, pattern = "lepto")) %>% 
+           str_detect(species, pattern = "lepto") | 
+           str_detect(species, pattern = "aglao")) %>% 
   mutate(species = str_replace(species, "_", " "),
          species = str_to_sentence(species)) %>% 
   group_by(collection_date, species, collection_temp) %>% 
@@ -235,6 +236,12 @@ ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) +
   geom_point() + 
   theme_matt() + 
   theme(legend.position = "none")
+
+ggplot(ctmax_data, aes(x = size, y = fecundity, colour = species)) + 
+  facet_wrap(.~species) + 
+  geom_point() + 
+  theme_matt() + 
+  theme(legend.position = "none")
 ```
 
 ```{r}
@@ -255,21 +262,44 @@ ggplot(ctmax_data, aes(x = size, y = total_egg_volume)) +
 
 ```
 
+```{r fig.width=8, fig.height=6}
+ctmax_data %>% 
+  filter(species == "skistodiaptomus_pallidus") %>%
+  # group_by(site) %>% 
+  # summarise(size = mean(size, na.rm = T), 
+  #          total_egg_volume = mean(total_egg_volume, na.rm = T)) %>% 
+ggplot(aes(x = size, y = total_egg_volume)) + 
+  geom_smooth(method = "lm", formula = y ~ exp(x), 
+              colour = "black") + 
+  geom_point(aes(colour = site))+
+  labs(x = "Prosome Length (mm)",
+       y = "Total Egg Volume (mm^3)") + 
+  theme_matt() + 
+  theme(legend.position = "right")
+```
+
 
 ```{r}
 model_data = ctmax_data %>% 
   mutate("genus" = str_split_fixed(species, pattern = "_", n = 2)[,1],
          genus = tools::toTitleCase(genus),
          "doy" = yday(collection_date)) %>% 
-  select(site, collection_date, doy, collection_temp, lat, elevation, species, genus, sample_id, fecundity, size, ctmax) %>% 
-  filter(genus != "MH")
+  select(site, collection_date, doy, collection_temp, lat, elevation, species, genus, sample_id, fecundity, total_egg_volume, size, ctmax) %>% 
+  filter(genus != "MH") %>%  
+  mutate(total_egg_volume = if_else(is.na(total_egg_volume), 0, total_egg_volume),
+         collection_temp_sc = scale(collection_temp),
+         lat_sc = scale(lat), 
+         elevation_sc = scale(elevation),
+         tev_sc = scale(total_egg_volume)) 
 
 ctmax_temp.model = lm(data = model_data, 
-                      ctmax ~ genus + collection_temp + lat + elevation)
+                      ctmax ~ genus + collection_temp + lat + elevation + total_egg_volume)
 
-ctmax_resids = residuals(ctmax_temp.model)
+#MuMIn::dredge(ctmax_temp.model)
 
 performance::check_model(ctmax_temp.model)
+ 
+summary(ctmax_temp.model)
 
 emmeans::emmeans(ctmax_temp.model, specs = "genus") %>% 
   data.frame() %>% 
@@ -281,6 +311,7 @@ emmeans::emmeans(ctmax_temp.model, specs = "genus") %>%
   labs(x = "") + 
   theme_matt() + 
   theme(axis.text.x = element_text(angle = 300, hjust = 0, vjust = 0.5))
+
 ```
 
 
