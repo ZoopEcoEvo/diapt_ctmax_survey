@@ -231,16 +231,24 @@ ctmax_data %>%
 ```
 
 ```{r}
-ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) + 
+ctmax_data %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
+  ggplot(aes(x = size, y = ctmax, colour = species)) + 
   facet_wrap(.~species) + 
   geom_point() + 
   theme_matt() + 
+  scale_colour_manual(values = skisto_cols) + 
   theme(legend.position = "none")
 
-ggplot(ctmax_data, aes(x = size, y = fecundity, colour = species)) + 
+ctmax_data %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
+  ggplot(aes(x = size, y = fecundity, colour = species)) + 
   facet_wrap(.~species) + 
   geom_point() + 
   theme_matt() + 
+  scale_colour_manual(values = skisto_cols) + 
   theme(legend.position = "none")
 ```
 
@@ -265,6 +273,7 @@ ggplot(ctmax_data, aes(x = size, y = total_egg_volume)) +
 ```{r fig.width=8, fig.height=6}
 ctmax_data %>% 
   filter(species == "skistodiaptomus_pallidus") %>%
+  mutate(site = fct_reorder(site, lat)) %>% 
   # group_by(site) %>% 
   # summarise(size = mean(size, na.rm = T), 
   #          total_egg_volume = mean(total_egg_volume, na.rm = T)) %>% 
@@ -272,6 +281,8 @@ ggplot(aes(x = size, y = total_egg_volume)) +
   geom_smooth(method = "lm", formula = y ~ exp(x), 
               colour = "black") + 
   geom_point(aes(colour = site))+
+  scale_color_viridis_d(direction = -1, 
+                        option = "F") + 
   labs(x = "Prosome Length (mm)",
        y = "Total Egg Volume (mm^3)") + 
   theme_matt() + 

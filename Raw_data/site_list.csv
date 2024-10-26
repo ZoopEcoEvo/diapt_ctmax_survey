@@ -1,40 +1,32 @@
 ﻿site_num,trip,site,region,lat,long,collection_date,collection_temp
-1,ME,Unity Pond,Maine,44.627958,-69.342479,8/22/2024,25
-2,ME,Chute River,Maine,44.511474,-69.911663,8/26/2024,28
-3,ME,Moosehead Lake,Maine,45.677478,-69.737171,8/23/2024,21.5
-4,ME,Meduxnekeag Lake,Maine,46.098499,-68.003449,8/24/2024,25
-5,ME,Saco Lake,New Hampshire,44.216538,-71.408751,8/27/2024,26
-6,CO,Eaglewatch Lake,Colorado,39.576932,-105.042222,7/21/2024,24.5
-7,CO,Fraser,Colorado,39.9439259,-105.810562,7/16/2024,19
-8,CO,Grand Lake,Colorado,40.250444,-105.819607,7/17/2024,17.5
-9,CT,Wilcox Pond,Rhode Island,41.379135,-71.828443,,
-10,CT,Center Springs Pond,Connecticut ,41.775935,-72.528584,,
-11,CT,West Thompson Reservoir,Connecticut ,41.95332,-71.9,,
-12,MA_A,Monponsett Pond,Massachusetts,42.006243,-70.841426,6/28/2024,26.5
-13,MA_A,Cranberry Bog,Massachusetts,42.555192,-71.368793,6/26/2024,27.5
-14,MA_A,Lake Whalom,Massachusetts,42.575761,-71.744838,6/27/2024,24.5
-15,MA_B,Canterbury Pond,Connecticut ,41.5910596,-73.4064492,8/6/2024,31
-16,MA_B,Benedict Pond,Massachusetts,42.204087,-73.290063,8/4/2024,28.5
-17,MA_B,Pontoosuc Lake,Massachusetts,42.48745,-73.248354,8/3/2024,29
-18,MA_B,Pelham Lake,Massachusetts,42.700695,-72.886409,8/5/2024,30
-19,MA_C,Horn Pond,Massachusetts,42.464754,-71.153582,,
-20,NC,Owen Park,North Carolina,35.609053,-82.430564,5/28/2024,24.5
-21,NC,Lake Wilson,North Carolina,35.7911644,-77.9203311,5/25/2024,31
+1,ME,Unity Pond,Maine,44.627958,-69.342479,8/22/24,25
+2,ME,Chute River,Maine,44.511474,-69.911663,8/26/24,28
+3,ME,Moosehead Lake,Maine,45.677478,-69.737171,8/23/24,21.5
+4,ME,Meduxnekeag Lake,Maine,46.098499,-68.003449,8/24/24,25
+5,ME,Saco Lake,New Hampshire,44.216538,-71.408751,8/27/24,26
+6,CO,Eaglewatch Lake,Colorado,39.576932,-105.042222,7/21/24,24.5
+7,CO,Fraser,Colorado,39.9439259,-105.810562,7/16/24,19
+8,CO,Grand Lake,Colorado,40.250444,-105.819607,7/17/24,17.5
+9,CT,Wilcox Pond,Rhode Island,41.379135,-71.828443,9/5/2024,24
+10,CT,Center Springs Pond,Connecticut ,41.775935,-72.528584,9/6/2024,21
+12,MA_A,Monponsett Pond,Massachusetts,42.006243,-70.841426,6/28/24,26.5
+13,MA_A,Cranberry Bog,Massachusetts,42.555192,-71.368793,6/26/24,27.5
+14,MA_A,Lake Whalom,Massachusetts,42.575761,-71.744838,6/27/24,24.5
+15,MA_B,Canterbury Pond,Connecticut ,41.5910596,-73.4064492,8/6/24,31
+16,MA_B,Benedict Pond,Massachusetts,42.204087,-73.290063,8/4/24,28.5
+17,MA_B,Pontoosuc Lake,Massachusetts,42.48745,-73.248354,8/3/24,29
+18,MA_B,Pelham Lake,Massachusetts,42.700695,-72.886409,8/5/24,30
+20,NC,Owen Park,North Carolina,35.609053,-82.430564,5/28/24,24.5
+21,NC,Lake Wilson,North Carolina,35.7911644,-77.9203311,5/25/24,31
 22,NC,Gilly's Park,Virginia,37.015326,-79.87959,5/29/24,28
-23,NC,Courthouse Park,Virginia,37.750795,-77.358057,5/24/2024,27
-24,NC,Pinchot Lake,Pennsylvania,40.083305,-76.882707,5/30/2024,24
-25,NC,Hillside Park,Pennsylvania,41.486064,-75.731084,5/23/2024,25
-26,NC,Goodyear Lake,New York ,42.505361,-74.97557,5/31/2024,20
-27,OH,Ochsner Pond,Ohio,39.857291,-83.022433,6/20/2024,23.5
-28,OH,Pymatuning Reservoir,Ohio,41.597423,-80.53807,6/18/2024,27
-29,OH,Edinboro Lake,Pennsylvania,41.881268,-80.138642,6/21/2024,28.5
-30,OH,Birch Run Pond,New York ,42.088512,-78.561787,6/17/2024,28.5
-31,past,Sacandaga Lake,New York ,43.490427,-74.406567,8/16/2023,23
-32,past,Lake Temiscouata,Canada,47.616048,-68.793223,9/10/2023,20.5
-33,VT,Lake Champlain,Vermont,44.481128,-73.225581,7/23/2024,28
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
+23,NC,Courthouse Park,Virginia,37.750795,-77.358057,5/24/24,27
+24,NC,Pinchot Lake,Pennsylvania,40.083305,-76.882707,5/30/24,24
+25,NC,Hillside Park,Pennsylvania,41.486064,-75.731084,5/23/24,25
+26,NC,Goodyear Lake,New York ,42.505361,-74.97557,5/31/24,20
+27,OH,Ochsner Pond,Ohio,39.857291,-83.022433,6/20/24,23.5
+28,OH,Pymatuning Reservoir,Ohio,41.597423,-80.53807,6/18/24,27
+29,OH,Edinboro Lake,Pennsylvania,41.881268,-80.138642,6/21/24,28.5
+30,OH,Birch Run Pond,New York ,42.088512,-78.561787,6/17/24,28.5
+31,past,Sacandaga Lake,New York ,43.490427,-74.406567,8/16/23,23
+32,past,Lake Temiscouata,Canada,47.616048,-68.793223,9/10/23,20.5
+33,VT,Lake Champlain,Vermont,44.481128,-73.225581,7/23/24,28

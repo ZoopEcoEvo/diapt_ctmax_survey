@@ -1,0 +1,39 @@
+site,species,mean_ctmax,n(),se_ctmax
+Owen Park,skistodiaptomus_mississippiensis,37.80386035,19,0.120638707
+Lake Wilson,skistodiaptomus_mississippiensis,37.99151235,3,0.261386511
+Lake Wilson,skistodiaptomus_pallidus,38.04799655,7,0.206454241
+Gilly's Park,skistodiaptomus_pallidus,38.49690826,20,0.115738794
+Courthouse Park,skistodiaptomus_pallidus,37.95983112,20,0.152597991
+Eaglewatch Lake,skistodiaptomus_oregonensis,35.36402372,10,0.198972818
+Ochsner Pond,skistodiaptomus_pallidus,37.89264592,20,0.113500708
+Fraser,leptodiaptomus_nudus,34.93849702,10,0.594499252
+Pinchot Lake,skistodiaptomus_pallidus,37.78069215,20,0.129888545
+Grand Lake,skistodiaptomus_pallidus,36.11742695,20,0.197644502
+Wilcox Pond,skistodiaptomus_pallidus,37.58700337,10,0.118738398
+Hillside Park,skistodiaptomus_pallidus,37.54969945,20,0.090009672
+Canterbury Pond,skistodiaptomus_pallidus,38.73107966,20,0.141086861
+Pymatuning Reservoir,skistodiaptomus_mississippiensis,36.65156118,12,0.139991442
+Pymatuning Reservoir,skistodiaptomus_pallidus,37.91853299,8,0.252297941
+Center Springs Pond,skistodiaptomus_pallidus,36.42514385,10,0.453995105
+Edinboro Lake,skistodiaptomus_pallidus,38.44344765,10,0.156416367
+Monponsett Pond,skistodiaptomus_pygmaeus,36.35422108,10,0.25981675
+Birch Run Pond,skistodiaptomus_pallidus,37.80717097,20,0.075771277
+Benedict Pond,skistodiaptomus_pallidus,37.31957052,20,0.147104232
+Pontoosuc Lake,leptodiaptomus_minutus,35.36059697,10,0.347022031
+Goodyear Lake,leptodiaptomus_minutus,33.29229798,3,0.230289151
+Goodyear Lake,skistodiaptomus_reighardi,35.45834517,16,0.192633696
+Cranberry Bog,skistodiaptomus_pygmaeus,36.91407678,10,0.148965827
+Lake Whalom,skistodiaptomus_pygmaeus,36.07442212,10,0.226696821
+Pelham Lake,skistodiaptomus_pygmaeus,36.94724691,20,0.146199686
+Saco Lake,aglaodiaptomus_spatulocrenatus,37.96869078,10,0.34601378
+Lake Champlain,leptodiaptomus_minutus,34.36458333,1,NA
+Lake Champlain,skistodiaptomus_pallidus,37.79156195,9,0.210374841
+Chute River,MH_sp1,37.54166667,2,0.6875
+Chute River,leptodiaptomus_minutus,34.80899916,4,0.182417995
+Chute River,skistodiaptomus_oregonensis,36.80208333,3,0.229068003
+Chute River,skistodiaptomus_pygmaeus,36.30569864,13,0.162115961
+Unity Pond,skistodiaptomus_pygmaeus,36.2247731,10,0.185607038
+Moosehead Lake,MH_sp1,37.02546296,3,0.296702918
+Moosehead Lake,leptodiaptomus_minutus,34.57616931,6,0.21452823
+Moosehead Lake,skistodiaptomus_pygmaeus,35.11007901,11,0.392130848
+Meduxnekeag Lake,leptodiaptomus_minutus,34.29146269,10,0.213136943

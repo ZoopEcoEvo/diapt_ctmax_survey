@@ -19,7 +19,9 @@ skisto_cols = c("Skistodiaptomus reighardi" = "#8DAB7F",
                "Skistodiaptomus mississippiensis" = "#AF4308",
                "Skistodiaptomus pygmaeus" = "#14A3A1",
                "Skistodiaptomus carolinensis" = "#F78A50",
-               "Leptodiaptomus minutus" = "salmon")
+               "Leptodiaptomus minutus" = "lightpink2", 
+               "Leptodiaptomus nudus" = "lightpink3",
+               "Aglaodiaptomus spatulocrenatus" = "indianred3")
 
 ############################
 ### Read in the RAW data ###
@@ -58,6 +60,11 @@ ctmax_data = read.csv(file = "Output/Output_data/ctmax_data.csv") %>%
          egg_volume = (4/3)*pi*radius^3,
          total_egg_volume = egg_volume * fecundity) %>% 
   ungroup()
+
+data_summary = ctmax_data %>% group_by(site, species) %>%  
+  summarise(mean_ctmax = mean(ctmax, na.rm = T),
+            n(),
+            se_ctmax = sd(ctmax) / sqrt(n()))
 
 if(make_tree == T){
   #### Analyzes COI sequence data ####

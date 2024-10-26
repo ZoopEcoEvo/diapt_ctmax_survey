@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2024-09-12
+2024-10-01
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
@@ -11,7 +11,7 @@ Diaptomid Thermal Limits
 coords = site_data %>%
   dplyr::select(site, long, lat, collection_temp) %>%
   drop_na(collection_temp) %>% 
-  distinct()
+  distinct() # <1>
 
 map_data("world") %>% 
   filter(region %in% c("USA", "Canada")) %>% 
@@ -32,6 +32,8 @@ map_data("world") %>%
 ```
 
 <img src="../Figures/markdown/sampled-sites-1.png" style="display: block; margin: auto;" />
+
+1.  Test comment
 
 ## CTmax Data
 
