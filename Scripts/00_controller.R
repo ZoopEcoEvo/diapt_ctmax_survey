@@ -9,19 +9,20 @@ source("Scripts/project_functions.R")
 process_data = F #Runs data analysis 
 process_sequences = F #Aligns the COI sequence data
 make_tree = F #Makes a ML tree from the COI sequences
-make_sp_prop = T #Plots the species frequency at each site
-make_report = F #Runs project summary
+make_sp_prop = F #Plots the species frequency at each site
+make_report = T #Runs project summary
 knit_manuscript = F #Compiles manuscript draft
 
-skisto_cols = c("Skistodiaptomus reighardi" = "#8DAB7F",
-               "Skistodiaptomus pallidus" = "#A77698",
+skisto_cols = c("Skistodiaptomus reighardi" = "#08723F",
+               "Skistodiaptomus pallidus" = "#7DB979",
                "Skistodiaptomus oregonensis" = "#F8C425",
-               "Skistodiaptomus mississippiensis" = "#AF4308",
-               "Skistodiaptomus pygmaeus" = "#14A3A1",
-               "Skistodiaptomus carolinensis" = "#F78A50",
-               "Leptodiaptomus minutus" = "lightpink2", 
-               "Leptodiaptomus nudus" = "lightpink3",
-               "Aglaodiaptomus spatulocrenatus" = "indianred3")
+               "Skistodiaptomus mississippiensis" = "#6E95C4",
+               "Skistodiaptomus pygmaeus" = "#355882",
+               "Skistodiaptomus carolinensis" = "#A3A3A3",
+               "Leptodiaptomus minutus" = "#DEBABF", 
+               "Leptodiaptomus nudus" = "#C4828B",
+               "Leptodiaptomus sicilis" = "#F78A50",
+               "Aglaodiaptomus spatulocrenatus" = "#AF4308")
 
 ############################
 ### Read in the RAW data ###
@@ -45,7 +46,10 @@ source(file = "Scripts/02_ab1_to_fasta.R")
 
 elev_data = read.csv(file = "Output/Output_data/elev_data.csv")
 
+past_data = read.csv(file = "Raw_data/past_data.csv")
+
 ctmax_data = read.csv(file = "Output/Output_data/ctmax_data.csv") %>% 
+  bind_rows(past_data) %>% 
   select(-collection_date) %>% 
   inner_join(select(site_data, site, lat, collection_date, collection_temp), 
              by = "site") %>% 
@@ -53,13 +57,14 @@ ctmax_data = read.csv(file = "Output/Output_data/ctmax_data.csv") %>%
   mutate(site = as.factor(site), 
          lat = as.numeric(lat),
          site = fct_reorder(site, lat),
-         collection_date = as_date(collection_date)) %>% 
+         collection_date = as_date(collection_date, format = "%m/%d/%Y")) %>% 
   group_by(sample_id) %>% 
   mutate(mean_egg = mean(c_across(starts_with("egg")), na.rm = TRUE),
          radius = sqrt(mean_egg / pi),
          egg_volume = (4/3)*pi*radius^3,
          total_egg_volume = egg_volume * fecundity) %>% 
-  ungroup()
+  ungroup() %>% 
+  filter(species != "epischura_lacustris")
 
 data_summary = ctmax_data %>% group_by(site, species) %>%  
   summarise(mean_ctmax = mean(ctmax, na.rm = T),

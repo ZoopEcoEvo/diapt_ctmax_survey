@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2024-10-01
+2024-11-09
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
@@ -11,7 +11,7 @@ Diaptomid Thermal Limits
 coords = site_data %>%
   dplyr::select(site, long, lat, collection_temp) %>%
   drop_na(collection_temp) %>% 
-  distinct() # <1>
+  distinct()
 
 map_data("world") %>% 
   filter(region %in% c("USA", "Canada")) %>% 
@@ -32,8 +32,6 @@ map_data("world") %>%
 ```
 
 <img src="../Figures/markdown/sampled-sites-1.png" style="display: block; margin: auto;" />
-
-1.  Test comment
 
 ## CTmax Data
 
@@ -168,10 +166,14 @@ ctmax_data %>%
 <img src="../Figures/markdown/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 ``` r
-ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) + 
+ctmax_data %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
+  ggplot(aes(x = size, y = ctmax, colour = species)) + 
   facet_wrap(.~species) + 
   geom_point() + 
   theme_matt() + 
+  scale_colour_manual(values = skisto_cols) + 
   theme(legend.position = "none")
 ```
 
@@ -179,10 +181,14 @@ ggplot(ctmax_data, aes(x = size, y = ctmax, colour = species)) +
 
 ``` r
 
-ggplot(ctmax_data, aes(x = size, y = fecundity, colour = species)) + 
+ctmax_data %>% 
+  mutate(species = str_replace(species, "_", " "),
+         species = str_to_sentence(species)) %>% 
+  ggplot(aes(x = size, y = fecundity, colour = species)) + 
   facet_wrap(.~species) + 
   geom_point() + 
   theme_matt() + 
+  scale_colour_manual(values = skisto_cols) + 
   theme(legend.position = "none")
 ```
 
@@ -215,6 +221,7 @@ ggplot(ctmax_data, aes(x = size, y = total_egg_volume)) +
 ``` r
 ctmax_data %>% 
   filter(species == "skistodiaptomus_pallidus") %>%
+  mutate(site = fct_reorder(site, lat)) %>% 
   # group_by(site) %>% 
   # summarise(size = mean(size, na.rm = T), 
   #          total_egg_volume = mean(total_egg_volume, na.rm = T)) %>% 
@@ -222,6 +229,8 @@ ggplot(aes(x = size, y = total_egg_volume)) +
   geom_smooth(method = "lm", formula = y ~ exp(x), 
               colour = "black") + 
   geom_point(aes(colour = site))+
+  scale_color_viridis_d(direction = -1, 
+                        option = "F") + 
   labs(x = "Prosome Length (mm)",
        y = "Total Egg Volume (mm^3)") + 
   theme_matt() + 
@@ -263,23 +272,23 @@ summary(ctmax_temp.model)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -3.8997 -0.4819  0.0975  0.5955  2.5533 
+## -3.9057 -0.4828  0.1490  0.6352  2.4981 
 ## 
 ## Coefficients:
 ##                        Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)          43.1084072  1.0485289  41.113  < 2e-16 ***
-## genusLeptodiaptomus  -3.1086251  0.3240655  -9.593  < 2e-16 ***
-## genusSkistodiaptomus -1.5305123  0.3046859  -5.023 7.47e-07 ***
-## collection_temp       0.1464862  0.0157380   9.308  < 2e-16 ***
-## lat                  -0.1994596  0.0189392 -10.532  < 2e-16 ***
-## elevation            -0.0002449  0.0000911  -2.688  0.00747 ** 
-## total_egg_volume     33.6408738  8.1880105   4.109 4.77e-05 ***
+## (Intercept)           4.267e+01  1.102e+00  38.715  < 2e-16 ***
+## genusLeptodiaptomus  -2.947e+00  2.849e-01 -10.346  < 2e-16 ***
+## genusSkistodiaptomus -1.488e+00  2.721e-01  -5.469 7.23e-08 ***
+## collection_temp       1.573e-01  1.604e-02   9.805  < 2e-16 ***
+## lat                  -1.987e-01  1.993e-02  -9.969  < 2e-16 ***
+## elevation            -2.080e-04  9.453e-05  -2.201   0.0282 *  
+## total_egg_volume      3.923e+01  8.668e+00   4.526 7.57e-06 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.9213 on 428 degrees of freedom
-## Multiple R-squared:  0.5743, Adjusted R-squared:  0.5684 
-## F-statistic: 96.24 on 6 and 428 DF,  p-value: < 2.2e-16
+## Residual standard error: 0.9922 on 487 degrees of freedom
+## Multiple R-squared:  0.602,  Adjusted R-squared:  0.5971 
+## F-statistic: 122.8 on 6 and 487 DF,  p-value: < 2.2e-16
 
 emmeans::emmeans(ctmax_temp.model, specs = "genus") %>% 
   data.frame() %>% 
