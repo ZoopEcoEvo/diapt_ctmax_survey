@@ -52,7 +52,7 @@ echo "Initial mr bayes R script run successfully"
 
 # https://www.ebi.ac.uk/Tools/services/rest/muscle/result/muscle-I20200720-155944-0426-80668140-p1m/aln-fasta
 echo " "
-echo "Mr bayes starting. This will take 10 or 15 minutes"
+echo "Mr bayes starting. This can take a long time (>20 minutes)."
 
 mb ./Output/Sequences/COItree/skisto_mb.nex > ./Output/Sequences/COItree/mr_bayes_log.txt
 

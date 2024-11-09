@@ -7,10 +7,10 @@ source("Scripts/project_functions.R")
 
 #Determine which scripts should be run
 process_data = F #Runs data analysis 
-process_sequences = F #Alignts the COI sequence data
+process_sequences = F #Aligns the COI sequence data
 make_tree = F #Makes a ML tree from the COI sequences
-make_sp_prop = F #Plots the species frequency at each site
-make_report = T #Runs project summary
+make_sp_prop = T #Plots the species frequency at each site
+make_report = F #Runs project summary
 knit_manuscript = F #Compiles manuscript draft
 
 skisto_cols = c("Skistodiaptomus reighardi" = "#8DAB7F",
@@ -27,7 +27,7 @@ skisto_cols = c("Skistodiaptomus reighardi" = "#8DAB7F",
 ### Read in the RAW data ###
 ############################
 
-site_data = readxl::read_excel("Raw_data/site_list.xlsx") %>% 
+site_data = read.csv("Raw_data/site_list.csv") %>% 
   drop_na(lat) %>% 
   mutate(lat = as.numeric(lat), 
          site = fct_reorder(site, lat))
@@ -78,8 +78,6 @@ if(make_sp_prop == T){
   ## Takes the new unaligned fasta file and runs a local blast against the curated set of Acartia COI sequences 
   ## Filters the results and then checks for consistent identification of clades
   ## Then plots clade proportion for each population
-  extractions = readxl::read_excel(path = "Raw_data/site_extractions.xlsx") %>% 
-    drop_na(Code)
   
   system("./Scripts/04_sp_prop/get_species.sh")
 }
