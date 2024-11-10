@@ -1,0 +1,143 @@
+parent,node,branch.length,label,group,clade
+,,,EU825133.1_Skistodiaptomus_reighardi,Skistodiaptomus reighardi,S. reighardi
+311,1,0.001991682,EU582578.1_Skistodiaptomus_carolinensis,Skistodiaptomus carolinensis,S. carolinensis
+311,76,0.008057318,AY275437.1_Skistodiaptomus_carolinensis,Skistodiaptomus carolinensis,S. carolinensis
+383,37,0.005123292,MZ964920.1_Skistodiaptomus_reighardi,Skistodiaptomus mississippiensis,S. mississippiensis - Ohio
+383,82,0.000880184,MZ964919.1_Skistodiaptomus_reighardi,Skistodiaptomus mississippiensis,S. mississippiensis - Ohio
+376,85,0.001046832,AY275438.1_Skistodiaptomus_mississippiensis,Skistodiaptomus mississippiensis,S. mississippiensis - Carolinas
+376,162,0.001793732,EU582579.1_Skistodiaptomus_mississippiensis,Skistodiaptomus mississippiensis,S. mississippiensis - Carolinas
+313,7,0.000747652,MG449292.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+317,40,0.000684608,EU582589.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+312,44,0.003476031,EU582585.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+316,54,0.001843916,KM611778.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+323,89,0.002284913,MG450042.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+312,92,0.004619158,OP830126.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+323,106,0.002479704,MG448854.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+312,109,0.007809937,MG450128.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+312,121,0.005520412,EU582580.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+312,141,0.004361039,EU582582.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+318,151,0.002010916,KM611575.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+313,163,0.000896572,MG450049.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+319,172,0.002752803,MG313159.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+318,175,0.002996244,KM611481.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+325,181,0.005287587,OP830045.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+312,188,0.004543965,OP830239.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+313,202,0.000610958,MG448921.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+324,214,0.003818319,EU582591.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+320,229,0.00066049,EU582592.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+312,230,0.004617138,EU582584.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+316,232,0.001901775,EU582588.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+315,244,0.002872171,EU582583.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+322,249,0.003264049,EU582586.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+312,251,0.005022036,EU582581.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+325,253,0.005785762,EU582590.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+312,256,0.00277846,OP830169.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+319,258,0.000838825,EU582587.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+313,262,0.000817578,MG448767.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+317,264,0.00083829,AY275439.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+312,265,0.001563169,EU582593.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+312,272,0.00170953,OP830150.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+316,275,0.0007385,MG315696.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+319,278,0.000903319,KM611585.1_Skistodiaptomus_oregonensis,Skistodiaptomus oregonensis,S. oregonensis
+365,4,0.000806536,NZPLC03416_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,6,0.000796402,EU582598.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,13,0.000912083,NZPLC03316_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,16,0.000601131,NZPL05809_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,18,0.000700858,MG450145.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,19,0.000814562,NZPLC04416_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+353,38,0.001022413,EU825132.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade C
+364,42,0.000816972,EU825117.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,43,0.00077914,MZ964931.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+358,49,0.001023793,EU825108.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade D
+364,50,0.000738755,CAISN30912_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,52,0.000804963,EU582596.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,53,0.002984202,NZPLC05016_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,59,0.000675105,EU582599.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,61,0.000988917,MG449506.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,65,0.000888794,EU825112.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+361,67,0.003448901,EU825104.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade D
+352,68,0.003258511,EU582594.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade C
+364,70,0.000956462,EU825106.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+367,71,0.000957794,EU825113.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+347,74,0.000830075,EU582600.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade B
+353,77,0.000939495,EU825129.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade C
+365,80,0.000989795,NZPLC04316_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,81,0.000798874,CAISN04012_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+347,86,0.000970046,EU582602.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade B
+358,87,0.004641941,EU825109.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade D
+352,90,0.003964708,EU582595.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade C
+365,91,0.000778478,NZPLR09911_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,95,0.001008017,EU825128.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,104,0.000743222,EU582597.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+371,108,0.00133907,MZ964918.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,111,0.000702453,CAISN09412_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+347,112,0.000853706,EU825124.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade B
+370,113,0.000941784,NZPLC03916_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,114,0.000939495,EU825115.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,117,0.000733551,AY275440.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,118,0.000979258,NZPLC05316_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+353,120,0.000859836,EU825121.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade C
+365,131,0.003407843,NZPLC04116_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,132,0.001037321,BACZP75116_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+353,134,0.001670091,EU825130.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade C
+365,137,0.000874331,NZPLC04716_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,138,0.000718018,NZPLC05616_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,140,0.001044671,NZPLC05516_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,143,0.000810549,EU825127.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+371,144,0.000787838,MZ964917.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,155,0.000806318,NZPLC04916_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,156,0.000777138,NZPLC04816_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,160,0.000877773,NZPLC04516_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,161,0.000779688,BACZP71316_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+367,176,0.000882068,EU825116.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,182,0.000716584,BACZP69016_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+349,183,0.000735741,EU582601.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade B
+364,186,0.001047962,MG450131.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+360,187,0.000843285,EU825103.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade D
+365,194,0.000724225,EU825107.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,205,0.000794016,NZPLC05416_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+370,210,0.00075582,NZPLC03816_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,213,0.000888749,NZPLC03716_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+359,217,0.001832979,EU825110.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade D
+365,218,0.001026829,NZPLC03616_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,224,0.000725592,EU825114.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,228,0.000824954,NZPLC04216_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+353,233,0.000907275,EU825119.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade C
+353,235,0.00093115,EU825131.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade C
+365,239,0.000703399,NZPL05909_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,245,0.000890007,BACZP82216_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,247,0.000885014,NZPLC04616_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,250,0.000680818,NZPLC04016_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+361,252,0.0009539,EU825102.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade D
+365,263,0.000836549,EU825126.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+349,269,0.000735964,EU825122.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade B
+364,271,0.000984255,CAISN31012_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+362,273,0.000915065,EU825118.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade D
+365,276,0.000805483,NZPLC05216_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+347,283,0.000815515,EU825123.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade B
+365,284,0.000882921,NZPLC03516_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+367,286,0.000814681,EU825111.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+365,289,0.000715592,NZPLC05116_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+362,291,0.000616701,EU825105.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade D
+365,294,0.006245288,EU825125.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+364,295,0.00086433,MG449059.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade A
+353,297,0.002053834,EU825120.1_Skistodiaptomus_pallidus,Skistodiaptomus pallidus,S. pallidus - Clade C
+345,45,0.007114051,AY275441.1_Skistodiaptomus_pygmaeus,Skistodiaptomus pygmaeus,S. pygmaeus
+330,84,0.002742172,EU582608.1_Skistodiaptomus_pygmaeus,Skistodiaptomus pygmaeus,S. pygmaeus
+330,122,0.001844027,EU582609.1_Skistodiaptomus_pygmaeus,Skistodiaptomus pygmaeus,S. pygmaeus
+330,124,0.002792333,EU582605.1_Skistodiaptomus_pygmaeus,Skistodiaptomus pygmaeus,S. pygmaeus
+330,170,0.000869991,EU582606.1_Skistodiaptomus_pygmaeus,Skistodiaptomus pygmaeus,S. pygmaeus
+330,178,0.006165175,EU582604.1_Skistodiaptomus_pygmaeus,Skistodiaptomus pygmaeus,S. pygmaeus
+330,216,0.004229812,EU582603.1_Skistodiaptomus_pygmaeus,Skistodiaptomus pygmaeus,S. pygmaeus
+330,282,0.001806479,EU582607.1_Skistodiaptomus_pygmaeus,Skistodiaptomus pygmaeus,S. pygmaeus
+372,14,0.003350543,OP830112.1_Skistodiaptomus_reighardi,Skistodiaptomus reighardi,S. reighardi
+374,27,0.002932046,OP830080.1_Skistodiaptomus_reighardi,Skistodiaptomus reighardi,S. reighardi
+375,35,0.000693442,OP830261.1_Skistodiaptomus_reighardi,Skistodiaptomus reighardi,S. reighardi
+373,41,0.001794813,OP830085.1_Skistodiaptomus_reighardi,Skistodiaptomus reighardi,S. reighardi
+373,135,0.001919686,OP830290.1_Skistodiaptomus_reighardi,Skistodiaptomus reighardi,S. reighardi
+372,166,0.001608075,OP830237.1_Skistodiaptomus_reighardi,Skistodiaptomus reighardi,S. reighardi
+373,211,0.00091243,AY275442.1_Skistodiaptomus_reighardi,Skistodiaptomus reighardi,S. reighardi
+374,220,0.000680972,EU582610.1_Skistodiaptomus_reighardi,Skistodiaptomus reighardi,S. reighardi
+374,234,0.001098987,OP829913.1_Skistodiaptomus_reighardi,Skistodiaptomus reighardi,S. reighardi
+375,259,0.000602696,OP829965.1_Skistodiaptomus_reighardi,Skistodiaptomus reighardi,S. reighardi
+373,277,0.002037934,EU582611.1_Skistodiaptomus_reighardi,Skistodiaptomus reighardi,S. reighardi

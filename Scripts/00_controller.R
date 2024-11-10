@@ -13,11 +13,11 @@ make_sp_prop = F #Plots the species frequency at each site
 make_report = T #Runs project summary
 knit_manuscript = F #Compiles manuscript draft
 
-skisto_cols = c("Skistodiaptomus reighardi" = "#08723F",
+skisto_cols = c("Skistodiaptomus reighardi" = "#114264",
                "Skistodiaptomus pallidus" = "#7DB979",
                "Skistodiaptomus oregonensis" = "#F8C425",
-               "Skistodiaptomus mississippiensis" = "#6E95C4",
-               "Skistodiaptomus pygmaeus" = "#355882",
+               "Skistodiaptomus mississippiensis" = "#B6D0E2",
+               "Skistodiaptomus pygmaeus" = "#4682B4",
                "Skistodiaptomus carolinensis" = "#A3A3A3",
                "Leptodiaptomus minutus" = "#DEBABF", 
                "Leptodiaptomus nudus" = "#C4828B",
@@ -83,6 +83,7 @@ if(make_sp_prop == T){
   ## Takes the new unaligned fasta file and runs a local blast against the curated set of Acartia COI sequences 
   ## Filters the results and then checks for consistent identification of clades
   ## Then plots clade proportion for each population
+  clade_ids = read.csv(file = "Output/Sequences/ref_clades.csv")
   
   system("./Scripts/04_sp_prop/get_species.sh")
 }

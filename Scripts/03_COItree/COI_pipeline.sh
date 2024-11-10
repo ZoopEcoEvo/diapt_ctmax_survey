@@ -74,7 +74,5 @@ echo " "
 echo "generating plot"
 Rscript Scripts/03_COItree/plot_tree.R
 
-mv ./Output/Figures/tree_plot.pdf ./Output/Figures/"$2"_plot.pdf
-
 
 

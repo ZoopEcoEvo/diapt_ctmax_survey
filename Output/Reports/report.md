@@ -1,15 +1,17 @@
 Diaptomid Thermal Limits
 ================
-2024-11-09
+2024-11-10
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
+- [COI Barcoding](#coi-barcoding)
 
 ## Site Map
 
 ``` r
-coords = site_data %>%
-  dplyr::select(site, long, lat, collection_temp) %>%
+coords = ctmax_data %>%
+  inner_join(site_data, by = c("site", "lat", "collection_temp")) %>% 
+  dplyr::select(site, long, lat, collection_temp, elevation) %>%
   drop_na(collection_temp) %>% 
   distinct()
 
@@ -17,16 +19,16 @@ map_data("world") %>%
   filter(region %in% c("USA", "Canada")) %>% 
   ggplot() + 
   geom_polygon(aes(x = long, y = lat, group = group),
-               fill = "lightgrey") + 
+               fill = "grey92", colour = "grey40", linewidth = 0.1) + 
   coord_map(xlim = c(-110,-60),
             ylim = c(25, 55)) + 
   geom_point(data = coords,
-             mapping = aes(x = long, y = lat, colour = collection_temp),
+             mapping = aes(x = long, y = lat, colour = elevation),
              size = 3) +
-  scale_colour_viridis_c(option = "F") + 
+  scale_colour_viridis_c(option = "G", direction = -1) + 
   labs(x = "Longitude", 
        y = "Latitude",
-       colour = "Temp.") + 
+       colour = "Elev. (m)") + 
   theme_matt() + 
   theme(legend.position = "right")
 ```
@@ -36,12 +38,22 @@ map_data("world") %>%
 ## CTmax Data
 
 ``` r
+temp_lat_plot = ctmax_data %>% 
+  ggplot(aes(x = lat, y = collection_temp)) + 
+  geom_smooth(method = "lm", colour = "black") + 
+  geom_point(size = 3) + 
+  labs(x = "Latitude", 
+       y = "Collection Temp. (°C)") + 
+  theme_matt() + 
+  theme(legend.position = "right")
+
 ctmax_temp_plot = ctmax_data %>% 
   mutate(species = str_replace(species, "_", " "),
          species = str_to_sentence(species)) %>% 
   ggplot(aes(x = collection_temp, y = ctmax)) + 
   geom_smooth(method = "lm", colour = "black") + 
-  geom_point(aes(colour = species)) + 
+  geom_point(aes(colour = species), 
+             size = 3) + 
   labs(x = "Collection Temp. (°C)", 
        y = "CTmax (°C)") + 
   scale_colour_manual(values = skisto_cols) + 
@@ -53,7 +65,8 @@ ctmax_lat_plot = ctmax_data %>%
          species = str_to_sentence(species)) %>% 
   ggplot(aes(x = lat, y = ctmax)) + 
   geom_smooth(method = "lm", colour = "black") + 
-  geom_point(aes(colour = species)) + 
+  geom_point(aes(colour = species), 
+             size = 3) + 
   labs(x = "Latitude", 
        y = "CTmax (°C)") + 
   scale_colour_manual(values = skisto_cols) + 
@@ -65,14 +78,15 @@ ctmax_elev_plot = ctmax_data %>%
          species = str_to_sentence(species)) %>% 
   ggplot(aes(x = elevation, y = ctmax)) + 
   geom_smooth(method = "lm", colour = "black") + 
-  geom_point(aes(colour = species)) +
+  geom_point(aes(colour = species), 
+             size = 3) +
   labs(x = "Elevation (m)", 
        y = "CTmax (°C)") +
   scale_colour_manual(values = skisto_cols) + 
   theme_matt() + 
   theme(legend.position = "right")
 
-ggpubr::ggarrange(ctmax_temp_plot, ctmax_lat_plot, ctmax_elev_plot, common.legend = T, legend = "right", nrow = 1)
+ggpubr::ggarrange(temp_lat_plot, ctmax_temp_plot, ctmax_lat_plot, ctmax_elev_plot, common.legend = T, legend = "right", nrow = 2, ncol = 2, labels = "AUTO")
 ```
 
 <img src="../Figures/markdown/unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
@@ -81,12 +95,13 @@ ggpubr::ggarrange(ctmax_temp_plot, ctmax_lat_plot, ctmax_elev_plot, common.legen
 ctmax_data %>% 
   mutate(species = str_replace(species, "_", " "),
          species = str_to_sentence(species)) %>% 
-  ggplot(aes(x = collection_temp, y = ctmax)) + 
+  ggplot(aes(x = collection_temp, y = ctmax, colour = species)) + 
   facet_wrap(species~.) + 
   geom_smooth(method = "lm", colour = "black") + 
   geom_point() + 
   labs(x = "Collection Temp. (°C)",
        y = "CTmax (°C)") + 
+  scale_color_manual(values = skisto_cols) + 
   theme_matt() + 
   theme(legend.position = "none")
 ```
@@ -124,12 +139,13 @@ ctmax_data %>%
 ctmax_data %>% 
   mutate(species = str_replace(species, "_", " "),
          species = str_to_sentence(species)) %>% 
-  ggplot(aes(x = collection_temp, y = size)) + 
+  ggplot(aes(x = collection_temp, y = size, colour = species)) + 
   facet_wrap(species~.) + 
   geom_smooth(method = "lm", colour = "black") + 
   geom_point() + 
   labs(x = "Collection Temp. (°C)",
        y = "Prosome Length (mm)") + 
+  scale_color_manual(values = skisto_cols) + 
   theme_matt() + 
   theme(legend.position = "none")
 ```
@@ -140,12 +156,13 @@ ctmax_data %>%
 ctmax_data %>% 
   mutate(species = str_replace(species, "_", " "),
          species = str_to_sentence(species)) %>% 
-  ggplot(aes(x = collection_temp, y = egg_volume)) + 
+  ggplot(aes(x = collection_temp, y = egg_volume, colour = species)) + 
   facet_wrap(species~.) + 
   geom_smooth(method = "lm", colour = "black") + 
   geom_point() + 
   labs(x = "Collection Temp. (°C)",
        y = "Egg Volume (mm^3)") + 
+  scale_color_manual(values = skisto_cols) + 
   theme_matt() + 
   theme(legend.position = "none")
 ```
@@ -171,8 +188,10 @@ ctmax_data %>%
          species = str_to_sentence(species)) %>% 
   ggplot(aes(x = size, y = ctmax, colour = species)) + 
   facet_wrap(.~species) + 
-  geom_point() + 
+  geom_point(size = 1) + 
   theme_matt() + 
+  labs(x = "Length (mm)", 
+       y = "CTmax (°C)") + 
   scale_colour_manual(values = skisto_cols) + 
   theme(legend.position = "none")
 ```
@@ -180,19 +199,20 @@ ctmax_data %>%
 <img src="../Figures/markdown/unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
 ``` r
-
 ctmax_data %>% 
   mutate(species = str_replace(species, "_", " "),
          species = str_to_sentence(species)) %>% 
   ggplot(aes(x = size, y = fecundity, colour = species)) + 
   facet_wrap(.~species) + 
-  geom_point() + 
+  geom_point(size = 1) + 
   theme_matt() + 
+  labs(x = "Length (mm)", 
+       y = "Fecundity (# eggs)") + 
   scale_colour_manual(values = skisto_cols) + 
   theme(legend.position = "none")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-7-2.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
 
 ``` r
 ggplot(ctmax_data, aes(x = size, y = total_egg_volume)) + 
@@ -203,41 +223,31 @@ ggplot(ctmax_data, aes(x = size, y = total_egg_volume)) +
   theme_matt()
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
-``` r
-
-ggplot(ctmax_data, aes(x = size, y = total_egg_volume)) + 
-  facet_wrap(.~species) + 
-  geom_point()+
-  #geom_smooth() + 
-  labs(x = "Prosome Length (mm)",
-       y = "Total Egg Volume (mm^3)") + 
-  theme_matt()
-```
-
-<img src="../Figures/markdown/unnamed-chunk-8-2.png" style="display: block; margin: auto;" />
+Data for just *Skistodiaptomus pallidus* is shown below. Point color is
+arranged according to latitude.
 
 ``` r
 ctmax_data %>% 
   filter(species == "skistodiaptomus_pallidus") %>%
-  mutate(site = fct_reorder(site, lat)) %>% 
+  mutate(site = fct_reorder(site, lat, .desc = T)) %>% 
   # group_by(site) %>% 
   # summarise(size = mean(size, na.rm = T), 
   #          total_egg_volume = mean(total_egg_volume, na.rm = T)) %>% 
-ggplot(aes(x = size, y = total_egg_volume)) + 
+  ggplot(aes(x = size, y = total_egg_volume)) + 
   geom_smooth(method = "lm", formula = y ~ exp(x), 
               colour = "black") + 
   geom_point(aes(colour = site))+
-  scale_color_viridis_d(direction = -1, 
-                        option = "F") + 
+  scale_color_viridis_d(direction = 1, 
+                        option = "D") + 
   labs(x = "Prosome Length (mm)",
        y = "Total Egg Volume (mm^3)") + 
   theme_matt() + 
   theme(legend.position = "right")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
 
 ``` r
 model_data = ctmax_data %>% 
@@ -255,15 +265,30 @@ model_data = ctmax_data %>%
 ctmax_temp.model = lm(data = model_data, 
                       ctmax ~ genus + collection_temp + lat + elevation + total_egg_volume)
 
+drop1(ctmax_temp.model, test = "F")
+## Single term deletions
+## 
+## Model:
+## ctmax ~ genus + collection_temp + lat + elevation + total_egg_volume
+##                  Df Sum of Sq    RSS     AIC F value    Pr(>F)    
+## <none>                        479.47  -0.748                      
+## genus             2   142.564 622.03 123.847 72.4015 < 2.2e-16 ***
+## collection_temp   1    94.642 574.11  86.243 96.1288 < 2.2e-16 ***
+## lat               1    97.843 577.31  88.989 99.3792 < 2.2e-16 ***
+## elevation         1     4.769 484.24   2.141  4.8442   0.02821 *  
+## total_egg_volume  1    20.167 499.64  17.605 20.4842 7.566e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
 #MuMIn::dredge(ctmax_temp.model)
 
 performance::check_model(ctmax_temp.model)
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
 ``` r
- 
+
 summary(ctmax_temp.model)
 ## 
 ## Call:
@@ -302,7 +327,7 @@ emmeans::emmeans(ctmax_temp.model, specs = "genus") %>%
   theme(axis.text.x = element_text(angle = 300, hjust = 0, vjust = 0.5))
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-10-2.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-11-2.png" style="display: block; margin: auto;" />
 
 ``` r
 ctmax_data %>% 
@@ -317,7 +342,7 @@ ctmax_data %>%
                       alpha = 0.9,
                       position = position_points_jitter(
                         height = 0.1, width = 0)) + 
-  scale_fill_viridis_d(option = "E", direction = -1) + 
+  scale_fill_viridis_d(option = "D", direction = -1) + 
   theme_matt() + 
   theme(legend.position = "none")
 ```
@@ -337,7 +362,7 @@ ctmax_data %>%
                       alpha = 0.9,
                       position = position_points_jitter(
                         height = 0.1, width = 0)) + 
-  scale_fill_viridis_d(option = "E", direction = -1) + 
+  scale_fill_viridis_d(option = "D", direction = -1) + 
   theme_matt() + 
   theme(legend.position = "none")
 ```
@@ -357,10 +382,30 @@ ctmax_data %>%
                       alpha = 0.9,
                       position = position_points_jitter(
                         height = 0.1, width = 0)) + 
-  scale_fill_viridis_d(option = "E", direction = -1) + 
+  scale_fill_viridis_d(option = "D", direction = -1) + 
   labs(x = "CTmax (°C)") + 
   theme_matt() + 
   theme(legend.position = "none")
 ```
 
 <img src="../Figures/markdown/ctmax-ridges-1.png" style="display: block; margin: auto;" />
+
+## COI Barcoding
+
+``` r
+knitr::include_graphics("../Figures/species_prop_plot.png")
+```
+
+<img src="../Figures/species_prop_plot.png" width="4800" style="display: block; margin: auto;" />
+
+``` r
+knitr::include_graphics("../Figures/clade_prop_plot.png")
+```
+
+<img src="../Figures/clade_prop_plot.png" width="2400" style="display: block; margin: auto;" />
+
+``` r
+knitr::include_graphics("../Figures/tree_plot.png")
+```
+
+<img src="../Figures/tree_plot.png" width="2100" style="display: block; margin: auto;" />
