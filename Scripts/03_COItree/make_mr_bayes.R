@@ -27,7 +27,7 @@ begin mrbayes;
 "
 
 mbblock3 <- "
-  mcmc ngen=500000 nruns=2 nchains=2 samplefreq=1000;
+  mcmc ngen=750000 nruns=2 nchains=2 samplefreq=1000;
     sump burninfrac=0.25;
     sumt burninfrac=0.25;
     quit;

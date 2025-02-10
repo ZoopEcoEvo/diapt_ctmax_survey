@@ -1,5 +1,5 @@
 #NEXUS
-[Data written by write.nexus.data.R, Sun Nov 10 15:02:49 2024]
+[Data written by write.nexus.data.R, Thu Nov 14 15:04:27 2024]
 BEGIN DATA;
   DIMENSIONS NTAX=298 NCHAR=728;
   FORMAT DATATYPE=DNA MISSING=N GAP=- INTERLEAVE=NO;
@@ -310,7 +310,7 @@ begin mrbayes;
   lset nst=2 rates=invgamma ngammacat=4;
     outgroup OP830097.1_Limnocalanus_macrurus;
 
-  mcmc ngen=500000 nruns=2 nchains=2 samplefreq=1000;
+  mcmc ngen=750000 nruns=2 nchains=2 samplefreq=1000;
     sump burninfrac=0.25;
     sumt burninfrac=0.25;
     quit;

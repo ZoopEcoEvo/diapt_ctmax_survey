@@ -317,18 +317,18 @@ model_data = ctmax_data %>%
          elevation_sc = scale(elevation),
          tev_sc = scale(total_egg_volume)) 
 
-ctmax_temp.model = lm(data = model_data, 
+ctmax_overall.model = lm(data = model_data, 
                       ctmax ~ genus + collection_temp + lat + elevation + total_egg_volume)
 
-drop1(ctmax_temp.model, test = "F")
+drop1(ctmax_overall.model, test = "F")
 
 #MuMIn::dredge(ctmax_temp.model)
 
-performance::check_model(ctmax_temp.model)
+performance::check_model(ctmax_overall.model)
 
-summary(ctmax_temp.model)
+summary(ctmax_overall.model)
 
-emmeans::emmeans(ctmax_temp.model, specs = "genus") %>% 
+emmeans::emmeans(ctmax_overall.model, specs = "genus") %>% 
   data.frame() %>% 
   mutate(genus = fct_reorder(genus, .x = emmean, .desc = T)) %>% 
   ggplot(aes(genus, y = emmean)) + 
@@ -338,8 +338,40 @@ emmeans::emmeans(ctmax_temp.model, specs = "genus") %>%
   labs(x = "") + 
   theme_matt() + 
   theme(axis.text.x = element_text(angle = 300, hjust = 0, vjust = 0.5))
-
 ```
+
+```{r}
+
+ctmax_temp.model = lm(data = model_data, 
+                      ctmax ~ species * collection_temp)
+
+drop1(ctmax_temp.model, 
+      scope = ~.,
+      test = "F")
+
+performance::check_model(ctmax_temp.model)
+
+sp_means = emmeans::emmeans(ctmax_temp.model, "species") %>% 
+  data.frame() %>% 
+  drop_na() %>%  
+  select(species, "ctmax" = emmean)
+
+sp_plast = emmeans::emtrends(ctmax_temp.model, "species", var = "collection_temp") %>% 
+  data.frame() %>% 
+  drop_na() %>% 
+  mutate(species = fct_reorder(species, .x = collection_temp.trend, .desc = T)) %>% 
+  select(species, "plast" = collection_temp.trend)
+
+sp_means %>% 
+inner_join(sp_plast) %>% 
+  mutate(species = fct_reorder(species, plast, .fun = min)) %>% 
+  ggplot(aes(x = species, y = plast)) + 
+  geom_hline(yintercept = 0) + 
+  geom_bar(stat = "identity") + 
+  theme_matt() + 
+  theme(axis.text.x = element_text(angle = 300, hjust = 0, vjust = 0.5))
+```
+
 
 
 ```{r fecundity-ridges, fig.width=8, fig.height=8}
