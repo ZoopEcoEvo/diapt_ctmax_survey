@@ -429,6 +429,43 @@ ctmax_data %>%
   theme(legend.position = "none")
 ```
 
+## High throughput size measurements 
+
+
+
+```{r}
+scan_sizes %>% 
+  filter(sex == "female", stage == "adult") %>% 
+  ggplot(aes(x = length, fill = species)) + 
+  facet_wrap(site~., nrow = 3) + 
+  geom_histogram(binwidth = 0.01, colour = "grey10", linewidth = 0.25) + 
+  scale_fill_manual(values = skisto_cols) + 
+  theme_minimal(base_size = 20) + 
+  theme(panel.grid = element_blank(),
+        strip.text = element_text(face = "bold"),
+        legend.position = "bottom")
+```
+
+```{r}
+
+scan_sizes %>% 
+  filter(sex == "female", stage == "adult") %>%
+  ggplot(aes(x = length, y = site, fill = species)) + 
+  geom_density_ridges(bandwidth = 0.02,
+                      jittered_points = TRUE,
+                      position = position_points_jitter(yoffset = -0.15, width = 0, height = 0.1),
+                      point_alpha = 0.3, point_colour = "grey30")  + 
+  labs(y = "",
+       x = "Prosome Length (mm)") + 
+    scale_fill_manual(values = skisto_cols) + 
+  theme_minimal(base_size = 20) + 
+  theme(panel.grid = element_blank(),
+        strip.text = element_text(face = "bold"),
+        legend.position = "bottom")
+  
+```
+
+
 ## COI Barcoding 
 
 ```{r, fig.align="center"}

@@ -39,6 +39,10 @@ if(process_data == T){
 
 source(file = "Scripts/02_ab1_to_fasta.R") 
 
+scan_sizes = read.csv(file = "Raw_data/scanner_images/img1_sizes.csv") %>% 
+  janitor::clean_names() %>% 
+  distinct() %>% 
+  select(length, species, sex, stage, "site" = comment)
 
 ##################################
 ### Read in the PROCESSED data ###

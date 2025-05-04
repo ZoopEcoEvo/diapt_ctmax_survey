@@ -1,9 +1,11 @@
 Diaptomid Thermal Limits
 ================
-2025-02-09
+2025-05-04
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
+- [High throughput size
+  measurements](#high-throughput-size-measurements)
 - [COI Barcoding](#coi-barcoding)
 
 ## Site Map
@@ -262,10 +264,10 @@ model_data = ctmax_data %>%
          elevation_sc = scale(elevation),
          tev_sc = scale(total_egg_volume)) 
 
-ctmax_temp.model = lm(data = model_data, 
+ctmax_overall.model = lm(data = model_data, 
                       ctmax ~ genus + collection_temp + lat + elevation + total_egg_volume)
 
-drop1(ctmax_temp.model, test = "F")
+drop1(ctmax_overall.model, test = "F")
 ## Single term deletions
 ## 
 ## Model:
@@ -282,14 +284,14 @@ drop1(ctmax_temp.model, test = "F")
 
 #MuMIn::dredge(ctmax_temp.model)
 
-performance::check_model(ctmax_temp.model)
+performance::check_model(ctmax_overall.model)
 ```
 
 <img src="../Figures/markdown/unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
 
 ``` r
 
-summary(ctmax_temp.model)
+summary(ctmax_overall.model)
 ## 
 ## Call:
 ## lm(formula = ctmax ~ genus + collection_temp + lat + elevation + 
@@ -315,7 +317,7 @@ summary(ctmax_temp.model)
 ## Multiple R-squared:  0.602,  Adjusted R-squared:  0.5971 
 ## F-statistic: 122.8 on 6 and 487 DF,  p-value: < 2.2e-16
 
-emmeans::emmeans(ctmax_temp.model, specs = "genus") %>% 
+emmeans::emmeans(ctmax_overall.model, specs = "genus") %>% 
   data.frame() %>% 
   mutate(genus = fct_reorder(genus, .x = emmean, .desc = T)) %>% 
   ggplot(aes(genus, y = emmean)) + 
@@ -328,6 +330,56 @@ emmeans::emmeans(ctmax_temp.model, specs = "genus") %>%
 ```
 
 <img src="../Figures/markdown/unnamed-chunk-11-2.png" style="display: block; margin: auto;" />
+
+``` r
+
+ctmax_temp.model = lm(data = model_data, 
+                      ctmax ~ species * collection_temp)
+
+drop1(ctmax_temp.model, 
+      scope = ~.,
+      test = "F")
+## Single term deletions
+## 
+## Model:
+## ctmax ~ species * collection_temp
+##                         Df Sum of Sq    RSS     AIC F value    Pr(>F)    
+## <none>                               334.33 -166.87                      
+## species                  4   21.5979 355.92 -143.94  7.7683 4.513e-06 ***
+## collection_temp          1    1.2044 335.53 -167.09  1.7328   0.18867    
+## species:collection_temp  4    8.9849 343.31 -161.76  3.2317   0.01239 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+performance::check_model(ctmax_temp.model)
+```
+
+<img src="../Figures/markdown/unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
+
+``` r
+
+sp_means = emmeans::emmeans(ctmax_temp.model, "species") %>% 
+  data.frame() %>% 
+  drop_na() %>%  
+  select(species, "ctmax" = emmean)
+
+sp_plast = emmeans::emtrends(ctmax_temp.model, "species", var = "collection_temp") %>% 
+  data.frame() %>% 
+  drop_na() %>% 
+  mutate(species = fct_reorder(species, .x = collection_temp.trend, .desc = T)) %>% 
+  select(species, "plast" = collection_temp.trend)
+
+sp_means %>% 
+inner_join(sp_plast) %>% 
+  mutate(species = fct_reorder(species, plast, .fun = min)) %>% 
+  ggplot(aes(x = species, y = plast)) + 
+  geom_hline(yintercept = 0) + 
+  geom_bar(stat = "identity") + 
+  theme_matt() + 
+  theme(axis.text.x = element_text(angle = 300, hjust = 0, vjust = 0.5))
+```
+
+<img src="../Figures/markdown/unnamed-chunk-12-2.png" style="display: block; margin: auto;" />
 
 ``` r
 ctmax_data %>% 
@@ -389,6 +441,43 @@ ctmax_data %>%
 ```
 
 <img src="../Figures/markdown/ctmax-ridges-1.png" style="display: block; margin: auto;" />
+
+## High throughput size measurements
+
+``` r
+scan_sizes %>% 
+  filter(sex == "female", stage == "adult") %>% 
+  ggplot(aes(x = length, fill = species)) + 
+  facet_wrap(site~., nrow = 3) + 
+  geom_histogram(binwidth = 0.01, colour = "grey10", linewidth = 0.25) + 
+  scale_fill_manual(values = skisto_cols) + 
+  theme_minimal(base_size = 20) + 
+  theme(panel.grid = element_blank(),
+        strip.text = element_text(face = "bold"),
+        legend.position = "bottom")
+```
+
+<img src="../Figures/markdown/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+
+``` r
+
+scan_sizes %>% 
+  filter(sex == "female", stage == "adult") %>%
+  ggplot(aes(x = length, y = site, fill = species)) + 
+  geom_density_ridges(bandwidth = 0.02,
+                      jittered_points = TRUE,
+                      position = position_points_jitter(yoffset = -0.15, width = 0, height = 0.1),
+                      point_alpha = 0.3, point_colour = "grey30")  + 
+  labs(y = "",
+       x = "Prosome Length (mm)") + 
+    scale_fill_manual(values = skisto_cols) + 
+  theme_minimal(base_size = 20) + 
+  theme(panel.grid = element_blank(),
+        strip.text = element_text(face = "bold"),
+        legend.position = "bottom")
+```
+
+<img src="../Figures/markdown/unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
 
 ## COI Barcoding
 
