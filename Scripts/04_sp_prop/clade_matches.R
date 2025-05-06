@@ -55,13 +55,13 @@ manual_ids = data.frame(
     str_detect(sample, pattern = "FR") ~ "Leptodiaptomus nudus", 
     str_detect(sample, pattern = "OW") ~ "Skistodiaptomus mississippiensis",
     str_detect(sample, pattern = "MH") ~ "Skistodiaptomus pygmaeus",
-    str_detect(sample, pattern = "Py") ~ "Skistodiaptomus mississippiensis"),
+    str_detect(sample, pattern = "Py") ~ "Leptodiaptomus siciloides"),
     "clade" = case_when(
       str_detect(sample, pattern = "CR") ~ "S. pygmaeus",
       str_detect(sample, pattern = "FR") ~ "L. nudus", 
       str_detect(sample, pattern = "OW") ~ "S. mississippiensis - New",
       str_detect(sample, pattern = "MH") ~ "S. pygmaeus",
-      str_detect(sample, pattern = "Py") ~ "S. mississippiensis - New"))
+      str_detect(sample, pattern = "Py") ~ "L. siciloides - New"))
 
 new_samples = identified %>% 
   bind_rows(manual_ids) %>% 

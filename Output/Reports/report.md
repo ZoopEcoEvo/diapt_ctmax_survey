@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2025-05-04
+2025-05-05
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
@@ -272,13 +272,13 @@ drop1(ctmax_overall.model, test = "F")
 ## 
 ## Model:
 ## ctmax ~ genus + collection_temp + lat + elevation + total_egg_volume
-##                  Df Sum of Sq    RSS     AIC F value    Pr(>F)    
-## <none>                        479.47  -0.748                      
-## genus             2   142.564 622.03 123.847 72.4015 < 2.2e-16 ***
-## collection_temp   1    94.642 574.11  86.243 96.1288 < 2.2e-16 ***
-## lat               1    97.843 577.31  88.989 99.3792 < 2.2e-16 ***
-## elevation         1     4.769 484.24   2.141  4.8442   0.02821 *  
-## total_egg_volume  1    20.167 499.64  17.605 20.4842 7.566e-06 ***
+##                  Df Sum of Sq    RSS     AIC  F value    Pr(>F)    
+## <none>                        484.53   4.442                       
+## genus             2   137.500 622.03 123.847  69.1001 < 2.2e-16 ***
+## collection_temp   1   104.850 589.38  99.212 105.3842 < 2.2e-16 ***
+## lat               1   108.901 593.43 102.596 109.4558 < 2.2e-16 ***
+## elevation         1     5.316 489.85   7.832   5.3428   0.02122 *  
+## total_egg_volume  1    21.492 506.03  23.881  21.6011 4.327e-06 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -299,23 +299,23 @@ summary(ctmax_overall.model)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -3.9057 -0.4828  0.1490  0.6352  2.4981 
+## -3.9283 -0.4896  0.1466  0.6709  2.3815 
 ## 
 ## Coefficients:
 ##                        Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)           4.267e+01  1.102e+00  38.715  < 2e-16 ***
-## genusLeptodiaptomus  -2.947e+00  2.849e-01 -10.346  < 2e-16 ***
-## genusSkistodiaptomus -1.488e+00  2.721e-01  -5.469 7.23e-08 ***
-## collection_temp       1.573e-01  1.604e-02   9.805  < 2e-16 ***
-## lat                  -1.987e-01  1.993e-02  -9.969  < 2e-16 ***
-## elevation            -2.080e-04  9.453e-05  -2.201   0.0282 *  
-## total_egg_volume      3.923e+01  8.668e+00   4.526 7.57e-06 ***
+## (Intercept)          42.8587976  1.1049026  38.790  < 2e-16 ***
+## genusLeptodiaptomus  -2.7980488  0.2819552  -9.924  < 2e-16 ***
+## genusSkistodiaptomus -1.5100869  0.2734257  -5.523 5.44e-08 ***
+## collection_temp       0.1644759  0.0160219  10.266  < 2e-16 ***
+## lat                  -0.2069105  0.0197771 -10.462  < 2e-16 ***
+## elevation            -0.0002194  0.0000949  -2.311   0.0212 *  
+## total_egg_volume     40.4221043  8.6972342   4.648 4.33e-06 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.9922 on 487 degrees of freedom
-## Multiple R-squared:  0.602,  Adjusted R-squared:  0.5971 
-## F-statistic: 122.8 on 6 and 487 DF,  p-value: < 2.2e-16
+## Residual standard error: 0.9975 on 487 degrees of freedom
+## Multiple R-squared:  0.5978, Adjusted R-squared:  0.5929 
+## F-statistic: 120.6 on 6 and 487 DF,  p-value: < 2.2e-16
 
 emmeans::emmeans(ctmax_overall.model, specs = "genus") %>% 
   data.frame() %>% 
@@ -344,10 +344,10 @@ drop1(ctmax_temp.model,
 ## Model:
 ## ctmax ~ species * collection_temp
 ##                         Df Sum of Sq    RSS     AIC F value    Pr(>F)    
-## <none>                               334.33 -166.87                      
-## species                  4   21.5979 355.92 -143.94  7.7683 4.513e-06 ***
-## collection_temp          1    1.2044 335.53 -167.09  1.7328   0.18867    
-## species:collection_temp  4    8.9849 343.31 -161.76  3.2317   0.01239 *  
+## <none>                               324.50 -179.60                      
+## species                  4   15.6893 340.19 -164.28  5.8019 0.0001446 ***
+## collection_temp          1    1.2044 325.70 -179.77  1.7816 0.1825843    
+## species:collection_temp  4    2.9343 327.43 -183.16  1.0851 0.3631881    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 

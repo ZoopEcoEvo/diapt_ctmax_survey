@@ -8,7 +8,7 @@ source("Scripts/project_functions.R")
 #Determine which scripts should be run
 process_data = F #Runs data analysis 
 process_sequences = F #Aligns the COI sequence data
-make_tree = F #Makes a ML tree from the COI sequences
+make_tree = T #Makes a ML tree from the COI sequences
 make_sp_prop = F #Plots the species frequency at each site
 make_report = T #Runs project summary
 knit_manuscript = F #Compiles manuscript draft
@@ -22,6 +22,7 @@ skisto_cols = c("Skistodiaptomus reighardi" = "#114264",
                "Leptodiaptomus minutus" = "#DEBABF", 
                "Leptodiaptomus nudus" = "#C4828B",
                "Leptodiaptomus sicilis" = "#F78A50",
+               "Leptodiaptomus siciloides" = "#CC5500",
                "Aglaodiaptomus spatulocrenatus" = "#AF4308")
 
 ############################
