@@ -8,7 +8,7 @@ source("Scripts/project_functions.R")
 #Determine which scripts should be run
 process_data = F #Runs data analysis 
 process_sequences = F #Aligns the COI sequence data
-make_tree = T #Makes a ML tree from the COI sequences
+make_tree = F #Makes a ML tree from the COI sequences
 make_sp_prop = F #Plots the species frequency at each site
 make_report = T #Runs project summary
 knit_manuscript = F #Compiles manuscript draft
@@ -40,10 +40,6 @@ if(process_data == T){
 
 source(file = "Scripts/02_ab1_to_fasta.R") 
 
-scan_sizes = read.csv(file = "Raw_data/scanner_images/img1_sizes.csv") %>% 
-  janitor::clean_names() %>% 
-  distinct() %>% 
-  select(length, species, sex, stage, "site" = comment)
 
 ##################################
 ### Read in the PROCESSED data ###
@@ -75,6 +71,21 @@ data_summary = ctmax_data %>% group_by(site, species) %>%
   summarise(mean_ctmax = mean(ctmax, na.rm = T),
             n(),
             se_ctmax = sd(ctmax) / sqrt(n()))
+
+scan_sizes = data.frame()
+
+for(i in dir("Raw_data/scanner_images/")){
+  
+  if(str_detect(i, pattern = ".csv")){
+    data = read.csv(file = paste0("Raw_data/scanner_images/", i)) %>% 
+      janitor::clean_names() %>% 
+      distinct() %>% 
+      select(length, site, species, sex, stage, comment)
+    
+    scan_sizes = bind_rows(scan_sizes, data)
+  }
+  
+}
 
 if(make_tree == T){
   #### Analyzes COI sequence data ####

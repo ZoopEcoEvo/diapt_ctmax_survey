@@ -431,8 +431,6 @@ ctmax_data %>%
 
 ## High throughput size measurements 
 
-
-
 ```{r}
 scan_sizes %>% 
   filter(sex == "female", stage == "adult") %>% 
@@ -463,6 +461,15 @@ scan_sizes %>%
         strip.text = element_text(face = "bold"),
         legend.position = "bottom")
   
+```
+
+```{r}
+scan_sizes %>% 
+    filter(sex == "female", stage == "adult") %>%
+    inner_join(site_data) %>% 
+  ggplot(aes(x = collection_temp, y = length)) + 
+  geom_point(position = position_jitter(width = 0.08, height = 0)) + 
+  theme_matt()
 ```
 
 
