@@ -32,7 +32,8 @@ skisto_cols = c("Skistodiaptomus reighardi" = "#114264",
 site_data = read.csv("Raw_data/site_list.csv") %>% 
   drop_na(lat) %>% 
   mutate(lat = as.numeric(lat), 
-         site = fct_reorder(site, lat))
+         site = fct_reorder(site, lat), 
+         collection_date = as_date(collection_date, format = "%m/%d/%Y"))
 
 if(process_data == T){
   source(file = "Scripts/01_data_processing.R")
@@ -50,15 +51,15 @@ elev_data = read.csv(file = "Output/Output_data/elev_data.csv")
 past_data = read.csv(file = "Raw_data/past_data.csv")
 
 ctmax_data = read.csv(file = "Output/Output_data/ctmax_data.csv") %>% 
-  bind_rows(past_data) %>% 
-  select(-collection_date) %>% 
+  mutate(collection_date = as_date(collection_date, format = "%m/%d/%y")) %>% 
+  bind_rows(mutate(past_data, collection_date = as_date(collection_date, format = "%m/%d/%Y"))) %>% 
   inner_join(select(site_data, site, lat, collection_date, collection_temp), 
-             by = "site") %>% 
+             by = c("site", "collection_date")) %>% 
   inner_join(elev_data, by = "site") %>% 
   mutate(site = as.factor(site), 
          lat = as.numeric(lat),
          site = fct_reorder(site, lat),
-         collection_date = as_date(collection_date, format = "%m/%d/%Y")) %>% 
+         sample_id = paste0(sample_id,"-", collection_date)) %>% 
   group_by(sample_id) %>% 
   mutate(mean_egg = mean(c_across(starts_with("egg")), na.rm = TRUE),
          radius = sqrt(mean_egg / pi),
@@ -69,7 +70,7 @@ ctmax_data = read.csv(file = "Output/Output_data/ctmax_data.csv") %>%
 
 data_summary = ctmax_data %>% group_by(site, species) %>%  
   summarise(mean_ctmax = mean(ctmax, na.rm = T),
-            n(),
+            n = n(),
             se_ctmax = sd(ctmax) / sqrt(n()))
 
 scan_sizes = data.frame()

@@ -114,6 +114,8 @@ map_data("world") %>%
 
 ```{r fig.width=14, fig.height=10}
 temp_lat_plot = ctmax_data %>% 
+  select(lat, collection_temp) %>% 
+  distinct() %>% 
   ggplot(aes(x = lat, y = collection_temp)) + 
   geom_smooth(method = "lm", colour = "black") + 
   geom_point(size = 3) + 
@@ -250,7 +252,7 @@ ctmax_data %>%
   mutate(species = str_replace(species, "_", " "),
          species = str_to_sentence(species)) %>% 
   ggplot(aes(x = size, y = ctmax, colour = species)) + 
-  facet_wrap(.~species) + 
+  #facet_wrap(.~species) + 
   geom_point(size = 1) + 
   theme_matt() + 
   labs(x = "Length (mm)", 
@@ -376,7 +378,7 @@ inner_join(sp_plast) %>%
 
 ```{r fecundity-ridges, fig.width=8, fig.height=8}
 ctmax_data %>% 
-  mutate(group_id = paste(site, species)) %>% 
+  mutate(group_id = paste(site, species, collection_date)) %>% 
   ggplot(aes(x = fecundity, y = site, fill = site)) + 
   geom_density_ridges(bandwidth = 2,
                       jittered_points = TRUE, 
@@ -394,7 +396,7 @@ ctmax_data %>%
 
 ```{r size-ridges, fig.width=8, fig.height=8}
 ctmax_data %>% 
-  mutate(group_id = paste(site, species)) %>% 
+  mutate(group_id = paste(site, species, collection_date)) %>% 
   ggplot(aes(x = size, y = site, fill = site, group = group_id)) + 
   geom_density_ridges(bandwidth = 0.02,
                       jittered_points = TRUE, 
@@ -412,7 +414,7 @@ ctmax_data %>%
 
 ```{r ctmax-ridges, fig.width=8, fig.height=8}
 ctmax_data %>% 
-  mutate(group_id = paste(site, species)) %>% 
+  mutate(group_id = paste(site, species, collection_date)) %>% 
   ggplot(aes(x = ctmax, y = site, fill = site, group = group_id)) + 
   geom_density_ridges(bandwidth = 0.3,
                       jittered_points = TRUE, 

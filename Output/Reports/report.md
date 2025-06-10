@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2025-05-05
+2025-06-10
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
@@ -41,6 +41,8 @@ map_data("world") %>%
 
 ``` r
 temp_lat_plot = ctmax_data %>% 
+  select(lat, collection_temp) %>% 
+  distinct() %>% 
   ggplot(aes(x = lat, y = collection_temp)) + 
   geom_smooth(method = "lm", colour = "black") + 
   geom_point(size = 3) + 
@@ -189,7 +191,7 @@ ctmax_data %>%
   mutate(species = str_replace(species, "_", " "),
          species = str_to_sentence(species)) %>% 
   ggplot(aes(x = size, y = ctmax, colour = species)) + 
-  facet_wrap(.~species) + 
+  #facet_wrap(.~species) + 
   geom_point(size = 1) + 
   theme_matt() + 
   labs(x = "Length (mm)", 
@@ -273,12 +275,12 @@ drop1(ctmax_overall.model, test = "F")
 ## Model:
 ## ctmax ~ genus + collection_temp + lat + elevation + total_egg_volume
 ##                  Df Sum of Sq    RSS     AIC  F value    Pr(>F)    
-## <none>                        484.53   4.442                       
-## genus             2   137.500 622.03 123.847  69.1001 < 2.2e-16 ***
-## collection_temp   1   104.850 589.38  99.212 105.3842 < 2.2e-16 ***
-## lat               1   108.901 593.43 102.596 109.4558 < 2.2e-16 ***
-## elevation         1     5.316 489.85   7.832   5.3428   0.02122 *  
-## total_egg_volume  1    21.492 506.03  23.881  21.6011 4.327e-06 ***
+## <none>                        485.97  -4.365                       
+## genus             2   138.079 624.04 117.677  70.6070 < 2.2e-16 ***
+## collection_temp   1   105.341 591.31  92.519 107.7332 < 2.2e-16 ***
+## lat               1   113.236 599.20  99.203 115.8076 < 2.2e-16 ***
+## elevation         1     6.509 492.48   0.341   6.6572   0.01016 *  
+## total_egg_volume  1    21.484 507.45  15.438  21.9722 3.578e-06 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -299,23 +301,23 @@ summary(ctmax_overall.model)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -3.9283 -0.4896  0.1466  0.6709  2.3815 
+## -3.9257 -0.4763  0.1481  0.6467  2.4003 
 ## 
 ## Coefficients:
 ##                        Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)          42.8587976  1.1049026  38.790  < 2e-16 ***
-## genusLeptodiaptomus  -2.7980488  0.2819552  -9.924  < 2e-16 ***
-## genusSkistodiaptomus -1.5100869  0.2734257  -5.523 5.44e-08 ***
-## collection_temp       0.1644759  0.0160219  10.266  < 2e-16 ***
-## lat                  -0.2069105  0.0197771 -10.462  < 2e-16 ***
-## elevation            -0.0002194  0.0000949  -2.311   0.0212 *  
-## total_egg_volume     40.4221043  8.6972342   4.648 4.33e-06 ***
+## (Intercept)           4.305e+01  1.077e+00  39.993  < 2e-16 ***
+## genusLeptodiaptomus  -2.803e+00  2.795e-01 -10.029  < 2e-16 ***
+## genusSkistodiaptomus -1.512e+00  2.711e-01  -5.578 4.01e-08 ***
+## collection_temp       1.613e-01  1.554e-02  10.379  < 2e-16 ***
+## lat                  -2.093e-01  1.945e-02 -10.761  < 2e-16 ***
+## elevation            -2.403e-04  9.313e-05  -2.580   0.0102 *  
+## total_egg_volume      4.056e+01  8.653e+00   4.687 3.58e-06 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.9975 on 487 degrees of freedom
-## Multiple R-squared:  0.5978, Adjusted R-squared:  0.5929 
-## F-statistic: 120.6 on 6 and 487 DF,  p-value: < 2.2e-16
+## Residual standard error: 0.9888 on 497 degrees of freedom
+## Multiple R-squared:  0.5974, Adjusted R-squared:  0.5926 
+## F-statistic: 122.9 on 6 and 497 DF,  p-value: < 2.2e-16
 
 emmeans::emmeans(ctmax_overall.model, specs = "genus") %>% 
   data.frame() %>% 
@@ -344,10 +346,10 @@ drop1(ctmax_temp.model,
 ## Model:
 ## ctmax ~ species * collection_temp
 ##                         Df Sum of Sq    RSS     AIC F value    Pr(>F)    
-## <none>                               324.50 -179.60                      
-## species                  4   15.6893 340.19 -164.28  5.8019 0.0001446 ***
-## collection_temp          1    1.2044 325.70 -179.77  1.7816 0.1825843    
-## species:collection_temp  4    2.9343 327.43 -183.16  1.0851 0.3631881    
+## <none>                               325.08 -193.01                      
+## species                  4   16.0254 341.10 -176.76  6.0389 9.487e-05 ***
+## collection_temp          1    1.2044 326.28 -193.15  1.8155    0.1785    
+## species:collection_temp  4    2.9632 328.04 -196.44  1.1166    0.3479    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -383,7 +385,7 @@ inner_join(sp_plast) %>%
 
 ``` r
 ctmax_data %>% 
-  mutate(group_id = paste(site, species)) %>% 
+  mutate(group_id = paste(site, species, collection_date)) %>% 
   ggplot(aes(x = fecundity, y = site, fill = site)) + 
   geom_density_ridges(bandwidth = 2,
                       jittered_points = TRUE, 
@@ -403,7 +405,7 @@ ctmax_data %>%
 
 ``` r
 ctmax_data %>% 
-  mutate(group_id = paste(site, species)) %>% 
+  mutate(group_id = paste(site, species, collection_date)) %>% 
   ggplot(aes(x = size, y = site, fill = site, group = group_id)) + 
   geom_density_ridges(bandwidth = 0.02,
                       jittered_points = TRUE, 
@@ -423,7 +425,7 @@ ctmax_data %>%
 
 ``` r
 ctmax_data %>% 
-  mutate(group_id = paste(site, species)) %>% 
+  mutate(group_id = paste(site, species, collection_date)) %>% 
   ggplot(aes(x = ctmax, y = site, fill = site, group = group_id)) + 
   geom_density_ridges(bandwidth = 0.3,
                       jittered_points = TRUE, 
@@ -478,6 +480,17 @@ scan_sizes %>%
 ```
 
 <img src="../Figures/markdown/unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
+
+``` r
+scan_sizes %>% 
+    filter(sex == "female", stage == "adult") %>%
+    inner_join(site_data) %>% 
+  ggplot(aes(x = collection_temp, y = length)) + 
+  geom_point(position = position_jitter(width = 0.08, height = 0)) + 
+  theme_matt()
+```
+
+<img src="../Figures/markdown/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
 
 ## COI Barcoding
 
