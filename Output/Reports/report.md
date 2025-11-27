@@ -1,9 +1,10 @@
 Diaptomid Thermal Limits
 ================
-2025-06-10
+2025-11-12
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
+- [F3 CTmax data](#f3-ctmax-data)
 - [High throughput size
   measurements](#high-throughput-size-measurements)
 - [COI Barcoding](#coi-barcoding)
@@ -444,6 +445,89 @@ ctmax_data %>%
 
 <img src="../Figures/markdown/ctmax-ridges-1.png" style="display: block; margin: auto;" />
 
+## F3 CTmax data
+
+*Skistodiaptomus pallidus* was collected from three sites (Centennial
+Park - CO, Ochsner Pond - OH, and Center Springs Pond - CT) were reared
+in the lab at 16°C for at least three generations. CTmax was measured
+for these copepods to test for genetic variation in thermal limits in
+this widely distributed species.
+
+Lab reared copepods varied in size, with Centennial Park individuals
+~0.1 mm longer than those from Ochsner Pond.
+
+``` r
+ggplot(f3_data, aes(x = site, y = size)) + 
+  geom_boxplot() + 
+  labs(x = "Site", 
+       y = "Prosome Length (mm)") + 
+  theme_matt()
+```
+
+<img src="../Figures/markdown/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+
+``` r
+f3_size.model = lm(data = f3_data, 
+              size~site)
+
+# performance::check_model(f3_size.model)
+
+# f3.model = lme4::lmer(data = f3_data, 
+#                       ctmax~site + (1|experiment_date))
+```
+
+Upper thermal limit did not vary between the populations.
+
+``` r
+ggplot(f3_data, aes(x = site, y = ctmax)) + 
+  geom_boxplot() + 
+  labs(x = "Site", 
+       y = "CTmax (°C)") + 
+  theme_matt()
+```
+
+<img src="../Figures/markdown/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
+
+``` r
+f3_ctmax.model = lm(data = f3_data, 
+              ctmax~site)
+
+# performance::check_model(f3_ctmax.model)
+
+# f3.model = lme4::lmer(data = f3_data, 
+#                       ctmax~site + (1|experiment_date))
+```
+
+Fecundity also appears to vary between populations, even after rearing
+in lab for several generations.
+
+``` r
+ggplot(f3_data, aes(x = site, y = fecundity)) + 
+  geom_boxplot() + 
+  labs(x = "Site", 
+       y = "Clutch Size (eggs per female)") + 
+  theme_matt()
+```
+
+<img src="../Figures/markdown/unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
+
+``` r
+f3_fecund.model = glm(data = f3_data, 
+              fecundity~site,
+              family="poisson")
+
+# performance::check_model(f3_fecund.model)
+# 
+# car::Anova(f3_fecund.model)
+
+# f3.model = lme4::lmer(data = f3_data, 
+#                       ctmax~site + (1|experiment_date))
+```
+
+To summarize the initial findings, Centennial Park copepods had larger
+body sizes but smaller clutch sizes than copepods from Ochsner Pond.
+CTmax was similar between the two populations.
+
 ## High throughput size measurements
 
 ``` r
@@ -459,7 +543,7 @@ scan_sizes %>%
         legend.position = "bottom")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-19-1.png" style="display: block; margin: auto;" />
 
 ``` r
 
@@ -479,7 +563,7 @@ scan_sizes %>%
         legend.position = "bottom")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-20-1.png" style="display: block; margin: auto;" />
 
 ``` r
 scan_sizes %>% 
@@ -490,7 +574,7 @@ scan_sizes %>%
   theme_matt()
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-21-1.png" style="display: block; margin: auto;" />
 
 ## COI Barcoding
 

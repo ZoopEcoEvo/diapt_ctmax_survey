@@ -33,7 +33,7 @@ site_data = read.csv("Raw_data/site_list.csv") %>%
   drop_na(lat) %>% 
   mutate(lat = as.numeric(lat), 
          site = fct_reorder(site, lat), 
-         collection_date = as_date(collection_date, format = "%m/%d/%Y"))
+         collection_date = as_date(collection_date, format = "%m/%d/%y"))
 
 if(process_data == T){
   source(file = "Scripts/01_data_processing.R")
@@ -87,6 +87,8 @@ for(i in dir("Raw_data/scanner_images/")){
   }
   
 }
+
+f3_data = read.csv(file = "Raw_data/F3_ctmax_data/ctmax_data.csv")
 
 if(make_tree == T){
   #### Analyzes COI sequence data ####
