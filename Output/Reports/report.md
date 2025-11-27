@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2025-11-12
+2025-11-27
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
@@ -457,7 +457,8 @@ Lab reared copepods varied in size, with Centennial Park individuals
 ~0.1 mm longer than those from Ochsner Pond.
 
 ``` r
-ggplot(f3_data, aes(x = site, y = size)) + 
+f3_data %>%
+ggplot(aes(x = site, y = size)) + 
   geom_boxplot() + 
   labs(x = "Site", 
        y = "Prosome Length (mm)") + 
