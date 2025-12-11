@@ -1,0 +1,88 @@
+---
+output: 
+  pdf_document:
+    template: preprint_template.tex
+    fig_caption: true
+    keep_tex: false
+    citation_package: natbib
+  word_document: 
+    reference_docx: doc_template.docx
+title: "Spatial patterns in critical thermal limits of diaptomid copepods are shaped by acclimation"
+author:
+  - name: Austin Hoffman
+    affiliation: University of Massachusetts Lowell
+    location: 
+  - name: Matthew Sasaki
+    affiliation: University of Massachusetts Lowell
+    location: 
+abstract: "ABSTRACT HERE."
+keywords: "acclimation, plasticity, copepod, thermal limits, warming tolerance, freshwater"
+contact: "**Correspondance**: Matthew_Sasaki@uml.edu" 
+current: "This preprint is current as of `r format(Sys.time(), '%B %d, %Y')`"
+repo: "**Code**: https://github.com/ZoopEcoEvo/diapt_ctmax_survey.git"
+bibliography: references.bib
+biblio-style: bib-style
+geometry: margin=1in
+fontsize: 10pt
+graphics: yes
+header-includes: 
+  \usepackage{caption}    
+  \captionsetup[figure]{font=small, margin=20pt, justification=centering}
+  \captionsetup[table]{font=small, margin=20pt, justification=centering}
+  \usepackage{float} \floatplacement{figure}{H} 
+  \newcommand{\beginsupplement}{\setcounter{table}{0}  \renewcommand{\thetable}{S\arabic{table}} \setcounter{figure}{0} \renewcommand{\thefigure}{S\arabic{figure}}}
+---
+
+```{r echo = F}
+if(knitr::is_latex_output()){
+  knitr::opts_chunk$set(
+  echo = FALSE,
+  fig.align = "center",
+  message = FALSE,
+  warning = FALSE,
+  collapse = T)
+}
+```
+
+# Introduction
+
+# Methods
+
+## Collection
+
+## Culturing
+
+## CTmax measurements 
+
+## Statistical Analysis
+
+# Results
+
+```{r, figure, echo = F, out.width="100%"}
+#| fig.cap = "CAPTION HERE."
+
+plot(1)
+#knitr::include_graphics("../Output/markdown/Figures/_PATH_") #Use this when filling in figures from analysis 
+```
+
+```{r, table, echo = F}
+knitr::kable(x = 1, #Replace 1 with whatever object you want included as a table
+      digits = 3, align = "c",
+      caption = "CAPTION HERE")
+```
+
+# Discussion
+
+\newpage
+
+```{=tex}
+\beginsupplement
+```
+# Supplementary Material
+
+```{r supp-fig-1, echo = F, out.width="100%"}
+#| fig.cap = "CAPTION HERE."
+
+plot(1)
+#knitr::include_graphics("../Output/Figures/_PATH_") #Use this when filling in figures from analysis 
+```

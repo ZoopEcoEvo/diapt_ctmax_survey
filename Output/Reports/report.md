@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2025-11-27
+2025-12-04
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
@@ -26,9 +26,8 @@ map_data("world") %>%
   coord_map(xlim = c(-110,-60),
             ylim = c(25, 55)) + 
   geom_point(data = coords,
-             mapping = aes(x = long, y = lat, colour = elevation),
-             size = 3) +
-  scale_colour_viridis_c(option = "G", direction = -1) + 
+             mapping = aes(x = long, y = lat),
+             size = 2) +
   labs(x = "Longitude", 
        y = "Latitude",
        colour = "Elev. (m)") + 
@@ -268,7 +267,7 @@ model_data = ctmax_data %>%
          tev_sc = scale(total_egg_volume)) 
 
 ctmax_overall.model = lm(data = model_data, 
-                      ctmax ~ genus + collection_temp + lat + elevation + total_egg_volume)
+                         ctmax ~ genus + collection_temp + lat + elevation + total_egg_volume)
 
 drop1(ctmax_overall.model, test = "F")
 ## Single term deletions
@@ -287,6 +286,20 @@ drop1(ctmax_overall.model, test = "F")
 
 #MuMIn::dredge(ctmax_temp.model)
 
+car::Anova(ctmax_overall.model)
+## Anova Table (Type II tests)
+## 
+## Response: ctmax
+##                  Sum Sq  Df  F value    Pr(>F)    
+## genus            138.08   2  70.6070 < 2.2e-16 ***
+## collection_temp  105.34   1 107.7332 < 2.2e-16 ***
+## lat              113.24   1 115.8076 < 2.2e-16 ***
+## elevation          6.51   1   6.6572   0.01016 *  
+## total_egg_volume  21.48   1  21.9722 3.578e-06 ***
+## Residuals        485.97 497                       
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
 performance::check_model(ctmax_overall.model)
 ```
 
@@ -294,31 +307,25 @@ performance::check_model(ctmax_overall.model)
 
 ``` r
 
-summary(ctmax_overall.model)
+egg.model = lm(data = model_data, 
+                         ctmax ~ collection_temp + total_egg_volume + size)
+
+performance::check_model(egg.model)
+```
+
+<img src="../Figures/markdown/unnamed-chunk-11-2.png" style="display: block; margin: auto;" />
+
+``` r
+
+effectsize::effectsize(egg.model)
+## # Standardization method: refit
 ## 
-## Call:
-## lm(formula = ctmax ~ genus + collection_temp + lat + elevation + 
-##     total_egg_volume, data = model_data)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -3.9257 -0.4763  0.1481  0.6467  2.4003 
-## 
-## Coefficients:
-##                        Estimate Std. Error t value Pr(>|t|)    
-## (Intercept)           4.305e+01  1.077e+00  39.993  < 2e-16 ***
-## genusLeptodiaptomus  -2.803e+00  2.795e-01 -10.029  < 2e-16 ***
-## genusSkistodiaptomus -1.512e+00  2.711e-01  -5.578 4.01e-08 ***
-## collection_temp       1.613e-01  1.554e-02  10.379  < 2e-16 ***
-## lat                  -2.093e-01  1.945e-02 -10.761  < 2e-16 ***
-## elevation            -2.403e-04  9.313e-05  -2.580   0.0102 *  
-## total_egg_volume      4.056e+01  8.653e+00   4.687 3.58e-06 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-## 
-## Residual standard error: 0.9888 on 497 degrees of freedom
-## Multiple R-squared:  0.5974, Adjusted R-squared:  0.5926 
-## F-statistic: 122.9 on 6 and 497 DF,  p-value: < 2.2e-16
+## Parameter        | Std. Coef. |        95% CI
+## ---------------------------------------------
+## (Intercept)      |   6.39e-16 | [-0.07, 0.07]
+## collection temp  |       0.61 | [ 0.54, 0.68]
+## total egg volume |       0.15 | [ 0.08, 0.23]
+## size             |       0.37 | [ 0.30, 0.44]
 
 emmeans::emmeans(ctmax_overall.model, specs = "genus") %>% 
   data.frame() %>% 
@@ -332,12 +339,12 @@ emmeans::emmeans(ctmax_overall.model, specs = "genus") %>%
   theme(axis.text.x = element_text(angle = 300, hjust = 0, vjust = 0.5))
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-11-2.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-11-3.png" style="display: block; margin: auto;" />
 
 ``` r
 
 ctmax_temp.model = lm(data = model_data, 
-                      ctmax ~ species * collection_temp)
+                      ctmax ~ species + collection_temp)
 
 drop1(ctmax_temp.model, 
       scope = ~.,
@@ -345,12 +352,11 @@ drop1(ctmax_temp.model,
 ## Single term deletions
 ## 
 ## Model:
-## ctmax ~ species * collection_temp
-##                         Df Sum of Sq    RSS     AIC F value    Pr(>F)    
-## <none>                               325.08 -193.01                      
-## species                  4   16.0254 341.10 -176.76  6.0389 9.487e-05 ***
-## collection_temp          1    1.2044 326.28 -193.15  1.8155    0.1785    
-## species:collection_temp  4    2.9632 328.04 -196.44  1.1166    0.3479    
+## ctmax ~ species + collection_temp
+##                 Df Sum of Sq    RSS      AIC F value    Pr(>F)    
+## <none>                       328.04 -196.438                      
+## species          8    587.82 915.86  305.034  110.65 < 2.2e-16 ***
+## collection_temp  1    116.01 444.05  -45.823  174.70 < 2.2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -364,22 +370,21 @@ performance::check_model(ctmax_temp.model)
 sp_means = emmeans::emmeans(ctmax_temp.model, "species") %>% 
   data.frame() %>% 
   drop_na() %>%  
-  select(species, "ctmax" = emmean)
+  select(species, "ctmax" = emmean, lower.CL, upper.CL)
 
-sp_plast = emmeans::emtrends(ctmax_temp.model, "species", var = "collection_temp") %>% 
-  data.frame() %>% 
-  drop_na() %>% 
-  mutate(species = fct_reorder(species, .x = collection_temp.trend, .desc = T)) %>% 
-  select(species, "plast" = collection_temp.trend)
 
 sp_means %>% 
-inner_join(sp_plast) %>% 
-  mutate(species = fct_reorder(species, plast, .fun = min)) %>% 
-  ggplot(aes(x = species, y = plast)) + 
-  geom_hline(yintercept = 0) + 
-  geom_bar(stat = "identity") + 
+  mutate(species = str_replace(species, pattern = "_", replacement = " "),
+         species = str_to_sentence(species),
+         species = fct_reorder(species, .x = ctmax)) %>% 
+ggplot(aes(x = species, y = ctmax, colour = species)) + 
+  geom_point(size = 3) + 
+  geom_errorbar(aes(ymin = lower.CL, ymax = upper.CL), 
+                width = 0.5) + 
+  scale_colour_manual(values = skisto_cols) + 
   theme_matt() + 
-  theme(axis.text.x = element_text(angle = 300, hjust = 0, vjust = 0.5))
+  theme(axis.text = element_text(angle = 300, hjust = 0, vjust = 0.5), 
+        legend.position = "none")
 ```
 
 <img src="../Figures/markdown/unnamed-chunk-12-2.png" style="display: block; margin: auto;" />
@@ -458,8 +463,9 @@ Lab reared copepods varied in size, with Centennial Park individuals
 
 ``` r
 f3_data %>%
-ggplot(aes(x = site, y = size)) + 
+  ggplot(aes(x = site, y = size)) + 
   geom_boxplot() + 
+  geom_point(position = position_jitter(height = 0, width = 0.1)) + 
   labs(x = "Site", 
        y = "Prosome Length (mm)") + 
   theme_matt()
@@ -468,20 +474,28 @@ ggplot(aes(x = site, y = size)) +
 <img src="../Figures/markdown/unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
 
 ``` r
-f3_size.model = lm(data = f3_data, 
-              size~site)
+f3_size.model = lme4::lmer(data = f3_data,
+                      size ~ site + (1 | experiment_date))
 
-# performance::check_model(f3_size.model)
+#performance::check_model(f3_size.model)
 
-# f3.model = lme4::lmer(data = f3_data, 
-#                       ctmax~site + (1|experiment_date))
+car::Anova(f3_size.model)
+## Analysis of Deviance Table (Type II Wald chisquare tests)
+## 
+## Response: size
+##       Chisq Df Pr(>Chisq)    
+## site 25.398  1  4.664e-07 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
 Upper thermal limit did not vary between the populations.
 
 ``` r
-ggplot(f3_data, aes(x = site, y = ctmax)) + 
+f3_data %>%
+ggplot(aes(x = site, y = ctmax)) + 
   geom_boxplot() + 
+  geom_point(position = position_jitter(height = 0, width = 0.1)) + 
   labs(x = "Site", 
        y = "CTmax (°C)") + 
   theme_matt()
@@ -490,39 +504,80 @@ ggplot(f3_data, aes(x = site, y = ctmax)) +
 <img src="../Figures/markdown/unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
 
 ``` r
-f3_ctmax.model = lm(data = f3_data, 
-              ctmax~site)
 
-# performance::check_model(f3_ctmax.model)
+f3_ctmax.model = lme4::lmer(data = f3_data, 
+                      ctmax ~ site + (1|experiment_date) + (1|tube))
 
-# f3.model = lme4::lmer(data = f3_data, 
-#                       ctmax~site + (1|experiment_date))
+#performance::check_model(f3_ctmax.model)
+
+car::Anova(f3_ctmax.model)
+## Analysis of Deviance Table (Type II Wald chisquare tests)
+## 
+## Response: ctmax
+##      Chisq Df Pr(>Chisq)
+## site 0.827  1     0.3631
 ```
 
+``` r
+f3_data %>% 
+  group_by(experiment_date, site) %>% 
+  summarise(mean_ctmax = mean(ctmax), 
+            se_ctmax = sd(ctmax) / sqrt(n())) %>% 
+ggplot(aes(experiment_date, y = mean_ctmax, colour = site, group = site)) + 
+  geom_point(data = f3_data,
+             aes(x = experiment_date, y = ctmax, colour = site),
+             size = 1, alpha = 0.3,
+             position = position_jitterdodge(jitter.height = 0, jitter.width = 0.05, 
+                                             dodge.width = 0.3)) + 
+    geom_line(linewidth = 1.3,
+              position = position_dodge(width = 0.3)) + 
+  geom_errorbar(aes(ymin = mean_ctmax - se_ctmax, ymax = mean_ctmax + se_ctmax),
+                position = position_dodge(width = 0.3),
+                width = 0.25, linewidth = 1) + 
+    geom_point(size = 3,
+               position = position_dodge(width = 0.3)) + 
+  labs(x = "Experiment Date", 
+       y = "CTmax (°C)") + 
+  theme_matt() + 
+  theme(legend.position = "right")
+```
+
+<img src="../Figures/markdown/unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
+
 Fecundity also appears to vary between populations, even after rearing
-in lab for several generations.
+in lab for several generations, although this difference does not appear
+to be significant.
 
 ``` r
+
 ggplot(f3_data, aes(x = site, y = fecundity)) + 
   geom_boxplot() + 
+  geom_point(position = position_jitter(height = 0, width = 0.1)) + 
   labs(x = "Site", 
        y = "Clutch Size (eggs per female)") + 
   theme_matt()
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-17-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
 
 ``` r
-f3_fecund.model = glm(data = f3_data, 
-              fecundity~site,
-              family="poisson")
+
+# f3_fecund.model = glm(data = f3_data, 
+#                       fecundity ~ site,
+#                       family="poisson")
+
+f3_fecund.model = lme4::glmer(data = f3_data, 
+                      fecundity ~ site + (1|experiment_date),
+                      family="poisson")
 
 # performance::check_model(f3_fecund.model)
-# 
-# car::Anova(f3_fecund.model)
 
-# f3.model = lme4::lmer(data = f3_data, 
-#                       ctmax~site + (1|experiment_date))
+car::Anova(f3_fecund.model)
+## Analysis of Deviance Table (Type II Wald chisquare tests)
+## 
+## Response: fecundity
+##       Chisq Df Pr(>Chisq)
+## site 2.1596  1     0.1417
 ```
 
 To summarize the initial findings, Centennial Park copepods had larger
@@ -544,7 +599,7 @@ scan_sizes %>%
         legend.position = "bottom")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-19-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-20-1.png" style="display: block; margin: auto;" />
 
 ``` r
 
@@ -557,25 +612,25 @@ scan_sizes %>%
                       point_alpha = 0.3, point_colour = "grey30")  + 
   labs(y = "",
        x = "Prosome Length (mm)") + 
-    scale_fill_manual(values = skisto_cols) + 
+  scale_fill_manual(values = skisto_cols) + 
   theme_minimal(base_size = 20) + 
   theme(panel.grid = element_blank(),
         strip.text = element_text(face = "bold"),
         legend.position = "bottom")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-20-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-21-1.png" style="display: block; margin: auto;" />
 
 ``` r
 scan_sizes %>% 
-    filter(sex == "female", stage == "adult") %>%
-    inner_join(site_data) %>% 
+  filter(sex == "female", stage == "adult") %>%
+  inner_join(site_data) %>% 
   ggplot(aes(x = collection_temp, y = length)) + 
   geom_point(position = position_jitter(width = 0.08, height = 0)) + 
   theme_matt()
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-21-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-22-1.png" style="display: block; margin: auto;" />
 
 ## COI Barcoding
 

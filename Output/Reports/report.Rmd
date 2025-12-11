@@ -100,9 +100,8 @@ map_data("world") %>%
   coord_map(xlim = c(-110,-60),
             ylim = c(25, 55)) + 
   geom_point(data = coords,
-             mapping = aes(x = long, y = lat, colour = elevation),
-             size = 3) +
-  scale_colour_viridis_c(option = "G", direction = -1) + 
+             mapping = aes(x = long, y = lat),
+             size = 2) +
   labs(x = "Longitude", 
        y = "Latitude",
        colour = "Elev. (m)") + 
@@ -320,15 +319,22 @@ model_data = ctmax_data %>%
          tev_sc = scale(total_egg_volume)) 
 
 ctmax_overall.model = lm(data = model_data, 
-                      ctmax ~ genus + collection_temp + lat + elevation + total_egg_volume)
+                         ctmax ~ genus + collection_temp + lat + elevation + total_egg_volume)
 
 drop1(ctmax_overall.model, test = "F")
 
 #MuMIn::dredge(ctmax_temp.model)
 
+car::Anova(ctmax_overall.model)
+
 performance::check_model(ctmax_overall.model)
 
-summary(ctmax_overall.model)
+egg.model = lm(data = model_data, 
+                         ctmax ~ collection_temp + total_egg_volume + size)
+
+performance::check_model(egg.model)
+
+effectsize::effectsize(egg.model)
 
 emmeans::emmeans(ctmax_overall.model, specs = "genus") %>% 
   data.frame() %>% 
@@ -345,7 +351,7 @@ emmeans::emmeans(ctmax_overall.model, specs = "genus") %>%
 ```{r}
 
 ctmax_temp.model = lm(data = model_data, 
-                      ctmax ~ species * collection_temp)
+                      ctmax ~ species + collection_temp)
 
 drop1(ctmax_temp.model, 
       scope = ~.,
@@ -356,22 +362,22 @@ performance::check_model(ctmax_temp.model)
 sp_means = emmeans::emmeans(ctmax_temp.model, "species") %>% 
   data.frame() %>% 
   drop_na() %>%  
-  select(species, "ctmax" = emmean)
+  select(species, "ctmax" = emmean, lower.CL, upper.CL)
 
-sp_plast = emmeans::emtrends(ctmax_temp.model, "species", var = "collection_temp") %>% 
-  data.frame() %>% 
-  drop_na() %>% 
-  mutate(species = fct_reorder(species, .x = collection_temp.trend, .desc = T)) %>% 
-  select(species, "plast" = collection_temp.trend)
 
 sp_means %>% 
-inner_join(sp_plast) %>% 
-  mutate(species = fct_reorder(species, plast, .fun = min)) %>% 
-  ggplot(aes(x = species, y = plast)) + 
-  geom_hline(yintercept = 0) + 
-  geom_bar(stat = "identity") + 
+  mutate(species = str_replace(species, pattern = "_", replacement = " "),
+         species = str_to_sentence(species),
+         species = fct_reorder(species, .x = ctmax)) %>% 
+ggplot(aes(x = species, y = ctmax, colour = species)) + 
+  geom_point(size = 3) + 
+  geom_errorbar(aes(ymin = lower.CL, ymax = upper.CL), 
+                width = 0.5) + 
+  scale_colour_manual(values = skisto_cols) + 
   theme_matt() + 
-  theme(axis.text.x = element_text(angle = 300, hjust = 0, vjust = 0.5))
+  theme(axis.text = element_text(angle = 300, hjust = 0, vjust = 0.5), 
+        legend.position = "none")
+
 ```
 
 
@@ -438,63 +444,98 @@ Lab reared copepods varied in size, with Centennial Park individuals ~0.1 mm lon
 
 ```{r}
 f3_data %>%
-ggplot(aes(x = site, y = size)) + 
+  ggplot(aes(x = site, y = size)) + 
   geom_boxplot() + 
+  geom_point(position = position_jitter(height = 0, width = 0.1)) + 
   labs(x = "Site", 
        y = "Prosome Length (mm)") + 
   theme_matt()
 ```
 
 ```{r}
-f3_size.model = lm(data = f3_data, 
-              size~site)
+f3_size.model = lme4::lmer(data = f3_data,
+                      size ~ site + (1 | experiment_date))
 
-# performance::check_model(f3_size.model)
+#performance::check_model(f3_size.model)
 
-# f3.model = lme4::lmer(data = f3_data, 
-#                       ctmax~site + (1|experiment_date))
+car::Anova(f3_size.model)
+
 ```
 
 Upper thermal limit did not vary between the populations. 
 
 ```{r}
-ggplot(f3_data, aes(x = site, y = ctmax)) + 
+f3_data %>%
+ggplot(aes(x = site, y = ctmax)) + 
   geom_boxplot() + 
+  geom_point(position = position_jitter(height = 0, width = 0.1)) + 
   labs(x = "Site", 
        y = "CTmax (°C)") + 
   theme_matt()
 ```
 
 ```{r}
-f3_ctmax.model = lm(data = f3_data, 
-              ctmax~site)
 
-# performance::check_model(f3_ctmax.model)
+f3_ctmax.model = lme4::lmer(data = f3_data, 
+                      ctmax ~ site + (1|experiment_date) + (1|tube))
 
-# f3.model = lme4::lmer(data = f3_data, 
-#                       ctmax~site + (1|experiment_date))
+#performance::check_model(f3_ctmax.model)
+
+car::Anova(f3_ctmax.model)
+
 ```
 
-Fecundity also appears to vary between populations, even after rearing in lab for several generations. 
 ```{r}
+f3_data %>% 
+  group_by(experiment_date, site) %>% 
+  summarise(mean_ctmax = mean(ctmax), 
+            se_ctmax = sd(ctmax) / sqrt(n())) %>% 
+ggplot(aes(experiment_date, y = mean_ctmax, colour = site, group = site)) + 
+  geom_point(data = f3_data,
+             aes(x = experiment_date, y = ctmax, colour = site),
+             size = 1, alpha = 0.3,
+             position = position_jitterdodge(jitter.height = 0, jitter.width = 0.05, 
+                                             dodge.width = 0.3)) + 
+    geom_line(linewidth = 1.3,
+              position = position_dodge(width = 0.3)) + 
+  geom_errorbar(aes(ymin = mean_ctmax - se_ctmax, ymax = mean_ctmax + se_ctmax),
+                position = position_dodge(width = 0.3),
+                width = 0.25, linewidth = 1) + 
+    geom_point(size = 3,
+               position = position_dodge(width = 0.3)) + 
+  labs(x = "Experiment Date", 
+       y = "CTmax (°C)") + 
+  theme_matt() + 
+  theme(legend.position = "right")
+```
+
+
+Fecundity also appears to vary between populations, even after rearing in lab for several generations, although this difference does not appear to be significant. 
+
+```{r}
+
 ggplot(f3_data, aes(x = site, y = fecundity)) + 
   geom_boxplot() + 
+  geom_point(position = position_jitter(height = 0, width = 0.1)) + 
   labs(x = "Site", 
        y = "Clutch Size (eggs per female)") + 
   theme_matt()
+
 ```
 
 ```{r}
-f3_fecund.model = glm(data = f3_data, 
-              fecundity~site,
-              family="poisson")
+
+# f3_fecund.model = glm(data = f3_data, 
+#                       fecundity ~ site,
+#                       family="poisson")
+
+f3_fecund.model = lme4::glmer(data = f3_data, 
+                      fecundity ~ site + (1|experiment_date),
+                      family="poisson")
 
 # performance::check_model(f3_fecund.model)
-# 
-# car::Anova(f3_fecund.model)
 
-# f3.model = lme4::lmer(data = f3_data, 
-#                       ctmax~site + (1|experiment_date))
+car::Anova(f3_fecund.model)
 ```
 
 To summarize the initial findings, Centennial Park copepods had larger body sizes but smaller clutch sizes than copepods from Ochsner Pond. CTmax was similar between the two populations. 
@@ -525,18 +566,18 @@ scan_sizes %>%
                       point_alpha = 0.3, point_colour = "grey30")  + 
   labs(y = "",
        x = "Prosome Length (mm)") + 
-    scale_fill_manual(values = skisto_cols) + 
+  scale_fill_manual(values = skisto_cols) + 
   theme_minimal(base_size = 20) + 
   theme(panel.grid = element_blank(),
         strip.text = element_text(face = "bold"),
         legend.position = "bottom")
-  
+
 ```
 
 ```{r}
 scan_sizes %>% 
-    filter(sex == "female", stage == "adult") %>%
-    inner_join(site_data) %>% 
+  filter(sex == "female", stage == "adult") %>%
+  inner_join(site_data) %>% 
   ggplot(aes(x = collection_temp, y = length)) + 
   geom_point(position = position_jitter(width = 0.08, height = 0)) + 
   theme_matt()

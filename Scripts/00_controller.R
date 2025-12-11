@@ -88,7 +88,8 @@ for(i in dir("Raw_data/scanner_images/")){
   
 }
 
-f3_data = read.csv(file = "Raw_data/F3_ctmax_data/ctmax_data.csv")
+f3_data = read.csv(file = "Raw_data/F3_ctmax_data/ctmax_data.csv") %>% 
+  filter(ctmax > 30) #One outlier individual from 2025-12-3
 
 if(make_tree == T){
   #### Analyzes COI sequence data ####
