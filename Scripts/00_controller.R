@@ -10,7 +10,8 @@ process_data = F #Runs data analysis
 process_sequences = F #Aligns the COI sequence data
 make_tree = F #Makes a ML tree from the COI sequences
 make_sp_prop = F #Plots the species frequency at each site
-make_report = T #Runs project summary
+make_report = F #Runs project summary
+make_paper_figures = T #Creates the publication-version figures
 knit_manuscript = F #Compiles manuscript draft
 
 skisto_cols = c("Skistodiaptomus reighardi" = "#114264",
@@ -111,6 +112,13 @@ if(make_sp_prop == T){
 
 if(make_report == T){
   render(input = "Output/Reports/report.Rmd", #Input the path to your .Rmd file here
+         #output_file = "report", #Name your file here if you want it to have a different name; leave off the .html, .md, etc. - it will add the correct one automatically
+         output_format = "all")
+}
+
+
+if(make_paper_figures == T){
+  render(input = "Output/Reports/pub_figures.Rmd", #Input the path to your .Rmd file here
          #output_file = "report", #Name your file here if you want it to have a different name; leave off the .html, .md, etc. - it will add the correct one automatically
          output_format = "all")
 }
