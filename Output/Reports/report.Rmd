@@ -437,7 +437,7 @@ ctmax_data %>%
   theme(legend.position = "none")
 ```
 
-## F3 CTmax data 
+## F3 Data 
 *Skistodiaptomus pallidus* was collected from three sites (Centennial Park - CO, Ochsner Pond - OH, and Center Springs Pond - CT) were reared in the lab at 16°C for at least three generations. CTmax was measured for these copepods to test for genetic variation in thermal limits in this widely distributed species. 
 
 Lab reared copepods varied in size, with Centennial Park individuals ~0.1 mm longer than those from Ochsner Pond. 
@@ -538,7 +538,20 @@ f3_fecund.model = lme4::glmer(data = f3_data,
 car::Anova(f3_fecund.model)
 ```
 
-To summarize the initial findings, Centennial Park copepods had larger body sizes but smaller clutch sizes than copepods from Ochsner Pond. CTmax was similar between the two populations. 
+We also examined how oxygen consumption rates varied across temperatures for the two populations. Results are preliminary, but it seems like the two populations may have similar optimum temperatures. 
+
+```{r}
+tpc_rates %>% 
+  filter(temp != 32) %>% 
+  filter(!(temp > 15 & rsq < 0.7)) %>% 
+  ggplot(aes(x = temp, y = rate, colour = treatment)) + 
+  #facet_wrap(treatment~., nrow = 2) + 
+  geom_point() + 
+  geom_smooth() + 
+  theme_bw()
+```
+
+To summarize the initial findings, Centennial Park copepods had larger body sizes but smaller clutch sizes than copepods from Ochsner Pond. CTmax and thermal optima were similar between the two populations. 
 
 ## High throughput size measurements 
 

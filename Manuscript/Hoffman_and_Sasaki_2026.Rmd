@@ -52,7 +52,7 @@ if(knitr::is_latex_output()){
 
 ## Culturing
 
-## CTmax measurements 
+## CTmax measurements
 
 ## Statistical Analysis
 

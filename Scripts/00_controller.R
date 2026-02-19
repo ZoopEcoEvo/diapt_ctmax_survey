@@ -10,8 +10,8 @@ process_data = F #Runs data analysis
 process_sequences = F #Aligns the COI sequence data
 make_tree = F #Makes a ML tree from the COI sequences
 make_sp_prop = F #Plots the species frequency at each site
-make_report = F #Runs project summary
-make_paper_figures = T #Creates the publication-version figures
+make_report = T #Runs project summary
+make_paper_figures = F #Creates the publication-version figures
 knit_manuscript = F #Compiles manuscript draft
 
 skisto_cols = c("Skistodiaptomus reighardi" = "#114264",
@@ -37,6 +37,10 @@ site_data = read.csv("Raw_data/site_list.csv") %>%
          collection_date = as_date(collection_date, format = "%m/%d/%y"))
 
 if(process_data == T){
+  library(respR)
+  
+  system("./Scripts/01_convert_resp_files.sh")
+  
   source(file = "Scripts/01_data_processing.R")
 }
 
@@ -68,6 +72,8 @@ ctmax_data = read.csv(file = "Output/Output_data/ctmax_data.csv") %>%
          total_egg_volume = egg_volume * fecundity) %>% 
   ungroup() %>% 
   filter(species != "epischura_lacustris")
+
+tpc_rates = read.csv("Output/Output_data/resp_data.csv")
 
 data_summary = ctmax_data %>% group_by(site, species) %>%  
   summarise(mean_ctmax = mean(ctmax, na.rm = T),
@@ -128,7 +134,7 @@ if(make_paper_figures == T){
 ##################################
 
 if(knit_manuscript == T){
-  render(input = "Manuscript/manuscript_name.Rmd", #Input the path to your .Rmd file here
+  render(input = "Manuscript/Hoffman_and_Sasaki_2026.Rmd", #Input the path to your .Rmd file here
          output_file = paste("dev_draft_", Sys.Date(), sep = ""), #Name your file here; as it is, this line will create reports named with the date
                                                                   #NOTE: Any file with the dev_ prefix in the Drafts directory will be ignored. Remove "dev_" if you want to include draft files in the GitHub repo
          output_dir = "Output/Drafts/", #Set the path to the desired output directory here

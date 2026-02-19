@@ -1,10 +1,10 @@
 Diaptomid Thermal Limits
 ================
-2025-12-04
+2026-02-18
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
-- [F3 CTmax data](#f3-ctmax-data)
+- [F3 Data](#f3-data)
 - [High throughput size
   measurements](#high-throughput-size-measurements)
 - [COI Barcoding](#coi-barcoding)
@@ -450,7 +450,7 @@ ctmax_data %>%
 
 <img src="../Figures/markdown/ctmax-ridges-1.png" style="display: block; margin: auto;" />
 
-## F3 CTmax data
+## F3 Data
 
 *Skistodiaptomus pallidus* was collected from three sites (Centennial
 Park - CO, Ochsner Pond - OH, and Center Springs Pond - CT) were reared
@@ -580,9 +580,26 @@ car::Anova(f3_fecund.model)
 ## site 2.1596  1     0.1417
 ```
 
+We also examined how oxygen consumption rates varied across temperatures
+for the two populations. Results are preliminary, but it seems like the
+two populations may have similar optimum temperatures.
+
+``` r
+tpc_rates %>% 
+  filter(temp != 32) %>% 
+  filter(!(temp > 15 & rsq < 0.7)) %>% 
+  ggplot(aes(x = temp, y = rate, colour = treatment)) + 
+  #facet_wrap(treatment~., nrow = 2) + 
+  geom_point() + 
+  geom_smooth() + 
+  theme_bw()
+```
+
+<img src="../Figures/markdown/unnamed-chunk-20-1.png" style="display: block; margin: auto;" />
+
 To summarize the initial findings, Centennial Park copepods had larger
 body sizes but smaller clutch sizes than copepods from Ochsner Pond.
-CTmax was similar between the two populations.
+CTmax and thermal optima were similar between the two populations.
 
 ## High throughput size measurements
 
@@ -599,7 +616,7 @@ scan_sizes %>%
         legend.position = "bottom")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-20-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-21-1.png" style="display: block; margin: auto;" />
 
 ``` r
 
@@ -619,7 +636,7 @@ scan_sizes %>%
         legend.position = "bottom")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-21-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-22-1.png" style="display: block; margin: auto;" />
 
 ``` r
 scan_sizes %>% 
@@ -630,7 +647,7 @@ scan_sizes %>%
   theme_matt()
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-22-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/unnamed-chunk-23-1.png" style="display: block; margin: auto;" />
 
 ## COI Barcoding
 
