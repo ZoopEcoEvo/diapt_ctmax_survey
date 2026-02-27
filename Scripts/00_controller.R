@@ -2,7 +2,6 @@
 library(rmarkdown)
 library(tidyverse)
 library(ggridges)
-library(elevatr)
 source("Scripts/project_functions.R")
 
 #Determine which scripts should be run
@@ -10,8 +9,8 @@ process_data = F #Runs data analysis
 process_sequences = F #Aligns the COI sequence data
 make_tree = F #Makes a ML tree from the COI sequences
 make_sp_prop = F #Plots the species frequency at each site
-make_report = T #Runs project summary
-make_paper_figures = F #Creates the publication-version figures
+make_report = F #Runs project summary
+make_paper_figures = T #Creates the publication-version figures
 knit_manuscript = F #Compiles manuscript draft
 
 skisto_cols = c("Skistodiaptomus reighardi" = "#114264",
@@ -37,6 +36,7 @@ site_data = read.csv("Raw_data/site_list.csv") %>%
          collection_date = as_date(collection_date, format = "%m/%d/%y"))
 
 if(process_data == T){
+  library(elevatr)
   library(respR)
   
   system("./Scripts/01_convert_resp_files.sh")

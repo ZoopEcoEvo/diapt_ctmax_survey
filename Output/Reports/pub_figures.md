@@ -1,91 +1,18 @@
----
-title: Diaptomid Thermal Limits GitHub Change Testing
-date: "`r Sys.Date()`"
-output: 
-  html_document:
-          code_folding: hide
-          code_download: true
-          toc: true
-          toc_float: true
-  github_document:
-          html_preview: false
-          toc: true
-          toc_depth: 3
----
+Diaptomid Thermal Limits GitHub Change Testing
+================
+2026-02-27
 
-```{r setup, include=T, message = F, warning = F, echo = F}
-knitr::opts_chunk$set(
-  echo = knitr::is_html_output(),
-  fig.align = "center",
-  fig.path = "../Figures/publication/",
-  dev = c("png", "pdf"),
-  message = FALSE,
-  warning = FALSE,
-  collapse = T
-)
-
-theme_matt = function(base_size = 18,
-                      dark_text = "grey20"){
-  mid_text <-  monochromeR::generate_palette(dark_text, "go_lighter", n_colours = 5)[2]
-  light_text <-  monochromeR::generate_palette(dark_text, "go_lighter", n_colours = 5)[3]
-  
-  ggpubr::theme_pubr(base_family="sans") %+replace% 
-    theme(
-      panel.background  = element_rect(fill="transparent", colour=NA), 
-      plot.background = element_rect(fill="transparent", colour=NA), 
-      legend.background = element_rect(fill="transparent", colour=NA),
-      legend.key = element_rect(fill="transparent", colour=NA),
-      text = element_text(colour = mid_text, lineheight = 1.1),
-      title = element_text(size = base_size * 1.5,
-                           colour = dark_text),
-      axis.text = element_text(size = base_size,
-                               colour = mid_text),
-      axis.title.x = element_text(size = base_size * 1.2,
-                                  margin = unit(c(3, 0, 0, 0), "mm")),
-      axis.title.y = element_text(size = base_size * 1.2,
-                                  margin = unit(c(0, 5, 0, 0), "mm"), 
-                                  angle = 90),
-      legend.text = element_text(size=base_size * 0.9),
-      legend.title = element_text(size = base_size * 0.9, 
-                                  face = "bold"),
-      plot.margin = margin(0.25, 0.25, 0.25, 0.25,"cm")
-    )
-}
-
-theme_matt_facets = function(base_size = 18,
-                             dark_text = "grey20"){
-  mid_text <-  monochromeR::generate_palette(dark_text, "go_lighter", n_colours = 5)[2]
-  light_text <-  monochromeR::generate_palette(dark_text, "go_lighter", n_colours = 5)[3]
-  
-  theme_bw(base_family="sans") %+replace% 
-    theme(
-      panel.grid = element_blank(),
-      panel.background  = element_rect(fill="transparent", colour=NA), 
-      plot.background = element_rect(fill="transparent", colour=NA), 
-      legend.background = element_rect(fill="transparent", colour=NA),
-      legend.key = element_rect(fill="transparent", colour=NA),
-      text = element_text(colour = mid_text, lineheight = 1.1),
-      strip.text.x = element_text(size = base_size),
-      title = element_text(size = base_size * 1.5,
-                           colour = dark_text),
-      axis.text = element_text(size = base_size,
-                               colour = mid_text),
-      axis.title.x = element_text(size = base_size * 1.2,
-                                  margin = unit(c(3, 0, 0, 0), "mm")),
-      axis.title.y = element_text(size = base_size * 1.2,
-                                  margin = unit(c(0, 5, 0, 0), "mm"), 
-                                  angle = 90),
-      legend.text = element_text(size=base_size * 0.9),
-      legend.title = element_text(size = base_size * 0.9, 
-                                  face = "bold"),
-      plot.margin = margin(0.25, 0.25, 0.25, 0.25,"cm")
-    )
-}
-```
+- [Site Map](#site-map)
+- [CTmax in response to Coll. Temp. Generally and
+  Specifically](#ctmax-in-response-to-coll-temp-generally-and-specifically)
+- [CTmax in response to Coll. Temp.
+  Specifically](#ctmax-in-response-to-coll-temp-specifically)
+- [(Use one of these two, probably the second
+  option)](#use-one-of-these-two-probably-the-second-option)
 
 ## Site Map
 
-```{r sampled-sites, fig.width=10, fig.height=6}
+``` r
 coords = ctmax_data %>%
   inner_join(site_data, by = c("site", "lat", "collection_temp")) %>% 
   dplyr::select(site, long, lat, collection_temp, elevation) %>%
@@ -109,9 +36,11 @@ map_data("world") %>%
   theme(legend.position = "right")
 ```
 
+<img src="../Figures/markdown/sampled-sites-1.png" style="display: block; margin: auto;" />
+
 ## CTmax in response to Coll. Temp. Generally and Specifically
 
-```{r}
+``` r
 ###unsure of size yet
 ctmax_temp_plot = ctmax_data %>% 
   mutate(species = str_replace(species, "_", " "),
@@ -127,9 +56,10 @@ ctmax_temp_plot = ctmax_data %>%
 ```
 
 ## CTmax in response to Coll. Temp. Specifically
+
 ## (Use one of these two, probably the second option)
 
-```{r fig.width=10, fig.height=7}
+``` r
 ctmax_data %>% 
   mutate(species = str_replace(species, "_", " "),
          species = str_to_sentence(species)) %>% 
@@ -142,6 +72,11 @@ ctmax_data %>%
   scale_color_manual(values = skisto_cols) + 
   theme_matt() + 
   theme(legend.position = "none")
+```
+
+<img src="../Figures/markdown/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+
+``` r
 
 ###{r fig.width=10, fig.height=6}
 ctmax_data %>% 
@@ -168,9 +103,11 @@ ctmax_data %>%
   theme(legend.position = "right")
 ```
 
-##S. pallidus egg volume
+<img src="../Figures/markdown/unnamed-chunk-2-2.png" style="display: block; margin: auto;" />
 
-```{r fig.width=8.5, fig.height=5.5}
+\##S. pallidus egg volume
+
+``` r
 ctmax_data %>% 
   filter(species == "skistodiaptomus_pallidus") %>%
   mutate(site = fct_reorder(site, lat, .desc = T)) %>% 
@@ -189,9 +126,11 @@ ctmax_data %>%
   theme(legend.position = "right")
 ```
 
-##F3 Body Size (Prosome Length)
+<img src="../Figures/markdown/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
 
-```{r}
+\##F3 Body Size (Prosome Length)
+
+``` r
 f3_data %>%
   ggplot(aes(x = site, y = size)) + 
   geom_boxplot() + 
@@ -201,9 +140,11 @@ f3_data %>%
   theme_matt()
 ```
 
-##F3 CTmax
+<img src="../Figures/markdown/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 
-```{r}
+\##F3 CTmax
+
+``` r
 f3_data %>%
 ggplot(aes(x = site, y = ctmax)) + 
   geom_boxplot() + 
@@ -213,9 +154,11 @@ ggplot(aes(x = site, y = ctmax)) +
   theme_matt()
 ```
 
-##F3 Clutch Size
+<img src="../Figures/markdown/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
 
-```{r}
+\##F3 Clutch Size
+
+``` r
 
 ggplot(f3_data, aes(x = site, y = fecundity)) + 
   geom_boxplot() + 
@@ -223,5 +166,6 @@ ggplot(f3_data, aes(x = site, y = fecundity)) +
   labs(x = "Site", 
        y = "Clutch Size (eggs per female)") + 
   theme_matt()
-
 ```
+
+<img src="../Figures/markdown/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
