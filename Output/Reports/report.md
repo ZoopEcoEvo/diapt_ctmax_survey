@@ -1,6 +1,6 @@
 Diaptomid Thermal Limits
 ================
-2026-02-18
+2026-02-28
 
 - [Site Map](#site-map)
 - [CTmax Data](#ctmax-data)
@@ -354,9 +354,9 @@ drop1(ctmax_temp.model,
 ## Model:
 ## ctmax ~ species + collection_temp
 ##                 Df Sum of Sq    RSS      AIC F value    Pr(>F)    
-## <none>                       328.04 -196.438                      
-## species          8    587.82 915.86  305.034  110.65 < 2.2e-16 ***
-## collection_temp  1    116.01 444.05  -45.823  174.70 < 2.2e-16 ***
+## <none>                       326.19 -197.291                      
+## species          9    589.67 915.86  305.034  99.026 < 2.2e-16 ***
+## collection_temp  1    117.77 443.96  -43.927 178.002 < 2.2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 

@@ -1,10 +1,10 @@
 ﻿collection_date,site,replicate,tube,species,id_method,sample_id,ctmax_minute,ctmax_second,fecundity,size,egg_1,egg_2,egg_3
-5/28/24,Owen Park,2,1,skistodiaptomus_mississippiensis,morphological,OP2_1,59,43,NA,0.818,NA,NA,NA
-5/28/24,Owen Park,2,2,skistodiaptomus_mississippiensis,morphological,OP2_2,58,45,NA,0.877,NA,NA,NA
-5/28/24,Owen Park,2,4,skistodiaptomus_mississippiensis,morphological,OP2_4,57,48,NA,0.819,NA,NA,NA
-5/28/24,Owen Park,2,5,skistodiaptomus_mississippiensis,morphological,OP2_5,57,12,13,0.855,0.007,0.007,0.009
-5/28/24,Owen Park,2,6,skistodiaptomus_mississippiensis,morphological,OP2_6,60,1,17,0.869,0.009,0.008,0.01
-5/28/24,Owen Park,2,7,skistodiaptomus_mississippiensis,morphological,OP2_7,59,9,NA,0.828,NA,NA,NA
-5/28/24,Owen Park,2,8,skistodiaptomus_mississippiensis,morphological,OP2_8,59,24,NA,0.872,NA,NA,NA
-5/28/24,Owen Park,2,9,skistodiaptomus_mississippiensis,morphological,OP2_9,61,16,14,0.901,0.009,0.009,0.009
-5/28/24,Owen Park,2,10,skistodiaptomus_mississippiensis,morphological,OP2_10,61,46,12,0.888,0.01,0.008,0.01
+5/28/24,Owen Park,2,1,skistodiaptomus_carolinensis,morphological,OP2_1,59,43,NA,0.818,NA,NA,NA
+5/28/24,Owen Park,2,2,skistodiaptomus_carolinensis,morphological,OP2_2,58,45,NA,0.877,NA,NA,NA
+5/28/24,Owen Park,2,4,skistodiaptomus_carolinensis,morphological,OP2_4,57,48,NA,0.819,NA,NA,NA
+5/28/24,Owen Park,2,5,skistodiaptomus_carolinensis,morphological,OP2_5,57,12,13,0.855,0.007,0.007,0.009
+5/28/24,Owen Park,2,6,skistodiaptomus_carolinensis,morphological,OP2_6,60,1,17,0.869,0.009,0.008,0.01
+5/28/24,Owen Park,2,7,skistodiaptomus_carolinensis,morphological,OP2_7,59,9,NA,0.828,NA,NA,NA
+5/28/24,Owen Park,2,8,skistodiaptomus_carolinensis,morphological,OP2_8,59,24,NA,0.872,NA,NA,NA
+5/28/24,Owen Park,2,9,skistodiaptomus_carolinensis,morphological,OP2_9,61,16,14,0.901,0.009,0.009,0.009
+5/28/24,Owen Park,2,10,skistodiaptomus_carolinensis,morphological,OP2_10,61,46,12,0.888,0.01,0.008,0.01
