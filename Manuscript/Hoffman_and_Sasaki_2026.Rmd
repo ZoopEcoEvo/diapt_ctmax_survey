@@ -46,6 +46,26 @@ if(knitr::is_latex_output()){
 
 # Introduction
 
+1. Copepod Introduction
+  *highly abundant
+  *crucial role in food webs
+  *Skistodiaptomus intro
+    *freshwater diaptomids
+    *comparatively less studied than other highly abundant freshwater copes
+    *the extent of their known phylogeny is distributed in US across diff environment scales (elevation, latitudinal)
+    *novel genus for understanding thermal tolerance in freshwater
+2. Thermal limits
+  *described in a diverse scope across animals, however, copes are underrepresented comparatively especially freshwater
+  *what patterns of thermal tolerance are conserved in this diaptomid phylogeny across 8 species and environmental gradients
+  *sources of differentiation in thermal limits
+    *Plasticity - capacity of plastic response and also rate of its success (perhaps mention Nathan's acclimation experiment)
+    *(evidence suggests their are robust clades within Skistodiaptomus genus that may confer different thermal tolerance success)
+3. This Study
+  *collected CTmax, body size, and fecundity from different populations of Skistodiaptomus
+  *Skistodiaptomus pallidus as the focus for comparing the populations from Centennial park and Ochsner Pond
+  *this study presents some of the first evidence of how Skistodiaptomus populations from different elevations and latitudes seems to exhibit no significant variation in CTmax
+  *further genetic investigation into potential differences
+  
 # Methods
 
 ## Collection
