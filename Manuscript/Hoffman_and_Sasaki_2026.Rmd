@@ -31,6 +31,9 @@ header-includes:
   \captionsetup[table]{font=small, margin=20pt, justification=centering}
   \usepackage{float} \floatplacement{figure}{H} 
   \newcommand{\beginsupplement}{\setcounter{table}{0}  \renewcommand{\thetable}{S\arabic{table}} \setcounter{figure}{0} \renewcommand{\thefigure}{S\arabic{figure}}}
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r echo = F}
@@ -46,33 +49,56 @@ if(knitr::is_latex_output()){
 
 # Introduction
 
-1.Freshwater Biodiveristy
-  #freshwater bodies are relative mesocosms that support massive biodiversity
-    ##these bodies can and should be focused on to help provide a snapshot about how the changing environment is responded to by its player
-  #previous literature has scratched the surface with fish studies
-    ##but there is a general dearth in the literature surrounding freshwater biodiveristy
-2.Ecological Importance of Copepods, Generally
-  #dominant freshwater zooplankton
-    ##nutrient cycling
-    ##trophic interactions
-  #but thermal limits are less understood
-    ##will likely impact their survivorship which has larger ecological implications
-  #they can serve as great model systems 
-    ##not only because of lab maintenance capabilities
-    ##exhibit plasticity
-    ##short generations
-3.Particular Importance of Diaptomids
-  #widespread
-    ##found consistently throughout most of the contiguous US
-  #diverse
-    ##monophyletic group, but 8 distinct species
-  #ecological important
-    ##dominant zooplankton in many freshwater ecosystems
-  #altogether allows for robust investigations of how thermal limits may be plastic interspecifically as well as intraspecifically within the genus
-  #further, their widespread nature allows for testing of ecological gradients (elevational, latitudinal) to investigate their impacts on thermal limits
-MP1: variation interspecifically due to plasticity so there may be shifts in vulnerability
-MP2: increased freshwater temperatures via ClCh allows for potential range shifting of Skistodiaptomus
-  
+1.  Freshwater Biodiveristy
+
+-   freshwater bodies are relative microcosms that support massive
+    biodiversity
+    -   these bodies can and should be focused on to help provide a
+        snapshot about how the changing environment is responded to by
+        its player
+-   previous literature has scratched the surface with fish studies
+    -   but there is a general dearth in the literature surrounding
+        freshwater biodiveristy
+
+2.  Ecological Importance of Copepods, Generally
+
+-   dominant freshwater zooplankton
+    -   nutrient cycling
+    -   trophic interactions
+-   but thermal limits are less understood
+    -   will likely impact their survivorship which has larger
+        ecological implications
+-   they can serve as great model systems
+    -   not only because of lab maintenance capabilities
+    -   exhibit plasticity
+    -   short generations
+
+3.  Particular Importance of Diaptomids -widespread
+
+-   found consistently throughout most of the contiguous US
+
+-   diverse
+
+    -   monophyletic group, but 8 distinct species
+    -   ecological important
+
+-   dominant zooplankton in many freshwater ecosystems
+
+-   altogether allows for robust investigations of how thermal limits
+    may be plastic interspecifically as well as intraspecifically within
+    the genus
+
+-   further, their widespread nature allows for testing of ecological
+    gradients (elevational, latitudinal) to investigate their impacts on
+    thermal limits
+
+
+-   MP1: variation interspecifically due to plasticity so there may be
+    shifts in vulnerability
+
+-   MP2: increased freshwater temperatures via ClCh allows for potential
+    range shifting of Skistodiaptomus
+
 # Methods
 
 ## Collection
@@ -102,9 +128,8 @@ knitr::kable(x = 1, #Replace 1 with whatever object you want included as a table
 
 \newpage
 
-```{=tex}
 \beginsupplement
-```
+
 # Supplementary Material
 
 ```{r supp-fig-1, echo = F, out.width="100%"}
