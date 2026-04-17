@@ -46,25 +46,32 @@ if(knitr::is_latex_output()){
 
 # Introduction
 
-1. Copepod Introduction
-  *highly abundant
-  *crucial role in food webs
-  *Skistodiaptomus intro
-    *freshwater diaptomids
-    *comparatively less studied than other highly abundant freshwater copes
-    *the extent of their known phylogeny is distributed in US across diff environment scales (elevation, latitudinal)
-    *novel genus for understanding thermal tolerance in freshwater
-2. Thermal limits
-  *described in a diverse scope across animals, however, copes are underrepresented comparatively especially freshwater
-  *what patterns of thermal tolerance are conserved in this diaptomid phylogeny across 8 species and environmental gradients
-  *sources of differentiation in thermal limits
-    *Plasticity - capacity of plastic response and also rate of its success (perhaps mention Nathan's acclimation experiment)
-    *(evidence suggests their are robust clades within Skistodiaptomus genus that may confer different thermal tolerance success)
-3. This Study
-  *collected CTmax, body size, and fecundity from different populations of Skistodiaptomus
-  *Skistodiaptomus pallidus as the focus for comparing the populations from Centennial park and Ochsner Pond
-  *this study presents some of the first evidence of how Skistodiaptomus populations from different elevations and latitudes seems to exhibit no significant variation in CTmax
-  *further genetic investigation into potential differences
+1.Freshwater Biodiveristy
+  #freshwater bodies are relative mesocosms that support massive biodiversity
+    ##these bodies can and should be focused on to help provide a snapshot about how the changing environment is responded to by its player
+  #previous literature has scratched the surface with fish studies
+    ##but there is a general dearth in the literature surrounding freshwater biodiveristy
+2.Ecological Importance of Copepods, Generally
+  #dominant freshwater zooplankton
+    ##nutrient cycling
+    ##trophic interactions
+  #but thermal limits are less understood
+    ##will likely impact their survivorship which has larger ecological implications
+  #they can serve as great model systems 
+    ##not only because of lab maintenance capabilities
+    ##exhibit plasticity
+    ##short generations
+3.Particular Importance of Diaptomids
+  #widespread
+    ##found consistently throughout most of the contiguous US
+  #diverse
+    ##monophyletic group, but 8 distinct species
+  #ecological important
+    ##dominant zooplankton in many freshwater ecosystems
+  #altogether allows for robust investigations of how thermal limits may be plastic interspecifically as well as intraspecifically within the genus
+  #further, their widespread nature allows for testing of ecological gradients (elevational, latitudinal) to investigate their impacts on thermal limits
+MP1: variation interspecifically due to plasticity so there may be shifts in vulnerability
+MP2: increased freshwater temperatures via ClCh allows for potential range shifting of Skistodiaptomus
   
 # Methods
 
