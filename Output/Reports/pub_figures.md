@@ -1,14 +1,10 @@
 Diaptomid Thermal Limits GitHub Change Testing
 ================
-2026-02-27
+2026-04-24
 
 - [Site Map](#site-map)
-- [CTmax in response to Coll. Temp. Generally and
-  Specifically](#ctmax-in-response-to-coll-temp-generally-and-specifically)
 - [CTmax in response to Coll. Temp.
   Specifically](#ctmax-in-response-to-coll-temp-specifically)
-- [(Use one of these two, probably the second
-  option)](#use-one-of-these-two-probably-the-second-option)
 
 ## Site Map
 
@@ -36,49 +32,11 @@ map_data("world") %>%
   theme(legend.position = "right")
 ```
 
-<img src="../Figures/markdown/sampled-sites-1.png" style="display: block; margin: auto;" />
-
-## CTmax in response to Coll. Temp. Generally and Specifically
-
-``` r
-###unsure of size yet
-ctmax_temp_plot = ctmax_data %>% 
-  mutate(species = str_replace(species, "_", " "),
-         species = str_to_sentence(species)) %>% 
-  ggplot(aes(x = collection_temp, y = ctmax)) + 
-  geom_smooth(method = "lm", colour = "black") + 
-  geom_point(size = 3) + 
-  labs(x = "Collection Temp. (°C)", 
-       y = "CTmax (°C)") + 
-  scale_colour_manual(values = skisto_cols) + 
-  theme_matt() + 
-  theme(legend.position = "right")
-```
+<img src="../Figures/publication/sampled-sites-1.png" style="display: block; margin: auto;" />
 
 ## CTmax in response to Coll. Temp. Specifically
 
-## (Use one of these two, probably the second option)
-
 ``` r
-ctmax_data %>% 
-  mutate(species = str_replace(species, "_", " "),
-         species = str_to_sentence(species)) %>% 
-  ggplot(aes(x = collection_temp, y = ctmax, colour = species)) + 
-  facet_wrap(species~.) + 
-  geom_smooth(method = "lm", colour = "black") + 
-  geom_point() + 
-  labs(x = "Collection Temp. (°C)",
-       y = "CTmax (°C)") + 
-  scale_color_manual(values = skisto_cols) + 
-  theme_matt() + 
-  theme(legend.position = "none")
-```
-
-<img src="../Figures/markdown/unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
-
-``` r
-
-###{r fig.width=10, fig.height=6}
 ctmax_data %>% 
   filter(str_detect(species, pattern = "skisto") | 
            str_detect(species, pattern = "lepto") | 
@@ -103,7 +61,7 @@ ctmax_data %>%
   theme(legend.position = "right")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-2-2.png" style="display: block; margin: auto;" />
+<img src="../Figures/publication/collection-temp-species-1.png" style="display: block; margin: auto;" />
 
 \##S. pallidus egg volume
 
@@ -126,7 +84,7 @@ ctmax_data %>%
   theme(legend.position = "right")
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/publication/S-pall-egg-to-body-1.png" style="display: block; margin: auto;" />
 
 \##F3 Body Size (Prosome Length)
 
@@ -140,7 +98,7 @@ f3_data %>%
   theme_matt()
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/publication/S-pall-F3-body-size-1.png" style="display: block; margin: auto;" />
 
 \##F3 CTmax
 
@@ -154,7 +112,7 @@ ggplot(aes(x = site, y = ctmax)) +
   theme_matt()
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/publication/S-pall-F3-CTmax-1.png" style="display: block; margin: auto;" />
 
 \##F3 Clutch Size
 
@@ -168,4 +126,4 @@ ggplot(f3_data, aes(x = site, y = fecundity)) +
   theme_matt()
 ```
 
-<img src="../Figures/markdown/unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/publication/S-pall-F3-clutch-size-1.png" style="display: block; margin: auto;" />

@@ -109,41 +109,9 @@ map_data("world") %>%
   theme(legend.position = "right")
 ```
 
-## CTmax in response to Coll. Temp. Generally and Specifically
-
-```{r}
-###unsure of size yet
-ctmax_temp_plot = ctmax_data %>% 
-  mutate(species = str_replace(species, "_", " "),
-         species = str_to_sentence(species)) %>% 
-  ggplot(aes(x = collection_temp, y = ctmax)) + 
-  geom_smooth(method = "lm", colour = "black") + 
-  geom_point(size = 3) + 
-  labs(x = "Collection Temp. (°C)", 
-       y = "CTmax (°C)") + 
-  scale_colour_manual(values = skisto_cols) + 
-  theme_matt() + 
-  theme(legend.position = "right")
-```
-
 ## CTmax in response to Coll. Temp. Specifically
-## (Use one of these two, probably the second option)
 
-```{r fig.width=10, fig.height=7}
-ctmax_data %>% 
-  mutate(species = str_replace(species, "_", " "),
-         species = str_to_sentence(species)) %>% 
-  ggplot(aes(x = collection_temp, y = ctmax, colour = species)) + 
-  facet_wrap(species~.) + 
-  geom_smooth(method = "lm", colour = "black") + 
-  geom_point() + 
-  labs(x = "Collection Temp. (°C)",
-       y = "CTmax (°C)") + 
-  scale_color_manual(values = skisto_cols) + 
-  theme_matt() + 
-  theme(legend.position = "none")
-
-###{r fig.width=10, fig.height=6}
+```{r collection-temp-species, fig.width=10, fig.height=6}
 ctmax_data %>% 
   filter(str_detect(species, pattern = "skisto") | 
            str_detect(species, pattern = "lepto") | 
@@ -170,7 +138,7 @@ ctmax_data %>%
 
 ##S. pallidus egg volume
 
-```{r fig.width=8.5, fig.height=5.5}
+```{r S-pall-egg-to-body, fig.width=8.5, fig.height=5.5}
 ctmax_data %>% 
   filter(species == "skistodiaptomus_pallidus") %>%
   mutate(site = fct_reorder(site, lat, .desc = T)) %>% 
@@ -191,7 +159,7 @@ ctmax_data %>%
 
 ##F3 Body Size (Prosome Length)
 
-```{r}
+```{r S-pall-F3-body-size}
 f3_data %>%
   ggplot(aes(x = site, y = size)) + 
   geom_boxplot() + 
@@ -203,7 +171,7 @@ f3_data %>%
 
 ##F3 CTmax
 
-```{r}
+```{r S-pall-F3-CTmax}
 f3_data %>%
 ggplot(aes(x = site, y = ctmax)) + 
   geom_boxplot() + 
@@ -215,7 +183,7 @@ ggplot(aes(x = site, y = ctmax)) +
 
 ##F3 Clutch Size
 
-```{r}
+```{r S-pall-F3-clutch-size}
 
 ggplot(f3_data, aes(x = site, y = fecundity)) + 
   geom_boxplot() + 
