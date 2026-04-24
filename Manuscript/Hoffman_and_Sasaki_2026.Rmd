@@ -49,7 +49,7 @@ if(knitr::is_latex_output()){
 
 # Introduction
 
-1.  Freshwater Biodiveristy
+1.  Freshwater Biodiversity
 
 -   freshwater bodies are relative microcosms that support massive
     biodiversity
@@ -58,7 +58,11 @@ if(knitr::is_latex_output()){
         its player
 -   previous literature has scratched the surface with fish studies
     -   but there is a general dearth in the literature surrounding
-        freshwater biodiveristy
+        freshwater biodiversity
+-   climate change implications
+    -   lethal thermal limits
+    -   temperature changes & heat waves
+    -   state of climate change in lentic systems
 
 2.  Ecological Importance of Copepods, Generally
 
@@ -73,13 +77,19 @@ if(knitr::is_latex_output()){
     -   exhibit plasticity
     -   short generations
 
-3.  Particular Importance of Diaptomids -widespread
+3.  Particular Importance of Diaptomids
 
--   found consistently throughout most of the contiguous US
+-   widespread
+
+    -   found consistently throughout most of the contiguous US
+
+        -   further, their widespread nature allows for testing of
+            ecological gradients (elevational, latitudinal) to
+            investigate their impacts on thermal limits
 
 -   diverse
 
-    -   monophyletic group, but 8 distinct species
+    -   monophyletic group (Skisto), but 8 distinct species
     -   ecological important
 
 -   dominant zooplankton in many freshwater ecosystems
@@ -87,11 +97,6 @@ if(knitr::is_latex_output()){
 -   altogether allows for robust investigations of how thermal limits
     may be plastic interspecifically as well as intraspecifically within
     the genus
-
--   further, their widespread nature allows for testing of ecological
-    gradients (elevational, latitudinal) to investigate their impacts on
-    thermal limits
-
 
 -   MP1: variation interspecifically due to plasticity so there may be
     shifts in vulnerability
@@ -126,6 +131,31 @@ knitr::kable(x = 1, #Replace 1 with whatever object you want included as a table
 
 # Discussion
 
+1. Plasticity vs Adaptation
+  -   MP1: variation interspecifically due to plasticity so there may be
+    shifts in vulnerability
+    - plasticity
+      - reiterate plasticity role in mitigating climate change
+        - explain how plasticity can be used to bolster vulnerability
+        - inability to respond plastically may result in increased mortality
+    - acclimation
+      - reiterate how acclimation contrasts with plasticity
+
+2. Range Distributions and Invasions
+  -   MP2: increased freshwater temperatures via ClCh allows for potential
+    range shifting of Skistodiaptomus
+    - reiterate that Ctmax measurements did not significantly differ between the CP and OP populations
+      - contrast this with potential Skisto species variation in regards to Ctmax in conjuction with the differential collection temperature
+
+    
+3. Future Directions
+  - 
+
+
+4. Conclusion
+  - closes gap in copepod literature regarding thermal limits
+  - shows the potential for Skistodiaptomids and Diaptomids generally as a model system
+    
 \newpage
 
 \beginsupplement
