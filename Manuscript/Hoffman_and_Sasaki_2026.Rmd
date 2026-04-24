@@ -130,12 +130,20 @@ knitr::kable(x = 1, #Replace 1 with whatever object you want included as a table
 ```
 
 # Discussion
+0. Summary
+  - hypothesis
+  - brief methods
+  - brief results
 
 1. Plasticity vs Adaptation
   -   MP1: variation interspecifically due to plasticity so there may be
     shifts in vulnerability
     - plasticity
       - reiterate plasticity role in mitigating climate change
+        - understanding Ctmax vs collection temp; warming temp vs thermal limits
+          - what other things may mediate these effects
+          - field collection are there other things:
+            - predation, food, parasitism, etc. 
         - explain how plasticity can be used to bolster vulnerability
         - inability to respond plastically may result in increased mortality
     - acclimation
@@ -145,16 +153,17 @@ knitr::kable(x = 1, #Replace 1 with whatever object you want included as a table
   -   MP2: increased freshwater temperatures via ClCh allows for potential
     range shifting of Skistodiaptomus
     - reiterate that Ctmax measurements did not significantly differ between the CP and OP populations
-      - contrast this with potential Skisto species variation in regards to Ctmax in conjuction with the differential collection temperature
+      - contrast this with potential Skisto species variation in regards to Ctmax in conjunction with the differential collection temperature
 
-    
 3. Future Directions
   - 
-
 
 4. Conclusion
   - closes gap in copepod literature regarding thermal limits
   - shows the potential for Skistodiaptomids and Diaptomids generally as a model system
+    - can be grown in the lab
+  - field to lab 
+    - freshwater is relying on plasticity rather than local adaptation
     
 \newpage
 
