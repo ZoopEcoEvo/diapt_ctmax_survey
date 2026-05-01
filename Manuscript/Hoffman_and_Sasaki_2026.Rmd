@@ -131,23 +131,23 @@ knitr::kable(x = 1, #Replace 1 with whatever object you want included as a table
 
 # Discussion
 0. Summary
-  - hypothesis
-  - brief methods
-  - brief results
+  - reiterate hypothesis
+  - briefly mention the methods
+  - brief mention overall results about F3 size, fecundity, and ctmax
 
-1. Plasticity vs Adaptation
+1. Plasticity vs Acclimation
   -   MP1: variation interspecifically due to plasticity so there may be
     shifts in vulnerability
+    - acclimation
+      - reiterate how acclimation contrasts with plasticity
     - plasticity
+      - explain how plasticity can be used to bolster vulnerability
+      - inability to respond plastically may result in increased mortality
       - reiterate plasticity role in mitigating climate change
         - understanding Ctmax vs collection temp; warming temp vs thermal limits
           - what other things may mediate these effects
           - field collection are there other things:
             - predation, food, parasitism, etc. 
-        - explain how plasticity can be used to bolster vulnerability
-        - inability to respond plastically may result in increased mortality
-    - acclimation
-      - reiterate how acclimation contrasts with plasticity
 
 2. Range Distributions and Invasions
   -   MP2: increased freshwater temperatures via ClCh allows for potential
@@ -156,7 +156,7 @@ knitr::kable(x = 1, #Replace 1 with whatever object you want included as a table
       - contrast this with potential Skisto species variation in regards to Ctmax in conjunction with the differential collection temperature
 
 3. Future Directions
-  - 
+  - mention expansion to more collection sites to understand how the relationship between these two populations are a small subset of the overall comparative potential
 
 4. Conclusion
   - closes gap in copepod literature regarding thermal limits
@@ -165,6 +165,15 @@ knitr::kable(x = 1, #Replace 1 with whatever object you want included as a table
   - field to lab 
     - freshwater is relying on plasticity rather than local adaptation
     
+Proposed Figure Order
+1. samples-sites
+2. collection-temp-species
+3. S-pall-egg-to-body
+4. S-pall-F3-body-size
+5. S-pall-F3-clutch-size
+6. S-pall-F3-CTmax
+3,4,5 could be restructured depending on whether stronger tie of the F3 results together, or stronger tie of egg & body (3) together
+
 \newpage
 
 \beginsupplement
